@@ -54,16 +54,16 @@ const App: React.FC = () => {
           <img 
             src={ASSETS.heroImage}
             alt="Hero Composition" 
-            className="w-[48%] md:w-[40%] object-contain object-top opacity-100"
+            className="w-[48%] md:w-[40%] max-h-[60%] object-contain object-top opacity-100"
           />
 
           {/* Tag - Straightened with zero padding */}
-          <div className="z-10 bg-[#1a1a1a] text-white my-8">
+          <div className="z-10 bg-[#1a1a1a] text-white my-4">
             <span className="text-sm md:text-base font-bold tracking-tight font-mono">product designer.</span>
           </div>
 
           {/* Description Text */}
-          <div className="z-10 text-center px-6 pb-12">
+          <div className="z-10 text-center px-6 pb-4">
             <p className="text-sm md:text-lg font-medium leading-[20px] tracking-[-0.04em] text-gray-900">
               Hi, I’m Bunmi, a designer with a rich
               <br className="hidden md:block" />
