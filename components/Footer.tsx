@@ -30,7 +30,6 @@ const Footer: React.FC = () => {
       <FooterLink 
         label="Spotify" 
         href="https://open.spotify.com/artist/1qktTPa4kJCpNl2hIr8mTP" 
-        className="hidden md:flex"
       />
 
       {/* Right Spacer - aligns with Contact/Art/Music column */}
