@@ -11,7 +11,7 @@ const FooterLink: React.FC<FooterLinkProps> = ({ label, href, className = '' }) 
     href={href} 
     target="_blank"
     rel="noopener noreferrer"
-    className={`flex items-center justify-center h-14 hover:bg-[#ecece8] transition-colors text-xs md:text-sm font-bold bg-[#f4f4f0] md:bg-transparent md:border-b-0 tracking-[-0.04em] shrink-0 w-[110px] md:w-auto ${className}`}
+    className={`flex items-center justify-center h-14 hover:bg-[#ecece8] transition-colors text-xs md:text-sm font-bold bg-[#f4f4f0] md:bg-transparent md:border-b-0 tracking-[-0.04em] shrink-0 w-auto px-2 md:px-0 md:w-auto ${className}`}
   >
     {label}
   </a>
@@ -30,6 +30,7 @@ const Footer: React.FC = () => {
       <FooterLink 
         label="Spotify" 
         href="https://open.spotify.com/artist/1qktTPa4kJCpNl2hIr8mTP" 
+        className="hidden md:flex"
       />
 
       {/* Right Spacer - aligns with Contact/Art/Music column */}
