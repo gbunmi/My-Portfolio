@@ -36,12 +36,12 @@ const App: React.FC = () => {
             Mobile: Full width, vertically stacked first
             Desktop: Center Column, Spans 3 rows
         */}
-        <div className="w-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 shrink-0 relative min-h-[55vh] md:h-full flex flex-col items-center justify-start pt-0 overflow-hidden bg-[#f4f4f0] pb-12 md:pb-4">
+        <div className="w-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 shrink-0 relative min-h-[55vh] md:h-full flex flex-col items-center justify-start pt-0 overflow-hidden bg-[#f4f4f0] pb-7 md:pb-4">
           {/* Image */}
           <img 
             src={ASSETS.heroImage}
             alt="Hero Composition" 
-            className="w-[80%] md:w-[40%] max-h-[60%] object-contain object-top opacity-100 mt-0"
+            className="w-[90%] md:w-[40%] max-h-[60%] object-contain object-top opacity-100 mt-0"
           />
 
           {/* Tag - Straightened with zero padding */}
