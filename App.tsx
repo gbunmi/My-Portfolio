@@ -27,7 +27,7 @@ const App: React.FC = () => {
       </header>
 
       {/* Main Layout 
-          Mobile: Flex Column. Hero (Top) -> Horizontal Scroll Row (Bottom)
+          Mobile: Flex Column. Hero (Top) -> Grid 2 cols (Bottom)
           Desktop: 3-Column Grid. Left sidebar -> Hero (Center) -> Right sidebar
       */}
       <main className="flex-1 min-h-0 overflow-y-auto md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-[1px] bg-gray-300 border-t border-gray-300">
@@ -62,27 +62,27 @@ const App: React.FC = () => {
         </div>
 
         {/* --- Grid Items Wrapper --- 
-            Mobile: Flex Row with Horizontal Scroll (One row for all cards)
+            Mobile: Grid 2 columns
             Desktop: Display Contents (Children participate in the main grid directly)
         */}
-        <div className="flex flex-row overflow-x-auto md:contents h-64 md:h-auto shrink-0 gap-[1px] bg-gray-300">
+        <div className="grid grid-cols-2 w-full md:contents shrink-0 gap-[1px] bg-gray-300">
           
           {/* Left Column Items (Desktop) */}
-          <div className="w-[240px] shrink-0 md:w-auto md:shrink md:col-span-1 md:col-start-1 md:row-start-1 bg-[#f4f4f0]">
+          <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-1 bg-[#f4f4f0]">
              <GridItem 
               imageSrc={ASSETS.featuredWork}
               label="featured" 
               subLabel="work"
             />
           </div>
-          <div className="w-[240px] shrink-0 md:w-auto md:shrink md:col-span-1 md:col-start-1 md:row-start-2 bg-[#f4f4f0]">
+          <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-2 bg-[#f4f4f0]">
             <GridItem 
               imageSrc={ASSETS.employment}
               label="employment" 
               subLabel="history"
             />
           </div>
-          <div className="w-[240px] shrink-0 md:w-auto md:shrink md:col-span-1 md:col-start-1 md:row-start-3 bg-[#f4f4f0]">
+          <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-3 bg-[#f4f4f0]">
             <GridItem 
               imageSrc={ASSETS.resume}
               label="my resume.pdf" 
@@ -91,7 +91,7 @@ const App: React.FC = () => {
           </div>
 
           {/* Right Column Items (Desktop) */}
-          <div className="w-[240px] shrink-0 md:w-auto md:shrink md:col-span-1 md:col-start-3 md:row-start-1 bg-[#f4f4f0]">
+          <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-3 md:row-start-1 bg-[#f4f4f0]">
             <GridItem 
               imageSrc={ASSETS.contact}
               label="contact" 
@@ -99,13 +99,13 @@ const App: React.FC = () => {
               external
             />
           </div>
-          <div className="w-[240px] shrink-0 md:w-auto md:shrink md:col-span-1 md:col-start-3 md:row-start-2 bg-[#f4f4f0]">
+          <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-3 md:row-start-2 bg-[#f4f4f0]">
             <GridItem 
               imageSrc={ASSETS.art}
               label="art" 
             />
           </div>
-          <div className="w-[240px] shrink-0 md:w-auto md:shrink md:col-span-1 md:col-start-3 md:row-start-3 bg-[#f4f4f0]">
+          <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-3 md:row-start-3 bg-[#f4f4f0]">
              <GridItem 
               imageSrc={ASSETS.music}
               label="music" 
