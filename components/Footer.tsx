@@ -9,6 +9,8 @@ interface FooterLinkProps {
 const FooterLink: React.FC<FooterLinkProps> = ({ label, href, className = '' }) => (
   <a 
     href={href} 
+    target="_blank"
+    rel="noopener noreferrer"
     className={`flex items-center justify-center h-14 hover:bg-[#ecece8] transition-colors text-xs md:text-sm font-bold border-b md:border-b-0 border-gray-300 tracking-[-0.04em] ${className}`}
   >
     {label}

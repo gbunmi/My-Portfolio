@@ -79,6 +79,7 @@ const App: React.FC = () => {
           <GridItem 
             imageSrc={ASSETS.contact}
             label="contact" 
+            link="mailto:g.bunmi1@gmail.com"
             external
           />
           <GridItem 
