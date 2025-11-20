@@ -17,9 +17,9 @@ const ASSETS = {
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#f4f4f0] text-gray-900 font-mono selection:bg-yellow-200">
+    <div className="fixed inset-0 w-full h-full overflow-hidden flex flex-col bg-[#f4f4f0] text-gray-900 font-mono selection:bg-yellow-200">
       {/* Header */}
-      <header className="h-14 border-b border-gray-300 flex justify-between items-center px-4 md:px-8 sticky top-0 z-50 bg-[#f4f4f0]">
+      <header className="h-14 shrink-0 border-b border-gray-300 flex justify-between items-center px-4 md:px-8 z-50 bg-[#f4f4f0]">
         <h1 className="text-xs md:text-sm font-bold uppercase tracking-wider">Bunmi Gbadamosi</h1>
         <div className="text-xs md:text-sm font-bold uppercase tracking-wider">
           <Clock />
@@ -27,10 +27,10 @@ const App: React.FC = () => {
       </header>
 
       {/* Main Grid */}
-      <main className="flex-1 grid grid-cols-1 md:grid-cols-[240px_1fr_240px] md:divide-x divide-gray-300">
+      <main className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-[240px_1fr_240px] md:divide-x divide-gray-300">
         
         {/* Left Column - Navigation */}
-        <div className="grid grid-rows-3 divide-y divide-gray-300 border-b md:border-b-0 border-gray-300">
+        <div className="grid grid-rows-3 h-full divide-y divide-gray-300 border-b md:border-b-0 border-gray-300">
           <GridItem 
             imageSrc={ASSETS.featuredWork}
             label="featured" 
@@ -49,16 +49,16 @@ const App: React.FC = () => {
         </div>
 
         {/* Center Column - Hero */}
-        <div className="relative flex flex-col items-center justify-start pt-0 border-b md:border-b-0 border-gray-300 overflow-hidden bg-[#f4f4f0]">
+        <div className="relative h-full flex flex-col items-center justify-start pt-0 border-b md:border-b-0 border-gray-300 overflow-hidden bg-[#f4f4f0]">
           {/* Image */}
           <img 
             src={ASSETS.heroImage}
             alt="Hero Composition" 
-            className="w-[60%] md:w-[50%] object-contain object-top opacity-100"
+            className="w-[48%] md:w-[40%] object-contain object-top opacity-100"
           />
 
           {/* Tag - Straightened with zero padding */}
-          <div className="z-10 bg-[#1a1a1a] text-white my-8 shadow-lg">
+          <div className="z-10 bg-[#1a1a1a] text-white my-8">
             <span className="text-sm md:text-base font-bold tracking-tight font-mono">product designer.</span>
           </div>
 
@@ -75,7 +75,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Right Column - More Links */}
-        <div className="grid grid-rows-3 divide-y divide-gray-300 border-b md:border-b-0 border-gray-300">
+        <div className="grid grid-rows-3 h-full divide-y divide-gray-300 border-b md:border-b-0 border-gray-300">
           <GridItem 
             imageSrc={ASSETS.contact}
             label="contact" 
