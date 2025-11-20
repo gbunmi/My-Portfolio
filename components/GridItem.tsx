@@ -19,7 +19,7 @@ const GridItem: React.FC<GridItemProps> = ({ icon, imageSrc, label, subLabel, li
     // @ts-ignore - simplified for dynamic tag
     <Wrapper 
       {...wrapperProps}
-      className={`flex flex-col items-center justify-center p-4 hover:bg-[#ecece8] transition-colors cursor-pointer group h-full w-full ${className}`}
+      className={`flex flex-col items-center justify-center p-4 bg-[#f4f4f0] hover:bg-[#ecece8] transition-colors cursor-pointer group h-full w-full ${className}`}
     >
       {(imageSrc || icon) && (
         <div className="mb-4 transform transition-transform group-hover:scale-110 duration-300 drop-shadow-lg filter">

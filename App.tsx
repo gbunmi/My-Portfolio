@@ -17,7 +17,7 @@ const ASSETS = {
 
 const App: React.FC = () => {
   return (
-    <div className="fixed inset-0 w-full h-full overflow-hidden flex flex-col bg-[#f4f4f0] text-gray-900 font-mono selection:bg-yellow-200">
+    <div className="fixed inset-0 w-full h-full flex flex-col bg-[#f4f4f0] text-gray-900 font-mono selection:bg-yellow-200">
       {/* Header */}
       <header className="h-14 shrink-0 border-b border-gray-300 flex justify-between items-center px-4 md:px-8 z-50 bg-[#f4f4f0]">
         <h1 className="text-xs md:text-sm font-bold uppercase tracking-wider">Bunmi Gbadamosi</h1>
@@ -26,35 +26,22 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Main Grid */}
-      <main className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-[240px_1fr_240px] md:divide-x divide-gray-300">
+      {/* Main Grid - Responsive Layout
+          Mobile: Scrollable, 2 columns (Hero spans 2, Items 1x1)
+          Desktop: Fixed (No Scroll), 3 specific columns (240px - 1fr - 240px)
+      */}
+      <main className="flex-1 min-h-0 overflow-y-auto md:overflow-hidden grid grid-cols-2 md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-[1px] bg-gray-300 border-t border-gray-300">
         
-        {/* Left Column - Navigation */}
-        <div className="grid grid-rows-3 h-full divide-y divide-gray-300 border-b md:border-b-0 border-gray-300">
-          <GridItem 
-            imageSrc={ASSETS.featuredWork}
-            label="featured" 
-            subLabel="work"
-          />
-          <GridItem 
-            imageSrc={ASSETS.employment}
-            label="employment" 
-            subLabel="history"
-          />
-          <GridItem 
-            imageSrc={ASSETS.resume}
-            label="my resume.pdf" 
-            external
-          />
-        </div>
-
-        {/* Center Column - Hero */}
-        <div className="relative h-full flex flex-col items-center justify-start pt-0 border-b md:border-b-0 border-gray-300 overflow-hidden bg-[#f4f4f0]">
+        {/* --- Hero Section --- 
+            Mobile: Order 1, Spans 2 columns (Full Width)
+            Desktop: Column 2, Spans 3 rows (Full Height)
+        */}
+        <div className="col-span-2 md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 order-1 md:order-none relative h-full flex flex-col items-center justify-start pt-0 overflow-hidden bg-[#f4f4f0] pb-12 md:pb-4">
           {/* Image */}
           <img 
             src={ASSETS.heroImage}
             alt="Hero Composition" 
-            className="w-[48%] md:w-[40%] max-h-[60%] object-contain object-top opacity-100"
+            className="w-[48%] md:w-[40%] max-h-[60%] object-contain object-top opacity-100 mt-8 md:mt-0"
           />
 
           {/* Tag - Straightened with zero padding */}
@@ -74,19 +61,51 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column - More Links */}
-        <div className="grid grid-rows-3 h-full divide-y divide-gray-300 border-b md:border-b-0 border-gray-300">
+        {/* --- Grid Items --- 
+            Mobile: Order 2, Flow naturally in 2 columns (1 card each)
+            Desktop: Explicit positioning in Column 1 or Column 3
+        */}
+
+        {/* Left Column Items (Desktop) */}
+        <div className="order-2 md:order-none col-span-1 md:col-start-1 md:row-start-1 bg-[#f4f4f0]">
+           <GridItem 
+            imageSrc={ASSETS.featuredWork}
+            label="featured" 
+            subLabel="work"
+          />
+        </div>
+        <div className="order-2 md:order-none col-span-1 md:col-start-1 md:row-start-2 bg-[#f4f4f0]">
+          <GridItem 
+            imageSrc={ASSETS.employment}
+            label="employment" 
+            subLabel="history"
+          />
+        </div>
+        <div className="order-2 md:order-none col-span-1 md:col-start-1 md:row-start-3 bg-[#f4f4f0]">
+          <GridItem 
+            imageSrc={ASSETS.resume}
+            label="my resume.pdf" 
+            external
+          />
+        </div>
+
+        {/* Right Column Items (Desktop) */}
+        <div className="order-2 md:order-none col-span-1 md:col-start-3 md:row-start-1 bg-[#f4f4f0]">
           <GridItem 
             imageSrc={ASSETS.contact}
             label="contact" 
             link="mailto:g.bunmi1@gmail.com"
             external
           />
+        </div>
+        <div className="order-2 md:order-none col-span-1 md:col-start-3 md:row-start-2 bg-[#f4f4f0]">
           <GridItem 
             imageSrc={ASSETS.art}
             label="art" 
           />
-          <GridItem 
+        </div>
+        <div className="order-2 md:order-none col-span-1 md:col-start-3 md:row-start-3 bg-[#f4f4f0]">
+           <GridItem 
             imageSrc={ASSETS.music}
             label="music" 
           />
