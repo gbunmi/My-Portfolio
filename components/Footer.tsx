@@ -21,11 +21,11 @@ const Footer: React.FC = () => {
       {/* Left Spacer - aligns with Featured/History/Resume column */}
       <div className="hidden md:block bg-[#f4f4f0]" />
 
-      <FooterLink label="Linkedin" href="#" />
-      <FooterLink label="Layers" href="#" />
-      <FooterLink label="Behance" href="#" />
-      <FooterLink label="Artstation" href="#" />
-      <FooterLink label="Spotify" href="#" />
+      <FooterLink label="Linkedin" href="https://www.linkedin.com/in/bunmi-gbadamosi-0128701aa" />
+      <FooterLink label="Layers" href="https://layers.to/gbunmi" />
+      <FooterLink label="Behance" href="https://www.behance.net/gbadamooluwabu" />
+      <FooterLink label="Artstation" href="https://www.artstation.com/g-bunmi" />
+      <FooterLink label="Spotify" href="https://open.spotify.com/artist/1qktTPa4kJCpNl2hIr8mTP" />
 
       {/* Right Spacer - aligns with Contact/Art/Music column */}
       <div className="hidden md:block bg-[#f4f4f0]" />
