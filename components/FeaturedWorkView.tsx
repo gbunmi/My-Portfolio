@@ -29,6 +29,7 @@ const FeaturedWorkView: React.FC = () => {
               key={project}
               onClick={() => setSelectedProject(project)}
               className={`
+                group
                 w-full text-left px-6 py-6 md:px-8 md:py-6 border-b border-gray-300 
                 font-bold text-sm md:text-base tracking-[-0.04em] transition-colors
                 ${isSelected 
@@ -36,7 +37,9 @@ const FeaturedWorkView: React.FC = () => {
                   : 'bg-[#f4f4f0] text-[#041727] hover:bg-[#ecece8]'}
               `}
             >
-              {project}
+              <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-2">
+                {project}
+              </span>
             </button>
           );
         })}
@@ -48,7 +51,7 @@ const FeaturedWorkView: React.FC = () => {
       <div className="flex-1 h-full overflow-y-auto bg-[#f4f4f0] relative">
         
         {/* Content Container - Centered and Full Width with MASSIVE padding */}
-        <div className="px-6 py-8 md:px-48 xl:px-80 md:py-16 w-full mx-auto">
+        <div className="px-6 py-8 md:px-80 xl:px-[32rem] w-full mx-auto">
           
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 md:mb-12 w-full">
