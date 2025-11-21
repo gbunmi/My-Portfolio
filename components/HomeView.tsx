@@ -12,7 +12,7 @@ const ASSETS = {
 };
 
 interface HomeViewProps {
-  onNavigate: (view: 'home' | 'employment') => void;
+  onNavigate: (view: 'home' | 'employment' | 'featured') => void;
 }
 
 const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
@@ -54,6 +54,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             imageSrc={ASSETS.featuredWork}
             label="featured" 
             subLabel="work"
+            onClick={() => onNavigate('featured')}
           />
         </div>
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-2 bg-[#f4f4f0]">
