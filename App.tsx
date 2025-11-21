@@ -15,7 +15,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 w-full h-full flex flex-col bg-[#f4f4f0] text-gray-900 font-mono selection:bg-yellow-200">
+    <div className="fixed inset-0 w-full h-full flex flex-col bg-[#f4f4f0] text-[#041727] font-mono selection:bg-yellow-200">
       {/* Header */}
       <header className="h-14 shrink-0 border-b border-gray-300 flex justify-between items-center px-4 md:px-8 z-50 bg-[#f4f4f0]">
         <a 

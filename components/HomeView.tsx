@@ -29,13 +29,13 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         />
 
         {/* Tag */}
-        <div className="z-10 bg-[#1a1a1a] text-white my-4">
+        <div className="z-10 bg-[#041727] text-white my-4">
           <span className="text-sm md:text-base font-bold tracking-tight font-mono">product designer.</span>
         </div>
 
         {/* Description Text */}
         <div className="z-10 text-center px-6 pb-4">
-          <p className="text-sm md:text-lg font-medium leading-[20px] tracking-[-0.04em] text-gray-900">
+          <p className="text-sm md:text-lg font-medium leading-[20px] tracking-[-0.04em] text-[#041727]">
             Hi, I’m Bunmi, a designer with a rich
             <br className="hidden md:block" />
             experience designing functional products
@@ -68,6 +68,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <GridItem 
             imageSrc={ASSETS.resume}
             label="my resume.pdf" 
+            link="https://drive.google.com/file/d/18LwcOOVxC2BOdN8b0rE3Zq8LENMBQyDU/view?usp=sharing"
             external
           />
         </div>
@@ -85,12 +86,16 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <GridItem 
             imageSrc={ASSETS.art}
             label="art" 
+            link="https://www.artstation.com/g-bunmi"
+            external
           />
         </div>
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-3 md:row-start-3 bg-[#f4f4f0]">
             <GridItem 
             imageSrc={ASSETS.music}
             label="music" 
+            link="https://open.spotify.com/artist/1qktTPa4kJCpNl2hIr8mTP"
+            external
           />
         </div>
 
