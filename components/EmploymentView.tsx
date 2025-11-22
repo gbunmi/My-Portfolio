@@ -92,7 +92,7 @@ const EmploymentView: React.FC = () => {
                   </span>
                 </div>
                 <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] tracking-[-0.04em]">
-                  I designed the full Terminal Management System for Blusalt’s agent network, streamlining how terminals were set up and managed. I mapped complex workflows and delivered high-fidelity interfaces that helped the support team resolve issues faster. Close collaboration with engineering and product management helped align requirements early and shorten design cycles.
+                  I designed the Terminal Management System for Blusalt’s POS payment devices, making it easier for agents and internal teams to set up, configure, and manage terminals. I mapped the workflows end to end and delivered high-fidelity interfaces that helped the support team resolve issues more quickly. Close collaboration with engineers and product managers kept requirements tight and helped shorten design cycles.
                 </p>
               </div>
 
