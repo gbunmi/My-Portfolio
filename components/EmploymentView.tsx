@@ -38,7 +38,7 @@ const EmploymentView: React.FC = () => {
          {/* Right Column (Content) */}
          <div className="flex flex-col z-10">
             
-            {/* Heyfood */}
+            {/* Heyfood (YC W21) */}
             <div className="border-b border-gray-300 p-6 md:p-12">
               <JobBlock 
                 title="Heyfood"
@@ -48,7 +48,7 @@ const EmploymentView: React.FC = () => {
               />
             </div>
 
-            {/* Infiuss Health */}
+            {/* Infiuss Health (YC S21) */}
             <div className="border-b border-gray-300 p-6 md:p-12">
               <h3 className="font-bold text-lg md:text-xl mb-3 tracking-[-0.04em] text-[#041727]">Infiuss Health</h3>
               

@@ -91,8 +91,8 @@ const App: React.FC = () => {
         {view === 'featured' && <FeaturedWorkView />}
       </main>
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer - Only show on Home view */}
+      {view === 'home' && <Footer />}
     </div>
   );
 };
