@@ -44,7 +44,7 @@ const EmploymentView: React.FC = () => {
                 title="Heyfood"
                 location="Ibadan, Nigeria"
                 dates="Nov 2021 - Present"
-                description="Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution."
+                description="I led design across all customer, vendor, rider, and internal tools, improving overall consistency and reducing design-related rework. I shipped features that made ordering faster and improved store discovery, and I designed referral and shareable-order flows that strengthened organic growth. I also built B2B onboarding tools that made setup smoother for restaurant partners. Through ongoing research and rapid prototyping, I helped the team uncover pain points, refine key flows, and speed up iteration. I redesigned internal dashboards to help the operations team work far more efficiently, built a new brand design system, managed the design team, and led the consumer app redesign that helped scale daily order volume significantly.."
               />
             </div>
 
@@ -63,7 +63,7 @@ const EmploymentView: React.FC = () => {
                   </span>
                 </div>
                 <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] max-w-prose tracking-[-0.04em]">
-                  Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.
+                  I led a full redesign of the medical research platform, making researcher workflows more intuitive and faster to complete. By speaking with dozens of patients and physicians, I surfaced workflow challenges that guided product decisions. I ran iterative usability tests that sharply improved the platform’s overall ease of use. Working closely with engineers and stakeholders helped speed up feature delivery and reduce handoff friction.
                 </p>
               </div>
 
