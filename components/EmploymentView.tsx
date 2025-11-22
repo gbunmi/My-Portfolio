@@ -20,7 +20,7 @@ const JobBlock: React.FC<{
       </span>
     </div>
 
-    <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] max-w-prose tracking-[-0.04em]">
+    <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] tracking-[-0.04em]">
       {description}
     </p>
   </div>
@@ -59,10 +59,10 @@ const EmploymentView: React.FC = () => {
                     New York, USA
                   </span>
                   <span className="bg-[#041727] text-white text-xs md:text-sm font-bold px-1 py-0.5 tracking-[-0.04em]">
-                    Nov 2021 - Present
+                    Feb 2025 - Apr 2025
                   </span>
                 </div>
-                <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] max-w-prose tracking-[-0.04em]">
+                <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] tracking-[-0.04em]">
                   I led a full redesign of the medical research platform, making researcher workflows more intuitive and faster to complete. By speaking with dozens of patients and physicians, I surfaced workflow challenges that guided product decisions. I ran iterative usability tests that sharply improved the platform’s overall ease of use. Working closely with engineers and stakeholders helped speed up feature delivery and reduce handoff friction.
                 </p>
               </div>
@@ -71,11 +71,11 @@ const EmploymentView: React.FC = () => {
               <div>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="bg-[#041727] text-white text-xs md:text-sm font-bold px-1 py-0.5 tracking-[-0.04em]">
-                    Oct 2021 - Jan 2022
+                    May 2024 - Jun 2024
                   </span>
                 </div>
-                <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] max-w-prose tracking-[-0.04em]">
-                  Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.
+                <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] tracking-[-0.04em]">
+                  I designed a mobile app that supported patient-to-patient interaction and strengthened early community engagement. I created detailed prototypes for investor pitches, improving how the team communicated the product vision. I also produced onboarding walkthrough videos that reduced user confusion. Beyond that, I refined the design language and UX of the flagship product, making the interface more consistent and lowering navigation issues. I improved onboarding for both patients and researchers, making registration and setup clearer and quicker.
                 </p>
               </div>
             </div>
@@ -88,11 +88,11 @@ const EmploymentView: React.FC = () => {
               <div className="mb-6">
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="bg-[#041727] text-white text-xs md:text-sm font-bold px-1 py-0.5 tracking-[-0.04em]">
-                    Oct 2021 - Jan 2022
+                    Jul 2022 - Mar 2023
                   </span>
                 </div>
-                <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] max-w-prose tracking-[-0.04em]">
-                  Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.
+                <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] tracking-[-0.04em]">
+                  I designed the full Terminal Management System for Blusalt’s agent network, streamlining how terminals were set up and managed. I mapped complex workflows and delivered high-fidelity interfaces that helped the support team resolve issues faster. Close collaboration with engineering and product management helped align requirements early and shorten design cycles.
                 </p>
               </div>
 
@@ -100,11 +100,11 @@ const EmploymentView: React.FC = () => {
               <div>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="bg-[#041727] text-white text-xs md:text-sm font-bold px-1 py-0.5 tracking-[-0.04em]">
-                    July 2022 - Feb 2023
+                    Oct 2021 - Jan 2022
                   </span>
                 </div>
-                <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] max-w-prose tracking-[-0.04em]">
-                  Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.
+                <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] tracking-[-0.04em]">
+                  I worked across several B2B and B2C fintech products, contributing to features that made user tasks easier to complete. By collaborating closely with the design team, I helped improve consistency and shorten review cycles. I ran user tests and iterated on multiple product lines, significantly improving overall usability. I also led research efforts for new products, gathering insights that shaped key features and strengthened early adoption.
                 </p>
               </div>
             </div>
