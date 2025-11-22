@@ -20,7 +20,7 @@ const FeaturedWorkView: React.FC = () => {
       {/* Left Sidebar - Project List */}
       <div 
         className="w-full md:w-[300px] shrink-0 md:h-full overflow-y-auto border-b md:border-b-0 md:border-r border-gray-300 bg-[#f4f4f0] [&::-webkit-scrollbar]:hidden"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        style={{ scrollbarWidth: 'none' }}
       >
         {PROJECTS.map((project) => {
           const isSelected = selectedProject === project;
@@ -50,8 +50,8 @@ const FeaturedWorkView: React.FC = () => {
       {/* Right Content - Project Details */}
       <div className="flex-1 h-full overflow-y-auto bg-[#f4f4f0] relative">
         
-        {/* Content Container - Centered and Full Width with MASSIVE padding */}
-        <div className="px-6 py-8 md:px-80 xl:px-[32rem] w-full mx-auto">
+        {/* Content Container - Centered and Full Width with reduced padding */}
+        <div className="px-6 py-8 md:px-40 xl:px-64 w-full mx-auto">
           
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 md:mb-12 w-full">
