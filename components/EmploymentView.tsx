@@ -87,6 +87,9 @@ const EmploymentView: React.FC = () => {
               {/* Role 1 */}
               <div className="mb-6">
                 <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-[#041727] text-white text-xs md:text-sm font-bold px-1 py-0.5 tracking-[-0.04em]">
+                    Lagos, Nigeria
+                  </span>
                   <span className="bg-[#041727] text-white text-xs md:text-sm font-bold px-1 py-0.5 tracking-[-0.04em]">
                     Jul 2022 - Mar 2023
                   </span>
