@@ -28,9 +28,9 @@ const Footer: React.FC = () => {
       <FooterLink label="Behance" href="https://www.behance.net/gbadamooluwabu" />
       <FooterLink label="Artstation" href="https://www.artstation.com/g-bunmi" />
       <FooterLink 
-        label="Spotify" 
-        href="https://open.spotify.com/artist/1qktTPa4kJCpNl2hIr8mTP"
-        className="flex" // Remove hidden md:flex to make it visible on mobile again
+        label="Github" 
+        href="https://github.com/gbunmi"
+        className="flex"
       />
 
       {/* Right Spacer - aligns with Contact/Art/Music column */}

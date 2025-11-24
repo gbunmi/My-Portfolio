@@ -7,7 +7,7 @@ interface JobRoleProps {
   description: string;
 }
 
-// Component for a single role entry (used internally or for multi-role blocks)
+// Component for a single role entry
 const JobRole: React.FC<JobRoleProps> = ({ location, dates, description }) => (
   <div className="mb-6 last:mb-0">
     <div className="flex flex-wrap gap-2 mb-4">
@@ -26,29 +26,26 @@ const JobRole: React.FC<JobRoleProps> = ({ location, dates, description }) => (
   </div>
 );
 
-// Component for a job with a single role (e.g., Heyfood)
-const JobBlock: React.FC<{
+// Unified Component for Job Blocks (supports both single props or roles array)
+interface JobBlockProps {
   title: string;
   location?: string;
-  dates: string;
-  description: string;
-}> = ({ title, location, dates, description }) => (
-  <div>
-    <h3 className="font-bold text-lg md:text-xl mb-3 tracking-[-0.04em] text-[#041727]">{title}</h3>
-    <JobRole location={location} dates={dates} description={description} />
-  </div>
-);
+  dates?: string;
+  description?: string;
+  roles?: JobRoleProps[];
+}
 
-// Component for a job with multiple roles (e.g., Infiuss, Blusalt)
-const MultiRoleJobBlock: React.FC<{
-  title: string;
-  roles: JobRoleProps[];
-}> = ({ title, roles }) => (
+const JobBlock: React.FC<JobBlockProps> = ({ title, location, dates, description, roles }) => (
   <div>
     <h3 className="font-bold text-lg md:text-xl mb-3 tracking-[-0.04em] text-[#041727]">{title}</h3>
-    {roles.map((role, index) => (
-      <JobRole key={index} {...role} />
-    ))}
+    {roles && roles.length > 0 ? (
+      roles.map((role, index) => (
+        <JobRole key={index} {...role} />
+      ))
+    ) : (
+      // Fallback to single props if roles array isn't provided
+      <JobRole location={location} dates={dates || ''} description={description || ''} />
+    )}
   </div>
 );
 
@@ -58,8 +55,14 @@ const EmploymentView: React.FC = () => {
       {/* Inner wrapper must be relative and min-h-full to capture full scroll height */}
       <div className="min-h-full relative md:grid md:grid-cols-2">
         
-         {/* Left Column (Empty) - Uses border-r to match site border weight perfectly */}
-         <div className="hidden md:block border-r border-gray-300" />
+         {/* Left Column (Sticky Image) */}
+         <div className="hidden md:flex border-r border-gray-300 sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center">
+            <img 
+              src="https://images.unsplash.com/photo-1513245543132-31f507417b26?q=80&w=800&auto=format&fit=crop" 
+              alt="Cat" 
+              className="w-1/2 max-w-[300px] object-contain drop-shadow-xl"
+            />
+         </div>
          
          {/* Right Column (Content) */}
          <div className="flex flex-col z-10">
@@ -76,7 +79,7 @@ const EmploymentView: React.FC = () => {
 
             {/* Infiuss Health (YC S21) */}
             <div className="border-b border-gray-300 p-6 md:p-12">
-              <MultiRoleJobBlock 
+              <JobBlock 
                 title="Infiuss Health (YC S21)"
                 roles={[
                   {
@@ -94,7 +97,7 @@ const EmploymentView: React.FC = () => {
 
             {/* Blusalt Financial Services */}
             <div className="border-b border-gray-300 p-6 md:p-12">
-              <MultiRoleJobBlock 
+              <JobBlock 
                 title="Blusalt Financial Services"
                 roles={[
                   {
