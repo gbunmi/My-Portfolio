@@ -58,7 +58,7 @@ const EmploymentView: React.FC = () => {
          {/* Left Column (Sticky Image) */}
          <div className="hidden md:flex border-r border-gray-300 sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center">
             <img 
-              src="https://i.ibb.co/Z6rtFXVK/Generated-Image-November-24-2025-10-32-AM-1.png" 
+              src="https://i.ibb.co/7tvgYrB4/Generated-Image-November-24-2025-11-12-AM-1.png" 
               alt="Cat" 
               className="w-full h-full object-cover"
             />
