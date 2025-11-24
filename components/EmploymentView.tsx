@@ -60,7 +60,7 @@ const EmploymentView: React.FC = () => {
             <img 
               src="https://i.ibb.co/Z6rtFXVK/Generated-Image-November-24-2025-10-32-AM-1.png" 
               alt="Cat" 
-              className="w-1/2 max-w-[300px] object-contain drop-shadow-xl"
+              className="w-full h-full object-cover"
             />
          </div>
          
