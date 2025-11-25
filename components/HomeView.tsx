@@ -26,6 +26,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           src={ASSETS.heroImage}
           alt="Hero Composition" 
           className="w-[90%] md:w-[40%] max-h-[60%] object-contain object-top opacity-100 mt-0"
+          loading="eager"
+          // @ts-ignore
+          fetchPriority="high"
         />
 
         {/* Tag */}

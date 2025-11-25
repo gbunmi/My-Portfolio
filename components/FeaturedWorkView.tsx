@@ -119,6 +119,9 @@ const FeaturedWorkView: React.FC = () => {
                   src={content.image} 
                   alt={`${selectedProject} preview`} 
                   className="w-full h-auto object-cover border border-gray-200"
+                  loading="eager"
+                  // @ts-ignore
+                  fetchPriority="high"
                 />
              ) : (
                 <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-mono text-sm">
@@ -140,6 +143,15 @@ const FeaturedWorkView: React.FC = () => {
           )}
 
         </div>
+      </div>
+
+      {/* Background Image Preloader: Fetches other project images silently */}
+      <div className="hidden" aria-hidden="true">
+        {Object.values(PROJECT_DATA).map((data, index) => 
+          data.image && data.image !== content.image ? (
+            <img key={index} src={data.image} alt="" loading="eager" />
+          ) : null
+        )}
       </div>
     </div>
   );
