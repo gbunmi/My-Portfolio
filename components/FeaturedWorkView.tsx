@@ -30,9 +30,9 @@ const PROJECT_DATA: Record<string, ProjectContent> = {
   },
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
-    image: "https://i.ibb.co/wNnxj9L/placeholder.png", // Dummy image link
+    image: "https://i.ibb.co/5xLtJcfL/Hero-1.png", // Dummy image link
     links: [
-      { label: "View Project ↗", url: "#" }
+      { label: "Visit Website ↗", url: "https://penueldev.onrender.com/" }
     ],
     overview: "" // Optional overview
   }
