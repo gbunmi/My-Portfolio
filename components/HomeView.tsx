@@ -69,7 +69,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <GridItem 
             imageSrc={ASSETS.resume}
             label="my resume.pdf" 
-            link="https://drive.google.com/file/d/18LwcOOVxC2BOdN8b0rE3Zq8LENMBQyDU/view?usp=sharing"
+            link="https://drive.google.com/file/d/1AvDQEq6bhB2J_rt_u32-i-Q_jvwsTZoL/view?usp=sharing"
             external
           />
         </div>

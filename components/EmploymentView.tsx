@@ -77,6 +77,16 @@ const EmploymentView: React.FC = () => {
               />
             </div>
 
+            {/* Proficio Technologies */}
+            <div className="border-b border-gray-300 p-6 md:p-12">
+              <JobBlock 
+                title="Proficio Technologies"
+                location="Lagos, Nigeria"
+                dates="Jul 2025 – Sep 2025"
+                description="I designed the entire client-side experience from the ground up, covering how clients search for freelancers, review service offerings, and hire talent. I shaped the full journey end to end, including service discovery, project brief creation, communication flows, and payments. Working closely with product and engineering, I mapped requirements, clarified edge cases, and ensured each step felt intuitive for first-time users."
+              />
+            </div>
+
             {/* Infiuss Health (YC S21) */}
             <div className="border-b border-gray-300 p-6 md:p-12">
               <JobBlock 
