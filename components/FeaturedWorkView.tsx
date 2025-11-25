@@ -11,8 +11,43 @@ const PROJECTS = [
   "The Connected Awards"
 ];
 
+interface ProjectContent {
+  description: string;
+  image?: string;
+  links?: { label: string; url: string }[];
+  overview?: string;
+}
+
+const PROJECT_DATA: Record<string, ProjectContent> = {
+  "Medik": {
+    description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
+    image: "", // Placeholder or actual image if available
+    links: [
+      { label: "Visit Site ↗", url: "#" },
+      { label: "Download app ↗", url: "#" }
+    ],
+    overview: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution."
+  },
+  "Penuel Samuel": {
+    description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
+    image: "https://i.ibb.co/wNnxj9L/placeholder.png", // Dummy image link
+    links: [
+      { label: "View Project ↗", url: "#" }
+    ],
+    overview: "" // Optional overview
+  }
+};
+
+const DEFAULT_CONTENT: ProjectContent = {
+  description: "Project description coming soon.",
+  links: [],
+  overview: "Detailed overview coming soon."
+};
+
 const FeaturedWorkView: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState("Medik");
+
+  const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
 
   return (
     <div className="h-full w-full bg-[#f4f4f0] flex flex-col md:flex-row overflow-hidden">
@@ -60,51 +95,49 @@ const FeaturedWorkView: React.FC = () => {
             </h1>
 
             <div className="flex flex-wrap gap-3 shrink-0">
-              <a href="#" className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold tracking-[-0.04em] hover:opacity-80 transition-opacity">
-                Visit Site ↗
-              </a>
-              <a href="#" className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold tracking-[-0.04em] hover:opacity-80 transition-opacity">
-                Download app ↗
-              </a>
+              {content.links?.map((link, idx) => (
+                <a 
+                  key={idx}
+                  href={link.url} 
+                  className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold tracking-[-0.04em] hover:opacity-80 transition-opacity"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Description */}
           <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] mb-12 w-full text-justify">
-            Medik is a healthtech platform designed to make healthcare more accessible 
-            in Nigeria. Through a mobile app, users can book consultations, purchase 
-            medication, order medical tests, and access urgent or mental health services
-            —all in one place. I led the product design from research through execution.
+            {content.description}
           </p>
 
-          {/* Image Placeholder */}
-          <div className="w-full aspect-video bg-[#ecece8] mb-12"></div>
-
-          {/* Overview Section */}
-          <div className="mb-12 w-full">
-            <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
-              Overview
-            </span>
-            <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
-              Medik is a healthtech platform designed to make healthcare more accessible 
-              in Nigeria. Through a mobile app, users can book consultations, purchase 
-              medication, order medical tests, and access urgent or mental health services
-              —all in one place. I led the product design from research through execution.
-            </p>
+          {/* Image Container */}
+          <div className="w-full mb-12">
+             {content.image ? (
+                <img 
+                  src={content.image} 
+                  alt={`${selectedProject} preview`} 
+                  className="w-full h-auto object-cover border border-gray-200"
+                />
+             ) : (
+                <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-mono text-sm">
+                   Image Placeholder
+                </div>
+             )}
           </div>
 
-           {/* Secondary Overview Section (matching reference repeating content) */}
-           <div className="mb-12 w-full">
-            <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
-              Overview
-            </span>
-            <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
-              Medik is a healthtech platform designed to make healthcare more accessible 
-              in Nigeria. Through a mobile app, users can book consultations, purchase 
-              medication, order medical tests, and access urgent or mental health services
-              —all in one place. I led the product design from research through execution.
-            </p>
-          </div>
+          {/* Overview Section (Render only if exists) */}
+          {content.overview && (
+            <div className="mb-12 w-full">
+              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
+                Overview
+              </span>
+              <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
+                {content.overview}
+              </p>
+            </div>
+          )}
 
         </div>
       </div>
