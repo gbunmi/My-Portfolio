@@ -31,7 +31,7 @@ const PROJECT_DATA: Record<string, ProjectContent> = {
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
     images: [
-      "https://i.ibb.co/S4CfLJB2/Hero-3.png",
+      "/Images/Penuel 1.png",
       "https://i.ibb.co/7xXqtbJL/About.png"
     ],
     links: [
@@ -101,7 +101,9 @@ const FeaturedWorkView: React.FC = () => {
               {content.links?.map((link, idx) => (
                 <a 
                   key={idx}
-                  href={link.url} 
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold tracking-[-0.04em] hover:opacity-80 transition-opacity"
                 >
                   {link.label}
