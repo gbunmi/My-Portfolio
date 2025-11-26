@@ -13,7 +13,7 @@ const PROJECTS = [
 
 interface ProjectContent {
   description: string;
-  image?: string;
+  images?: string[];
   links?: { label: string; url: string }[];
   overview?: string;
 }
@@ -21,7 +21,7 @@ interface ProjectContent {
 const PROJECT_DATA: Record<string, ProjectContent> = {
   "Medik": {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
-    image: "", // Placeholder or actual image if available
+    images: [],
     links: [
       { label: "Visit Site ↗", url: "#" },
       { label: "Download app ↗", url: "#" }
@@ -30,11 +30,14 @@ const PROJECT_DATA: Record<string, ProjectContent> = {
   },
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
-    image: "https://i.ibb.co/S4CfLJB2/Hero-3.png", // Dummy image link
+    images: [
+      "https://i.ibb.co/S4CfLJB2/Hero-3.png",
+      "https://i.ibb.co/7xXqtbJL/About.png"
+    ],
     links: [
       { label: "Visit Website ↗", url: "https://penueldev.onrender.com/" }
     ],
-    overview: "" // Optional overview
+    overview: "" 
   }
 };
 
@@ -86,7 +89,7 @@ const FeaturedWorkView: React.FC = () => {
       <div className="flex-1 h-full overflow-y-auto bg-[#f4f4f0] relative">
         
         {/* Content Container - Centered and Full Width with reduced padding */}
-        <div className="px-6 py-8 md:px-40 xl:px-64 w-full mx-auto">
+        <div className="px-6 py-8 md:px-20 xl:px-32 w-full mx-auto">
           
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 md:mb-12 w-full">
@@ -112,17 +115,20 @@ const FeaturedWorkView: React.FC = () => {
             {content.description}
           </p>
 
-          {/* Image Container */}
+          {/* Images Container */}
           <div className="w-full mb-12">
-             {content.image ? (
-                <img 
-                  src={content.image} 
-                  alt={`${selectedProject} preview`} 
-                  className="w-full h-auto object-cover border border-gray-200"
-                  loading="eager"
-                  // @ts-ignore
-                  fetchPriority="high"
-                />
+             {content.images && content.images.length > 0 ? (
+                content.images.map((imgSrc, index) => (
+                  <img 
+                    key={index}
+                    src={imgSrc} 
+                    alt={`${selectedProject} preview ${index + 1}`} 
+                    className="w-full h-auto object-cover border border-gray-200 mb-12 last:mb-0"
+                    loading="eager"
+                    // @ts-ignore
+                    fetchPriority="high"
+                  />
+                ))
              ) : (
                 <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-mono text-sm">
                    Image Placeholder
@@ -147,11 +153,11 @@ const FeaturedWorkView: React.FC = () => {
 
       {/* Background Image Preloader: Fetches other project images silently */}
       <div className="hidden" aria-hidden="true">
-        {Object.values(PROJECT_DATA).map((data, index) => 
-          data.image && data.image !== content.image ? (
-            <img key={index} src={data.image} alt="" loading="eager" />
-          ) : null
-        )}
+        {Object.values(PROJECT_DATA).reduce<string[]>((acc, data) => [...acc, ...(data.images || [])], []).map((imgSrc, index) => {
+           // Avoid loading images already displayed
+           if (content.images?.includes(imgSrc)) return null;
+           return <img key={index} src={imgSrc} alt="" loading="eager" />;
+        })}
       </div>
     </div>
   );

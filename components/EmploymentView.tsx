@@ -68,7 +68,7 @@ const EmploymentView: React.FC = () => {
          <div className="flex flex-col z-10">
             
             {/* Heyfood (YC W21) */}
-            <div className="border-b border-gray-300 p-6 md:p-12">
+            <div className="border-b border-gray-300 p-6 md:px-5 md:py-12">
               <JobBlock 
                 title="Heyfood (YC W21)"
                 location="Ibadan, Nigeria"
@@ -78,7 +78,7 @@ const EmploymentView: React.FC = () => {
             </div>
 
             {/* Proficio Technologies */}
-            <div className="border-b border-gray-300 p-6 md:p-12">
+            <div className="border-b border-gray-300 p-6 md:px-5 md:py-12">
               <JobBlock 
                 title="Proficio Technologies"
                 location="Lagos, Nigeria"
@@ -88,7 +88,7 @@ const EmploymentView: React.FC = () => {
             </div>
 
             {/* Infiuss Health (YC S21) */}
-            <div className="border-b border-gray-300 p-6 md:p-12">
+            <div className="border-b border-gray-300 p-6 md:px-5 md:py-12">
               <JobBlock 
                 title="Infiuss Health (YC S21)"
                 roles={[
@@ -106,7 +106,7 @@ const EmploymentView: React.FC = () => {
             </div>
 
             {/* Blusalt Financial Services */}
-            <div className="border-b border-gray-300 p-6 md:p-12">
+            <div className="border-b border-gray-300 p-6 md:px-5 md:py-12">
               <JobBlock 
                 title="Blusalt Financial Services"
                 roles={[
