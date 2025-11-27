@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// @ts-ignore
+import penuelImg from '../images/penuel1.png';
+
 const PROJECTS = [
   "Medik",
   "Talestream",
@@ -31,7 +34,7 @@ const PROJECT_DATA: Record<string, ProjectContent> = {
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
     images: [
-      "/images/penuel1.png",
+      penuelImg,
       "https://i.ibb.co/7xXqtbJL/About.png"
     ],
     links: [
