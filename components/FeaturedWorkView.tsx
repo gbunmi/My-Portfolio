@@ -49,15 +49,26 @@ const DEFAULT_CONTENT: ProjectContent = {
 
 const FeaturedWorkView: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState("Medik");
+  const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
 
   const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
+
+  const handleProjectClick = (project: string) => {
+    setSelectedProject(project);
+    setMobileView('detail');
+    // Scroll to top of content when switching projects on mobile
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
 
   return (
     <div className="h-full w-full bg-[#f4f4f0] flex flex-col md:flex-row overflow-hidden">
       
       {/* Left Sidebar - Project List */}
       <div 
-        className="w-full md:w-[300px] shrink-0 md:h-full overflow-y-auto border-b md:border-b-0 md:border-r border-gray-300 bg-[#f4f4f0] [&::-webkit-scrollbar]:hidden"
+        className={`
+          w-full md:w-[300px] shrink-0 h-full overflow-y-auto border-b md:border-b-0 md:border-r border-gray-300 bg-[#f4f4f0] [&::-webkit-scrollbar]:hidden
+          ${mobileView === 'detail' ? 'hidden md:block' : 'block'}
+        `}
         style={{ scrollbarWidth: 'none' }}
       >
         {PROJECTS.map((project) => {
@@ -65,7 +76,7 @@ const FeaturedWorkView: React.FC = () => {
           return (
             <button
               key={project}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => handleProjectClick(project)}
               className={`
                 group
                 w-full text-left px-6 py-6 md:px-8 md:py-6 border-b border-gray-300 
@@ -86,11 +97,24 @@ const FeaturedWorkView: React.FC = () => {
       </div>
 
       {/* Right Content - Project Details */}
-      <div className="flex-1 h-full overflow-y-auto bg-[#f4f4f0] relative">
+      <div 
+        className={`
+          flex-1 h-full overflow-y-auto bg-[#f4f4f0] relative
+          ${mobileView === 'list' ? 'hidden md:block' : 'block'}
+        `}
+      >
         
         {/* Content Container - Centered and Full Width with reduced padding */}
         <div className="px-6 py-8 md:px-20 xl:px-32 w-full mx-auto">
           
+          {/* Mobile Back Button */}
+          <button 
+            onClick={() => setMobileView('list')}
+            className="md:hidden mb-8 flex items-center gap-2 text-sm font-bold tracking-[-0.04em] text-[#041727] hover:opacity-70"
+          >
+            ← Back to Projects
+          </button>
+
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 md:mb-12 w-full">
             <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em]">

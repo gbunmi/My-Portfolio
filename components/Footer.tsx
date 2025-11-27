@@ -19,7 +19,7 @@ const FooterLink: React.FC<FooterLinkProps> = ({ label, href, className = '' }) 
 
 const Footer: React.FC = () => {
   return (
-    <footer className="shrink-0 flex flex-row overflow-hidden w-full md:w-auto md:grid md:grid-cols-[240px_repeat(5,1fr)_240px] gap-[1px] md:gap-0 md:divide-x md:divide-gray-300 border-t border-gray-300 bg-gray-300 md:bg-[#f4f4f0]">
+    <footer className="shrink-0 flex flex-row overflow-hidden w-full md:w-auto md:grid md:grid-cols-[240px_repeat(5,1fr)_240px] gap-px md:gap-0 md:divide-x md:divide-gray-300 border-t border-gray-300 bg-gray-300 md:bg-[#f4f4f0]">
       {/* Left Spacer - aligns with Featured/History/Resume column */}
       <div className="hidden md:block bg-[#f4f4f0]" />
 
