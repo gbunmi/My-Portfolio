@@ -17,7 +17,7 @@ interface HomeViewProps {
 
 const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
   return (
-    <div className="h-full w-full overflow-y-auto md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-[1px] bg-gray-300">
+    <div className="w-full md:h-full md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-[1px] bg-gray-300">
         
       {/* --- Hero Section --- */}
       <div className="w-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 shrink-0 relative min-h-[55vh] md:h-full flex flex-col items-center justify-start pt-0 overflow-hidden bg-[#f4f4f0] pb-7 md:pb-4">

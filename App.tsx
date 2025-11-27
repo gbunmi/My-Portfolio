@@ -58,10 +58,12 @@ const App: React.FC = () => {
     }
   };
 
+  const isHome = view === 'home';
+
   return (
-    <div className="fixed inset-0 w-full h-full flex flex-col bg-[#f4f4f0] text-[#041727] font-mono selection:bg-yellow-200">
+    <div className={`flex flex-col bg-[#f4f4f0] text-[#041727] font-mono selection:bg-yellow-200 ${isHome ? 'min-h-screen relative md:fixed md:inset-0 md:h-full' : 'fixed inset-0 w-full h-full'}`}>
       {/* Header */}
-      <header className="h-14 shrink-0 border-b border-gray-300 flex justify-between items-center px-4 md:px-8 z-50 bg-[#f4f4f0]">
+      <header className="h-14 shrink-0 border-b border-gray-300 flex justify-between items-center px-4 md:px-8 z-50 bg-[#f4f4f0] sticky top-0 md:relative">
         <div className="flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-wider overflow-hidden">
           <a 
             href="/home" 
@@ -85,7 +87,7 @@ const App: React.FC = () => {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 min-h-0 relative bg-[#f4f4f0] border-t-0">
+      <main className={`flex-1 bg-[#f4f4f0] border-t-0 ${isHome ? '' : 'min-h-0 relative'}`}>
         {view === 'home' && <HomeView onNavigate={navigate} />}
         {view === 'employment' && <EmploymentView />}
         {view === 'featured' && <FeaturedWorkView />}
