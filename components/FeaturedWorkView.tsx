@@ -34,7 +34,7 @@ const PROJECT_DATA: Record<string, ProjectContent> = {
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
     images: [
-      penuelImg,
+     "https://aistudio.google.com/ef6d940a-1c70-420e-b209-36f954ba51dc"
       "https://i.ibb.co/7xXqtbJL/About.png"
     ],
     links: [
