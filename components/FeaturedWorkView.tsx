@@ -90,8 +90,8 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
     images: [
-      "/images/penuel1.png",
-      "https://i.ibb.co/7xXqtbJL/About.png"
+      "https://github.com/gbunmi/My-Portfolio/blob/d4755914cb25c33661b39c2183a905447793e80c/Images/Hero%20(3).png",
+    
     ],
     links: [
       { label: "Visit Website ↗", url: "https://penueldev.onrender.com/" }
