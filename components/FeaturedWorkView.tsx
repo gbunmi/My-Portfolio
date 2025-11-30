@@ -11,16 +11,20 @@ const PROJECTS = [
   "The Connected Awards"
 ];
 
+interface ProjectSection {
+  title: string;
+  body: string;
+}
+
 interface ProjectContent {
   description: string;
   images?: string[];
   links?: { label: string; url: string }[];
-  overview?: string;
+  overview?: string; // Keep for simple text
+  sections?: ProjectSection[]; // New structured content
 }
 
 const PROJECT_DATA: Record<string, ProjectContent> = {
-  
-  
   "Medik": {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
     images: [],
@@ -28,9 +32,60 @@ const PROJECT_DATA: Record<string, ProjectContent> = {
       { label: "Visit Site ↗", url: "#" },
       { label: "Download app ↗", url: "#" }
     ],
-    context: "Healthcare in Nigeria is fragmented. If you need a doctor, you go to one app. If you need medication, that’s another errand. Lab tests sit in their own world. Medik set out to bring all of this into one place, so people can move from symptoms to recovery without switching tools or calling five different numbers."
+    sections: [
+      {
+        title: "Context",
+        body: "Healthcare in Nigeria is fragmented. If you need a doctor, you go to one app. If you need medication, that’s another errand. Lab tests sit in their own world. Medik set out to bring all of this into one place, so people can move from symptoms to recovery without switching tools or calling five different numbers."
+      },
+      {
+        title: "My Role",
+        body: "Product designer responsible for shaping the concept, defining the product structure, designing every flow, building the visual system, and validating the experience with real users."
+      },
+      {
+        title: "The Problem",
+        body: "People weren’t just struggling with access. They were struggling with the chaos around access. Even when services existed, the effort required to coordinate them was exhausting. Medik needed to feel like a single, coherent care path—not a bundle of features."
+      },
+      {
+        title: "What I Did",
+        body: `Here’s the thing: there was no app before this. I wasn’t redesigning anything. I had to define what Medik should be, how it should work, and what a complete digital-health journey should look like.
+
+1. Defined the core product story
+I started by clarifying the heart of the product. After research and discussions, I shaped Medik around three pillars: consultations, medication, and lab tests. Every other service—urgent care, mental health, pharmacy tools—had to support these pillars.
+
+2. Designed the end-to-end journeys
+I mapped the entire care lifecycle: onboarding, booking a doctor, getting a prescription, ordering medication, scheduling tests, tracking results. Each flow was built to remove uncertainty and create a sense of steady progress.
+
+3. Built the app structure from scratch
+With no legacy patterns blocking the way, I crafted a navigation model that feels immediately understandable:
+• a home screen centered on the three main actions
+• secondary services placed where they add value, not noise
+• a bottom nav that anchors the entire experience
+
+4. Consultation flow design
+I created a simple, linear booking experience: choose a specialty, pick a doctor, select a time, pay. Doctor profiles, pricing, and availability are clear upfront so users don’t feel lost.
+
+5. Medication experience that mirrors everyday shopping
+The medication section was built like a familiar e-commerce flow:
+• search that handles drug names and symptoms
+• a clean cart and checkout
+• optional prescription upload with helpful guidance
+• straightforward delivery tracking
+
+6. Lab test flows built around clarity
+Lab tests can be intimidating. I designed an experience that guides users calmly: test categories, transparent pricing, scheduling home sample collection, and result tracking tied back to their doctor.
+
+7. Visual identity and design system
+I developed the entire design language—typography, spacing, icons, colors, components. The system made the product consistent and gave engineering a predictable foundation.
+
+8. Prototyping and validation
+I created high-fidelity prototypes, ran usability sessions, noted friction points, and refined flows through microcopy changes, layout adjustments, and better defaults.`
+      },
+      {
+        title: "Outcomes",
+        body: "The final product offers a clear, calm healthcare experience. Users can book care, order meds, and schedule tests without jumping between apps or guessing what comes next. Early testers described it as “finally making sense of healthcare on mobile,” which was exactly the goal."
+      }
+    ]
   },
-  
   
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
@@ -166,8 +221,20 @@ const FeaturedWorkView: React.FC = () => {
              )}
           </div>
 
-          {/* Overview Section (Render only if exists) */}
-          {content.overview && (
+          {/* Structured Sections (Context, Role, Problem, etc.) */}
+          {content.sections && content.sections.map((section, idx) => (
+            <div key={idx} className="mb-12 w-full">
+              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
+                {section.title}
+              </span>
+              <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify whitespace-pre-line">
+                {section.body}
+              </p>
+            </div>
+          ))}
+
+          {/* Fallback Overview Section (if no structured sections but overview exists) */}
+          {!content.sections && content.overview && (
             <div className="mb-12 w-full">
               <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
                 Overview
