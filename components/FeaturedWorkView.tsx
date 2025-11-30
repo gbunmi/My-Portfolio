@@ -19,6 +19,8 @@ interface ProjectContent {
 }
 
 const PROJECT_DATA: Record<string, ProjectContent> = {
+  
+  
   "Medik": {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
     images: [],
@@ -26,8 +28,10 @@ const PROJECT_DATA: Record<string, ProjectContent> = {
       { label: "Visit Site ↗", url: "#" },
       { label: "Download app ↗", url: "#" }
     ],
-    overview: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution."
+    context: "Healthcare in Nigeria is fragmented. If you need a doctor, you go to one app. If you need medication, that’s another errand. Lab tests sit in their own world. Medik set out to bring all of this into one place, so people can move from symptoms to recovery without switching tools or calling five different numbers."
   },
+  
+  
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
     images: [
