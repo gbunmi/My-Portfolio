@@ -29,8 +29,8 @@ const PROJECT_DATA: Record<string, ProjectContent> = {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
     images: [],
     links: [
-      { label: "Visit Site ↗", url: "#" },
-      { label: "Download app ↗", url: "#" }
+      { label: "Visit Site ↗", url: "https://medik.health" },
+      // { label: "Download app ↗", url: "#" }
     ],
     sections: [
       {
@@ -227,9 +227,26 @@ const FeaturedWorkView: React.FC = () => {
               <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
                 {section.title}
               </span>
-              <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify whitespace-pre-line">
-                {section.body}
-              </p>
+              <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
+                {section.body.split('\n').map((line, i) => {
+                   // Check for numbered headers (e.g. "1. Header")
+                   const isNumberedHeader = /^\d+\.\s/.test(line);
+                   
+                   if (isNumberedHeader) {
+                     return (
+                       <div key={i} className="text-[#465460] font-bold mt-6 mb-2 text-left">
+                         {line}
+                       </div>
+                     );
+                   }
+                   
+                   // Handle empty lines for spacing
+                   if (line.trim() === '') return <br key={i} />;
+                   
+                   // Regular text
+                   return <div key={i}>{line}</div>;
+                })}
+              </div>
             </div>
           ))}
 
