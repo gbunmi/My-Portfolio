@@ -27,7 +27,9 @@ interface ProjectContent {
 const PROJECT_DATA: Record<string, ProjectContent> = {
   "Medik": {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
-    images: [<img src="/penuel1.png" alt="Logo" />],
+    images: <img src="https://raw.githubusercontent.com/gbunmi/My-Portfolio/main/Hero%20(3).png" alt="Logo" />
+
+" alt="Logo" />],
     links: [
       { label: "Visit Site ↗", url: "https://medik.health" },
       // { label: "Download app ↗", url: "#" }
