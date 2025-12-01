@@ -27,9 +27,7 @@ interface ProjectContent {
 const PROJECT_DATA: Record<string, ProjectContent> = {
   "Medik": {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
-    images: <img src="https://raw.githubusercontent.com/gbunmi/My-Portfolio/main/Hero%20(3).png" alt="Logo" />
-
-" alt="Logo" />],
+    images: [],
     links: [
       { label: "Visit Site ↗", url: "https://medik.health" },
       // { label: "Download app ↗", url: "#" }
@@ -92,8 +90,8 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
     images: [
-      "https://github.com/gbunmi/My-Portfolio/blob/d4755914cb25c33661b39c2183a905447793e80c/Images/Hero%20(3).png",
-    
+      "/images/penuel1.png",
+      "https://i.ibb.co/7xXqtbJL/About.png"
     ],
     links: [
       { label: "Visit Website ↗", url: "https://penueldev.onrender.com/" }
