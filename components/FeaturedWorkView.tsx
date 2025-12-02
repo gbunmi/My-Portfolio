@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PROJECTS = [
+export const PROJECTS = [
   "Porta",
   "Melodeo",
   "Medik",
@@ -12,12 +12,12 @@ const PROJECTS = [
 
 ];
 
-interface ProjectSection {
+export interface ProjectSection {
   title: string;
   body: string;
 }
 
-interface ProjectContent {
+export interface ProjectContent {
   description: string;
   images?: string[];
   links?: { label: string; url: string }[];
@@ -25,7 +25,7 @@ interface ProjectContent {
   sections?: ProjectSection[]; // New structured content
 }
 
-const PROJECT_DATA: Record<string, ProjectContent> = {
+export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Medik": {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
     images: [],
@@ -91,8 +91,8 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
     images: [
-      "https://raw.githubusercontent.com/gbunmi/images/main/Hero%20(4).png",
-      "https://i.ibb.co/7xXqtbJL/About.png"
+      "/images/penuel1.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20-%20About.png"
     ],
     links: [
       { label: "Visit Website ↗", url: "https://penueldev.onrender.com/" }
@@ -217,7 +217,7 @@ const FeaturedWorkView: React.FC = () => {
                 ))
              ) : (
                 <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-mono text-sm">
-                   Image Placeholder
+                   {/* Placeholder hidden if empty, or distinct placeholder */}
                 </div>
              )}
           </div>
@@ -264,15 +264,6 @@ const FeaturedWorkView: React.FC = () => {
           )}
 
         </div>
-      </div>
-
-      {/* Background Image Preloader: Fetches other project images silently */}
-      <div className="hidden" aria-hidden="true">
-        {Object.values(PROJECT_DATA).reduce<string[]>((acc, data) => [...acc, ...(data.images || [])], []).map((imgSrc, index) => {
-           // Avoid loading images already displayed
-           if (content.images?.includes(imgSrc)) return null;
-           return <img key={index} src={imgSrc} alt="" loading="eager" />;
-        })}
       </div>
     </div>
   );

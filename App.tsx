@@ -3,7 +3,8 @@ import Clock from './components/Clock';
 import Footer from './components/Footer';
 import HomeView from './components/HomeView';
 import EmploymentView from './components/EmploymentView';
-import FeaturedWorkView from './components/FeaturedWorkView';
+import FeaturedWorkView, { PROJECT_DATA } from './components/FeaturedWorkView';
+import Loader from './components/Loader';
 
 type ViewState = 'home' | 'employment' | 'featured';
 
@@ -17,6 +18,8 @@ const App: React.FC = () => {
   };
 
   const [view, setView] = useState<ViewState>(() => getViewFromPath(window.location.pathname));
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadProgress, setLoadProgress] = useState(0);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -32,13 +35,79 @@ const App: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const navigate = (newView: ViewState) => {
+  const preloadImages = async () => {
+    // Gather all images from featured work
+    const imagesToLoad: string[] = [];
+    Object.values(PROJECT_DATA).forEach(project => {
+      if (project.images && project.images.length > 0) {
+        imagesToLoad.push(...project.images);
+      }
+    });
+
+    if (imagesToLoad.length === 0) return;
+
+    const total = imagesToLoad.length;
+    let loaded = 0;
+
+    const updateProgress = () => {
+        loaded++;
+        const percentage = (loaded / total) * 100;
+        setLoadProgress(percentage);
+    };
+
+    const promises = imagesToLoad.map(src => {
+      return new Promise<void>((resolve) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+            updateProgress();
+            resolve();
+        };
+        img.onerror = () => {
+            updateProgress();
+            resolve(); // Resolve anyway to avoid blocking
+        };
+      });
+    });
+
+    // Race condition safety: if images load instantly or fail, ensure we wait at least a moment for the UI
+    const minTimePromise = new Promise<void>(resolve => setTimeout(resolve, 800));
+    
+    await Promise.all([Promise.all(promises), minTimePromise]);
+  };
+
+  const navigate = async (newView: ViewState) => {
     let path = '/home';
     if (newView === 'featured') path = '/featuredwork';
     if (newView === 'employment') path = '/employment-history';
 
-    window.history.pushState({}, '', path);
-    setView(newView);
+    if (newView === 'featured') {
+        setIsLoading(true);
+        setLoadProgress(0);
+        
+        // Start "fake" progress to ensure user sees something if it hangs
+        const fakeInterval = setInterval(() => {
+            setLoadProgress(old => {
+                if (old >= 90) return old;
+                return old + (Math.random() * 10);
+            });
+        }, 200);
+
+        await preloadImages();
+        
+        clearInterval(fakeInterval);
+        setLoadProgress(100);
+        
+        // Short delay to show 100%
+        setTimeout(() => {
+            setIsLoading(false);
+            window.history.pushState({}, '', path);
+            setView(newView);
+        }, 200);
+    } else {
+        window.history.pushState({}, '', path);
+        setView(newView);
+    }
   };
   // --------------------
 
@@ -61,7 +130,9 @@ const App: React.FC = () => {
   const isHome = view === 'home';
 
   return (
-    <div className={`flex flex-col bg-[#f4f4f0] text-[#041727] font-mono selection:bg-yellow-200 ${isHome ? 'min-h-screen relative md:fixed md:inset-0 md:h-full' : 'fixed inset-0 w-full h-full'}`}>
+    <>
+    {isLoading && <Loader progress={loadProgress} />}
+    <div className={`flex flex-col bg-[#f4f4f0] text-[#041727] font-mono selection:bg-yellow-200 ${isHome ? 'min-h-screen relative md:fixed md:inset-0 md:h-full' : 'fixed inset-0 w-full h-full'} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}>
       {/* Header */}
       <header className="h-14 shrink-0 border-b border-gray-300 flex justify-between items-center px-4 md:px-8 z-50 bg-[#f4f4f0] sticky top-0 md:relative">
         <div className="flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-wider overflow-hidden">
@@ -96,6 +167,7 @@ const App: React.FC = () => {
       {/* Footer - Only show on Home view */}
       {view === 'home' && <Footer />}
     </div>
+    </>
   );
 };
 
