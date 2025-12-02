@@ -27,7 +27,7 @@ export interface ProjectContent {
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Porta": {
-    description: "Creating detailed digital scenes is often complex and slow, requiring multiple tools and technical skills. Porta simplifies this by letting users generate and manipulate scenes with AI in an intuitive, interactive environment.",
+    description: "Porta is an AI-powered scene creation app that lets users place themselves or their ideas into existing scenes, generate moments instantly, and customize environments without writing complex prompts. Users can work from preset templates, reference scenes, or other creations, adjusting elements, style, and perspective in a single intuitive workspace.",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(1).png",
       "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(2).png",
