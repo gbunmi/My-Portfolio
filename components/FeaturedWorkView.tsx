@@ -30,6 +30,12 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     description: "Porta is an AI-powered scene creation app that lets users place themselves or their ideas into existing scenes, generate moments instantly, and customize environments without writing complex prompts. Users can work from preset templates, reference scenes, or other creations, adjusting elements, style, and perspective in a single intuitive workspace.",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(1).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(2).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(3).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(4).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(5).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(6).png"
     ],
     links: [
       { label: "Visit Website ↗", url: "https://www.useporta.app" }
@@ -332,7 +338,7 @@ const FeaturedWorkView: React.FC = () => {
           </button>
 
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 md:mb-12 w-full">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-4 md:mb-6 w-full">
             <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em]">
               {selectedProject}
             </h1>
