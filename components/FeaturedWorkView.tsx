@@ -30,12 +30,6 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     description: "Porta is an AI-powered scene creation app that lets users place themselves or their ideas into existing scenes, generate moments instantly, and customize environments without writing complex prompts. Users can work from preset templates, reference scenes, or other creations, adjusting elements, style, and perspective in a single intuitive workspace.",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(1).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(2).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(3).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(4).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(5).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(6).png"
     ],
     links: [
       { label: "Visit Website ↗", url: "https://www.useporta.app" }
