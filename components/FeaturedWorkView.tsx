@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
 const PROJECTS = [
+  "Porta",
+  "Melodeo",
   "Medik",
   "Talestream",
   "Euterpe",
-  "MagicCap",
   "Penuel Samuel",
   "Chinwe Ekeke",
   "Medsaber",
-  "The Connected Awards"
+
 ];
 
 interface ProjectSection {
