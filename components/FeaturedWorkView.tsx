@@ -100,6 +100,22 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
       { label: "Visit Website ↗", url: "https://penueldev.onrender.com/" }
     ],
     overview: "" 
+  },
+
+  "Chinwe Ekeke": {
+    description: "A virtual assistant portfolio built in Framer, showcasing skills, services, and client interactions to highlight professionalism and efficiency.",
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20Hero.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20About.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20Skills.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20Case%20study.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20Toolkit.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20Footer.png",
+    ],
+    links: [
+      { label: "Visit Website ↗", url: "https://chinweekeke.framer.website/" }
+    ],
+    overview: ""
   }
 };
 
