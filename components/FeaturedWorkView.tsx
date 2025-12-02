@@ -91,7 +91,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
     images: [
-      "/images/penuel1.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Hero%20(4).png",
       "https://i.ibb.co/7xXqtbJL/About.png"
     ],
     links: [
