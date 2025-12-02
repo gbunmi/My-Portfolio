@@ -37,50 +37,57 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     sections: [
       {
         title: "Context",
-        body: "Creating detailed digital scenes is often complex and slow, requiring multiple tools and technical skills. Porta simplifies this by letting users generate and manipulate scenes with AI in an intuitive, interactive environment. Users can use their own images or reference scenes to place themselves anywhere and instantly produce moments."
+        body: "Creating AI-generated images usually requires writing prompts, tweaking settings, and experimenting endlessly. Porta changes that by letting users instantly place themselves into any scene using their own photos or existing templates. The app combines personal creativity with community-driven inspiration, making image generation intuitive and social."
       },
       {
         title: "My Role",
-        body: "Product designer responsible for defining the interaction model, end-to-end user flows, visual language, and prototyping the AI-driven scene creation experience."
+        body: "Product designer responsible for defining the user experience, crafting interaction flows, designing the interface, and developing the visual system for both creation and social engagement."
       },
       {
         title: "The Problem",
-        body: "Traditional scene design tools are powerful but intimidating. Users get stuck switching between apps, tools, and menus. Porta needed to feel like one coherent workspace where creativity flows naturally without steep learning curves or technical barriers."
+        body: "Writing prompts for AI generation can be intimidating or time-consuming. Users often get stuck trying to describe exactly what they want. Porta needed to remove that friction and let people generate images seamlessly, while also providing a social layer for sharing, exploring, and engaging with others’ creations."
       },
       {
         title: "What I Did",
-        body: `1. Defined the core product narrative
-Porta’s purpose is to let anyone generate, adjust, and explore digital scenes interactively. Every decision, from layout to AI assistance, was guided by making creativity feel immediate and approachable.
+        body: `1. Clarified the product story
+I defined Porta’s core purpose: let anyone generate images by placing themselves into existing scenes without needing to write prompts. This shaped all flows, from creation to discovery and social interaction.
 
-2. Designed the end-to-end journeys
-I mapped flows for:
-• starting a new scene from a prompt or reference
-• generating objects, environments, and characters
-• editing, repositioning, or transforming scene elements
-• saving, exporting, or sharing finished scenes
+2. Designed the creation experience
+Users can:
+• generate images using preset scenes or templates from other users
+• upload their own photo to insert themselves into a scene
+• adjust placement, perspective, and style
 
-The focus was on reducing friction while maintaining creative flexibility.
+The experience emphasizes simplicity and instant visual feedback, so users feel in control without complexity.
 
-3. Interaction model and workspace design
-The workspace is organized around three key areas:
-• Canvas for visualizing and manipulating the scene
-• Tool panel with context-sensitive AI tools for object creation, modification, and layering
-• Asset panel with a library of scene elements and templates
+3. Interaction model and app structure
+I organized Porta around three main spaces:
+• Create, the main workspace for generating and customizing scenes
+• Feed, a discovery layer to browse, like, and comment on community creations
+• Profile, a personal space to manage created images, saved templates, and interactions
 
-This layout keeps controls within reach while keeping the scene the main focus.
+This keeps navigation clear and focused on the core behaviors: create, explore, engage.
 
-4. Scene creation flow
-Users can choose a prompt or base template, generate objects or characters, modify placement, scale, and style, apply lighting, color, and atmosphere, and preview and refine in real time. The experience balances guidance with creative freedom.
+4. Community and social features
+I designed interactions that encourage engagement:
+• posting creations with captions
+• liking and commenting on other users’ work
+• browsing templates and remixing community images
+
+The social layer amplifies creativity and makes templates reusable, encouraging exploration and collaboration.
 
 5. Visual identity and design system
-The visual language is modern and approachable, with clean typography, flexible components for AI tools and assets, and consistent spacing and hierarchy.
+I developed a visual language to support creativity:
+• clean, minimal interface to keep attention on the images
+• intuitive icons and controls for scene manipulation
+• consistent typography and spacing for readability across creation and social feeds
 
 6. Prototyping and validation
-Interactive prototypes were tested with early users for scene creation, template use, and AI guidance. Feedback informed refinements to tool placement, workflow, and visual feedback.`
+Interactive prototypes covered the creation workflow, template browsing, and social feed. User testing focused on clarity, ease of placement, and discoverability of templates. Feedback informed refinements to navigation, placement tools, and visual hierarchy.`
       },
       {
         title: "Outcomes",
-        body: "Porta allows users to generate, customize, and manage scenes in a single space, dramatically reducing the learning curve compared to traditional design tools. Users can experiment quickly and see immediate visual results."
+        body: "Porta enables users to generate images in seconds by leveraging templates or preset scenes, skipping the need for prompts. The social layer fosters discovery, inspiration, and engagement. Users can experiment freely, remix community creations, and share their unique moments."
       }
     ]
   },
@@ -353,7 +360,7 @@ const FeaturedWorkView: React.FC = () => {
           </div>
 
           {/* Description */}
-          <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] mb-12 w-full text-justify">
+          <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] mb-4 md:mb-6 w-full text-justify">
             {content.description}
           </p>
 
