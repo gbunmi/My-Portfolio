@@ -26,6 +26,70 @@ export interface ProjectContent {
 }
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
+  "Porta": {
+    description: "Creating detailed digital scenes is often complex and slow, requiring multiple tools and technical skills. Porta simplifies this by letting users generate and manipulate scenes with AI in an intuitive, interactive environment.",
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(1).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(2).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(3).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(4).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(5).png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(6).png"
+    ],
+    links: [
+      { label: "Visit Website ↗", url: "https://www.useporta.app" }
+    ],
+    sections: [
+      {
+        title: "Context",
+        body: "Creating detailed digital scenes is often complex and slow, requiring multiple tools and technical skills. Porta simplifies this by letting users generate and manipulate scenes with AI in an intuitive, interactive environment. Users can use their own images or reference scenes to place themselves anywhere and instantly produce moments."
+      },
+      {
+        title: "My Role",
+        body: "Product designer responsible for defining the interaction model, end-to-end user flows, visual language, and prototyping the AI-driven scene creation experience."
+      },
+      {
+        title: "The Problem",
+        body: "Traditional scene design tools are powerful but intimidating. Users get stuck switching between apps, tools, and menus. Porta needed to feel like one coherent workspace where creativity flows naturally without steep learning curves or technical barriers."
+      },
+      {
+        title: "What I Did",
+        body: `1. Defined the core product narrative
+Porta’s purpose is to let anyone generate, adjust, and explore digital scenes interactively. Every decision, from layout to AI assistance, was guided by making creativity feel immediate and approachable.
+
+2. Designed the end-to-end journeys
+I mapped flows for:
+• starting a new scene from a prompt or reference
+• generating objects, environments, and characters
+• editing, repositioning, or transforming scene elements
+• saving, exporting, or sharing finished scenes
+
+The focus was on reducing friction while maintaining creative flexibility.
+
+3. Interaction model and workspace design
+The workspace is organized around three key areas:
+• Canvas for visualizing and manipulating the scene
+• Tool panel with context-sensitive AI tools for object creation, modification, and layering
+• Asset panel with a library of scene elements and templates
+
+This layout keeps controls within reach while keeping the scene the main focus.
+
+4. Scene creation flow
+Users can choose a prompt or base template, generate objects or characters, modify placement, scale, and style, apply lighting, color, and atmosphere, and preview and refine in real time. The experience balances guidance with creative freedom.
+
+5. Visual identity and design system
+The visual language is modern and approachable, with clean typography, flexible components for AI tools and assets, and consistent spacing and hierarchy.
+
+6. Prototyping and validation
+Interactive prototypes were tested with early users for scene creation, template use, and AI guidance. Feedback informed refinements to tool placement, workflow, and visual feedback.`
+      },
+      {
+        title: "Outcomes",
+        body: "Porta allows users to generate, customize, and manage scenes in a single space, dramatically reducing the learning curve compared to traditional design tools. Users can experiment quickly and see immediate visual results."
+      }
+    ]
+  },
+
   "Medik": {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
     images: [],
