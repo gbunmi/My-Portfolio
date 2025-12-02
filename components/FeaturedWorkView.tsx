@@ -126,7 +126,7 @@ const DEFAULT_CONTENT: ProjectContent = {
 };
 
 const FeaturedWorkView: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState("Medik");
+  const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
   const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
 
   const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
