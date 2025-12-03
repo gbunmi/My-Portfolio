@@ -96,11 +96,6 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
     description: "Melodeo addresses the complexity of music creation by offering AI-powered modules like HookSong and Apology Jukebox, alongside abstract prompts for open-ended creativity. Users can generate music instantly, save it in a personal library, and listen back with a full-featured music player and lyrics display.",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(1).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(2).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(3).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(4).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(5).png",
-      "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(6).png"
     ],
     links: [
       { label: "Visit Website ↗", url: "https://www.melodeo.app/" }
