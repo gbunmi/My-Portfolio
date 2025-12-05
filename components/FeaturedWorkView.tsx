@@ -29,7 +29,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Porta": {
     description: "Porta is an AI-powered scene creation app that lets users place themselves or their ideas into existing scenes, generate moments instantly, and customize environments without writing complex prompts. Users can work from preset templates, reference scenes, or other creations, adjusting elements, style, and perspective in a single intuitive workspace.",
     images: [
-      "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png",
+       "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png"
     ],
     links: [
       { label: "Visit Website ↗", url: "https://www.useporta.app" }
@@ -50,9 +50,11 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
       {
         title: "What I Did",
         body: `1. Clarified the product story
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(1).png}}
 I defined Porta’s core purpose: let anyone generate images by placing themselves into existing scenes without needing to write prompts. This shaped all flows, from creation to discovery and social interaction.
 
 2. Designed the creation experience
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(2).png}}
 Users can:
 • generate images using preset scenes or templates from other users
 • upload their own photo to insert themselves into a scene
@@ -61,6 +63,7 @@ Users can:
 The experience emphasizes simplicity and instant visual feedback, so users feel in control without complexity.
 
 3. Interaction model and app structure
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(3).png}}
 I organized Porta around three main spaces:
 • Create, the main workspace for generating and customizing scenes
 • Feed, a discovery layer to browse, like, and comment on community creations
@@ -69,6 +72,7 @@ I organized Porta around three main spaces:
 This keeps navigation clear and focused on the core behaviors: create, explore, engage.
 
 4. Community and social features
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(4).png}}
 I designed interactions that encourage engagement:
 • posting creations with captions
 • liking and commenting on other users’ work
@@ -77,12 +81,14 @@ I designed interactions that encourage engagement:
 The social layer amplifies creativity and makes templates reusable, encouraging exploration and collaboration.
 
 5. Visual identity and design system
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(5).png}}
 I developed a visual language to support creativity:
 • clean, minimal interface to keep attention on the images
 • intuitive icons and controls for scene manipulation
 • consistent typography and spacing for readability across creation and social feeds
 
 6. Prototyping and validation
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(6).png}}
 Interactive prototypes covered the creation workflow, template browsing, and social feed. User testing focused on clarity, ease of placement, and discoverability of templates. Feedback informed refinements to navigation, placement tools, and visual hierarchy.`
       },
       {
@@ -95,7 +101,7 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
   "Melodeo": {
     description: "Melodeo addresses the complexity of music creation by offering AI-powered modules like HookSong and Apology Jukebox, alongside abstract prompts for open-ended creativity. Users can generate music instantly, save it in a personal library, and listen back with a full-featured music player and lyrics display.",
     images: [
-      "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(1).png",
+       "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Cover.png"
     ],
     links: [
       { label: "Visit Website ↗", url: "https://www.melodeo.app/" }
@@ -116,9 +122,11 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
       {
         title: "What I Did",
         body: `1. Defined the product narrative
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(1).png}}
 Through iterative discussions, the vision became clear. Melodeo provides modular, context-driven music creation while supporting abstract prompts. Users should be able to generate, listen, and manage their music seamlessly.
 
 2. Designed end-to-end creation flows
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(2).png}}
 Users can:
 • Select a module such as HookSong, Apology Jukebox, or enter an abstract prompt
 • Provide context or instructions in text, mood, or style
@@ -127,6 +135,7 @@ Users can:
 • Save or export the track to their personal library
 
 3. Interaction model and app structure
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(3).png}}
 The app is structured around three key spaces:
 • Modules and prompts for choosing structured modules or abstract prompts
 • Creation workspace for previewing, adjusting, and iterating
@@ -135,6 +144,7 @@ The app is structured around three key spaces:
 This keeps creation, playback, and management simple and intuitive.
 
 4. Module and prompt experience design
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(4).png}}
 Modules and prompts are designed for clarity and immediacy:
 • HookSong generates catchy hooks quickly
 • Apology Jukebox produces music suited for a moment
@@ -142,6 +152,7 @@ Modules and prompts are designed for clarity and immediacy:
 • Real-time previews help users refine tracks efficiently
 
 5. Library, music player, and lyrics display
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(5).png}}
 The library and playback experience is designed to feel familiar yet optimized for AI-generated tracks:
 • Browse saved tracks with clear metadata
 • Play tracks with a responsive music player
@@ -149,6 +160,7 @@ The library and playback experience is designed to feel familiar yet optimized f
 • Quickly revisit modules or abstract prompts used to generate each track
 
 6. Visual identity and design system
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(6).png}}
 The visual language is cohesive across modules, prompts, and playback features:
 • Consistent typography and hierarchy for clarity
 • Expressive colors and icons to differentiate modules
@@ -334,7 +346,7 @@ const FeaturedWorkView: React.FC = () => {
           </button>
 
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-4 md:mb-6 w-full">
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-4 md:mb-1 w-full">
             <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em]">
               {selectedProject}
             </h1>
@@ -388,6 +400,19 @@ const FeaturedWorkView: React.FC = () => {
               </span>
               <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
                 {section.body.split('\n').map((line, i) => {
+                   // Check for image token {{IMAGE:url}}
+                   const imageMatch = line.match(/^\{\{IMAGE:(.*)\}\}$/);
+                   if (imageMatch) {
+                     return (
+                        <img 
+                            key={i}
+                            src={imageMatch[1]} 
+                            alt={`Detail ${i}`}
+                            className="w-full h-auto object-cover my-8 border border-gray-200"
+                        />
+                     );
+                   }
+
                    // Check for numbered headers (e.g. "1. Header")
                    const isNumberedHeader = /^\d+\.\s/.test(line);
                    
