@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 export const PROJECTS = [
   "Porta",
   "Melodeo",
+  "Anystyle AI",
   "Medik",
-  "Talestream",
-  "Euterpe",
   "Penuel Samuel",
   "Chinwe Ekeke",
+  "Euterpe",
   "Medsaber",
-
+  "Talestream"
 ];
 
 export interface ProjectSection {
@@ -26,6 +26,12 @@ export interface ProjectContent {
 }
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
+  "Anystyle AI": {
+    description: "Project description coming soon.",
+    images: [],
+    links: [],
+    overview: "Detailed overview coming soon."
+  },
   "Porta": {
     description: "Porta is an AI-powered scene creation app that lets users place themselves or their ideas into existing scenes, generate moments instantly, and customize environments without writing complex prompts. Users can work from preset templates, reference scenes, or other creations, adjusting elements, style, and perspective in a single intuitive workspace.",
     images: [
