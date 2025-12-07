@@ -56,11 +56,10 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
       {
         title: "What I Did",
         body: `1. Clarified the product story
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(1).png}}
 I defined Porta’s core purpose: let anyone generate images by placing themselves into existing scenes without needing to write prompts. This shaped all flows, from creation to discovery and social interaction.
 
 2. Designed the creation experience
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(2).png}}
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Screens%201%20(1).png}}
 Users can:
 • generate images using preset scenes or templates from other users
 • upload their own photo to insert themselves into a scene
