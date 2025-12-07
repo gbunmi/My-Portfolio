@@ -68,7 +68,7 @@ Users can:
 The experience emphasizes simplicity and instant visual feedback, so users feel in control without complexity.
 
 3. Interaction model and app structure
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(3).png}}
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Screens%202.png}}
 I organized Porta around three main spaces:
 • Create, the main workspace for generating and customizing scenes
 • Feed, a discovery layer to browse, like, and comment on community creations
