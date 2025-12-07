@@ -81,7 +81,7 @@ This keeps navigation clear and focused on the core behaviors: create, explore, 
 I designed interactions that encourage engagement:
 • posting creations with captions
 • liking and commenting on other users’ work
-• browsing templates and remixing community images
+• browsing templates and remixing cThommunity images
 
 The social layer amplifies creativity and makes templates reusable, encouraging exploration and collaboration.
 
@@ -296,12 +296,12 @@ const FeaturedWorkView: React.FC = () => {
   };
 
   return (
-    <div className="h-full w-full bg-[#f4f4f0] flex flex-col md:flex-row overflow-hidden">
+    <div className="h-full w-full bg-[#F8F5F0] flex flex-col md:flex-row overflow-hidden">
       
       {/* Left Sidebar - Project List */}
       <div 
         className={`
-          w-full md:w-[300px] shrink-0 h-full overflow-y-auto border-b md:border-b-0 md:border-r border-gray-300 bg-[#f4f4f0] [&::-webkit-scrollbar]:hidden
+          w-full md:w-[300px] shrink-0 h-full overflow-y-auto border-b md:border-b-0 md:border-r border-gray-300 bg-[#F8F5F0] [&::-webkit-scrollbar]:hidden
           ${mobileView === 'detail' ? 'hidden md:block' : 'block'}
         `}
         style={{ scrollbarWidth: 'none' }}
@@ -318,7 +318,7 @@ const FeaturedWorkView: React.FC = () => {
                 font-bold text-sm md:text-base tracking-[-0.04em] transition-colors
                 ${isSelected 
                   ? 'bg-[#041727] text-white' 
-                  : 'bg-[#f4f4f0] text-[#041727] hover:bg-[#ecece8]'}
+                  : 'bg-[#F8F5F0] text-[#041727] hover:bg-[#ecece8]'}
               `}
             >
               <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-2">
@@ -328,13 +328,13 @@ const FeaturedWorkView: React.FC = () => {
           );
         })}
         {/* Fill remaining height on desktop to avoid empty space looking weird */}
-        <div className="hidden md:block h-full bg-[#f4f4f0]" />
+        <div className="hidden md:block h-full bg-[#F8F5F0]" />
       </div>
 
       {/* Right Content - Project Details */}
       <div 
         className={`
-          flex-1 h-full overflow-y-auto bg-[#f4f4f0] relative
+          flex-1 h-full overflow-y-auto bg-[#F8F5F0] relative
           ${mobileView === 'list' ? 'hidden md:block' : 'block'}
         `}
       >

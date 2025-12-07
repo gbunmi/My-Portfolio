@@ -51,12 +51,12 @@ const JobBlock: React.FC<JobBlockProps> = ({ title, location, dates, description
 
 const EmploymentView: React.FC = () => {
   return (
-    <div className="h-full w-full bg-[#f4f4f0] overflow-y-auto">
+    <div className="h-full w-full bg-[#F8F5F0] overflow-y-auto">
       {/* Inner wrapper must be relative and min-h-full to capture full scroll height */}
       <div className="min-h-full relative md:grid md:grid-cols-2">
         
          {/* Left Column (Sticky Image) */}
-         <div className="hidden md:flex border-r border-gray-300 sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center bg-[#f4f4f0]">
+         <div className="hidden md:flex border-r border-gray-300 sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center bg-[#F8F5F0]">
             <img 
               src="https://i.ibb.co/7tvgYrB4/Generated-Image-November-24-2025-11-12-AM-1.png" 
               alt="Cat" 
