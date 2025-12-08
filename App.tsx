@@ -22,6 +22,11 @@ const App: React.FC = () => {
   const [loadProgress, setLoadProgress] = useState(0);
 
   useEffect(() => {
+    // Disable browser scroll restoration to ensure we control the scroll position
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     const handlePopState = () => {
       setView(getViewFromPath(window.location.pathname));
     };
@@ -86,10 +91,11 @@ const App: React.FC = () => {
     if (newView === 'featured') path = '/featuredwork';
     if (newView === 'employment') path = '/employment-history';
 
+    // Always trigger loading state to provide visual feedback for navigation
+    setIsLoading(true);
+    setLoadProgress(0);
+
     if (newView === 'featured') {
-        setIsLoading(true);
-        setLoadProgress(0);
-        
         // Start "fake" progress to ensure user sees something if it hangs
         const fakeInterval = setInterval(() => {
             setLoadProgress(old => {
@@ -105,13 +111,31 @@ const App: React.FC = () => {
         
         // Short delay to show 100%
         setTimeout(() => {
-            setIsLoading(false);
             window.history.pushState({}, '', path);
             setView(newView);
+            window.scrollTo(0, 0);
+            // Small delay before revealing content
+            setTimeout(() => setIsLoading(false), 200);
         }, 200);
     } else {
-        window.history.pushState({}, '', path);
-        setView(newView);
+        // For other views, simulate a quick load to make it feel like a transition
+        // This solves the "static" feeling by fading out and in
+        const interval = setInterval(() => {
+            setLoadProgress(prev => Math.min(prev + 25, 95));
+        }, 50);
+
+        setTimeout(() => {
+            clearInterval(interval);
+            setLoadProgress(100);
+            
+            window.history.pushState({}, '', path);
+            setView(newView);
+            window.scrollTo(0, 0);
+            
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 150);
+        }, 400); // 400ms transition time
     }
   };
   // --------------------

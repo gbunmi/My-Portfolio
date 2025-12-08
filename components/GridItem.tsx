@@ -8,27 +8,20 @@ interface GridItemProps {
   link?: string;
   external?: boolean;
   className?: string;
-  onClick?: (e?: React.MouseEvent) => void;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 const GridItem: React.FC<GridItemProps> = ({ icon, imageSrc, label, subLabel, link, external, className = '', onClick }) => {
-  const Wrapper = link ? 'a' : 'div';
-  // Allow onClick even if it is a link, to support SPA navigation interception
-  const wrapperProps = link 
-    ? { 
-        href: link, 
-        target: external ? "_blank" : undefined, 
-        rel: external ? "noopener noreferrer" : undefined,
-        onClick: onClick 
-      } 
-    : { onClick };
+  const isLink = !!link;
+  
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      onClick(e);
+    }
+  };
 
-  return (
-    // @ts-ignore - simplified for dynamic tag
-    <Wrapper 
-      {...wrapperProps}
-      className={`flex flex-col items-center justify-center p-4 bg-[#F8F5F0] hover:bg-[#ecece8] transition-colors cursor-pointer group h-full w-full ${className}`}
-    >
+  const content = (
+      <>
       {(imageSrc || icon) && (
         <div className="mb-4 transform transition-transform group-hover:scale-110 duration-300 drop-shadow-lg filter">
           {imageSrc ? (
@@ -45,7 +38,29 @@ const GridItem: React.FC<GridItemProps> = ({ icon, imageSrc, label, subLabel, li
         </p>
         {subLabel && <p className="font-bold text-sm md:text-base lowercase leading-tight tracking-[-0.04em]">{subLabel}</p>}
       </div>
-    </Wrapper>
+      </>
+  );
+
+  const baseClasses = `flex flex-col items-center justify-center p-4 bg-[#F8F5F0] hover:bg-[#ecece8] transition-colors cursor-pointer group h-full w-full ${className}`;
+
+  if (isLink) {
+      return (
+          <a 
+            href={link} 
+            onClick={handleClick}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+            className={baseClasses}
+          >
+              {content}
+          </a>
+      );
+  }
+
+  return (
+    <div onClick={handleClick} className={baseClasses}>
+      {content}
+    </div>
   );
 };
 
