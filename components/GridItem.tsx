@@ -8,12 +8,20 @@ interface GridItemProps {
   link?: string;
   external?: boolean;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
 }
 
 const GridItem: React.FC<GridItemProps> = ({ icon, imageSrc, label, subLabel, link, external, className = '', onClick }) => {
   const Wrapper = link ? 'a' : 'div';
-  const wrapperProps = link ? { href: link, target: external ? "_blank" : undefined, rel: external ? "noopener noreferrer" : undefined } : { onClick };
+  // Allow onClick even if it is a link, to support SPA navigation interception
+  const wrapperProps = link 
+    ? { 
+        href: link, 
+        target: external ? "_blank" : undefined, 
+        rel: external ? "noopener noreferrer" : undefined,
+        onClick: onClick 
+      } 
+    : { onClick };
 
   return (
     // @ts-ignore - simplified for dynamic tag

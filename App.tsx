@@ -35,6 +35,11 @@ const App: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  // Scroll to top whenever view changes to ensure "new page" feel
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [view]);
+
   const preloadImages = async () => {
     // Gather all images from featured work
     const imagesToLoad: string[] = [];

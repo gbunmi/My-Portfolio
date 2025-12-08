@@ -57,7 +57,8 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             imageSrc={ASSETS.featuredWork}
             label="featured" 
             subLabel="work"
-            onClick={() => onNavigate('featured')}
+            link="/featuredwork"
+            onClick={(e) => { e?.preventDefault(); onNavigate('featured'); }}
           />
         </div>
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-2 bg-[#F8F5F0]">
@@ -65,7 +66,8 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             imageSrc={ASSETS.employment}
             label="employment" 
             subLabel="history"
-            onClick={() => onNavigate('employment')}
+            link="/employment-history"
+            onClick={(e) => { e?.preventDefault(); onNavigate('employment'); }}
           />
         </div>
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-3 bg-[#F8F5F0]">

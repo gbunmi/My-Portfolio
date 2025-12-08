@@ -27,7 +27,7 @@ export interface ProjectContent {
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Anystyle AI": {
-    description: "Project description coming soon.",
+    description: "AnyStyle AI is a photo restyling app that lets users transform their images instantly. Pick a style, apply it, and get a polished new version of your photo without prompts or complex settings. It’s fast, visual, and built for anyone who wants fresh, creative and artistic variations of their pictures in seconds..",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Anystyle%20Cover.png"
 ],
