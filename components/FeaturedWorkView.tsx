@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export const PROJECTS = [
   "Porta",
@@ -304,14 +304,22 @@ const DEFAULT_CONTENT: ProjectContent = {
 const FeaturedWorkView: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
   const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to top when selectedProject changes
+  useEffect(() => {
+    if (contentRef.current) {
+        contentRef.current.scrollTop = 0;
+    }
+    // Ensure mobile browser also resets if layout allows
+    window.scrollTo(0, 0);
+  }, [selectedProject]);
 
   const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
 
   const handleProjectClick = (project: string) => {
     setSelectedProject(project);
     setMobileView('detail');
-    // Scroll to top of content when switching projects on mobile
-    window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
   return (
@@ -352,6 +360,7 @@ const FeaturedWorkView: React.FC = () => {
 
       {/* Right Content - Project Details */}
       <div 
+        ref={contentRef}
         className={`
           flex-1 h-full overflow-y-auto bg-[#F8F5F0] relative
           ${mobileView === 'list' ? 'hidden md:block' : 'block'}
