@@ -29,7 +29,25 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Anystyle AI": {
     description: "Project description coming soon.",
     images: [],
-    links: [],
+    links: [
+      { label: "Visit Website ↗", url: "https://anystyle.blendingbytes.com/" }
+    ],
+    overview: "Detailed overview coming soon."
+  },
+  "Euterpe": {
+    description: "Project description coming soon.",
+    images: [],
+    links: [
+      { label: "Visit Website ↗", url: "https://euterpe.finance" }
+    ],
+    overview: "Detailed overview coming soon."
+  },
+  "Talestream": {
+    description: "Project description coming soon.",
+    images: [],
+    links: [
+      { label: "Visit Website ↗", url: "https://Talestream.ai" }
+    ],
     overview: "Detailed overview coming soon."
   },
   "Porta": {
@@ -77,7 +95,7 @@ I organized Porta around three main spaces:
 This keeps navigation clear and focused on the core behaviors: create, explore, engage.
 
 4. Community and social features
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(4).png}}
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Screens%203.png}}
 I designed interactions that encourage engagement:
 • posting creations with captions
 • liking and commenting on other users’ work
@@ -86,14 +104,13 @@ I designed interactions that encourage engagement:
 The social layer amplifies creativity and makes templates reusable, encouraging exploration and collaboration.
 
 5. Visual identity and design system
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(5).png}}
 I developed a visual language to support creativity:
 • clean, minimal interface to keep attention on the images
 • intuitive icons and controls for scene manipulation
 • consistent typography and spacing for readability across creation and social feeds
 
 6. Prototyping and validation
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Porta%20(6).png}}
+
 Interactive prototypes covered the creation workflow, template browsing, and social feed. User testing focused on clarity, ease of placement, and discoverability of templates. Feedback informed refinements to navigation, placement tools, and visual hierarchy.`
       },
       {
