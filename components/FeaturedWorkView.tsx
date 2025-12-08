@@ -28,7 +28,9 @@ export interface ProjectContent {
 export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Anystyle AI": {
     description: "Project description coming soon.",
-    images: [],
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Anystyle%20Cover.png"
+],
     links: [
       { label: "Visit Website ↗", url: "https://anystyle.blendingbytes.com/" }
     ],
@@ -99,7 +101,7 @@ This keeps navigation clear and focused on the core behaviors: create, explore, 
 I designed interactions that encourage engagement:
 • posting creations with captions
 • liking and commenting on other users’ work
-• browsing templates and remixing cThommunity images
+• browsing templates and remixing community images
 
 The social layer amplifies creativity and makes templates reusable, encouraging exploration and collaboration.
 
