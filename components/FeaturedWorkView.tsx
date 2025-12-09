@@ -304,20 +304,74 @@ const DEFAULT_CONTENT: ProjectContent = {
 const FeaturedWorkView: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
   const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
+  const [isLoading, setIsLoading] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to top when selectedProject changes
+  // Scroll to top and handle loading state when selectedProject changes
   useEffect(() => {
+    setIsLoading(true);
+
     if (contentRef.current) {
         contentRef.current.scrollTop = 0;
     }
     // Ensure mobile browser also resets if layout allows
     window.scrollTo(0, 0);
+
+    const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
+    
+    // Collect all images to preload
+    const imagesToLoad: string[] = [...(content.images || [])];
+    
+    // Extract images from sections
+    content.sections?.forEach(section => {
+        const matches = section.body.match(/\{\{IMAGE:(.*?)\}\}/g);
+        if (matches) {
+            matches.forEach(match => {
+                const url = match.replace('{{IMAGE:', '').replace('}}', '');
+                imagesToLoad.push(url);
+            });
+        }
+    });
+
+    if (imagesToLoad.length === 0) {
+        // Minimal delay for smooth transition even without images
+        const timer = setTimeout(() => setIsLoading(false), 300);
+        return () => clearTimeout(timer);
+    }
+
+    let loadedCount = 0;
+    let isMounted = true;
+
+    const checkAllLoaded = () => {
+        if (!isMounted) return;
+        loadedCount++;
+        if (loadedCount >= imagesToLoad.length) {
+            setIsLoading(false);
+        }
+    };
+
+    imagesToLoad.forEach(src => {
+        const img = new Image();
+        img.src = src;
+        img.onload = checkAllLoaded;
+        img.onerror = checkAllLoaded;
+    });
+
+    // Fallback safety timeout (2s)
+    const safetyTimer = setTimeout(() => {
+        if (isMounted) setIsLoading(false);
+    }, 2000);
+
+    return () => {
+        isMounted = false;
+        clearTimeout(safetyTimer);
+    };
   }, [selectedProject]);
 
   const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
 
   const handleProjectClick = (project: string) => {
+    if (project === selectedProject) return;
     setSelectedProject(project);
     setMobileView('detail');
   };
@@ -368,7 +422,7 @@ const FeaturedWorkView: React.FC = () => {
       >
         
         {/* Content Container - Centered and Full Width with reduced padding */}
-        <div className="px-6 py-8 md:px-20 xl:px-32 w-full mx-auto">
+        <div className="px-6 py-8 md:px-20 xl:px-32 w-full mx-auto min-h-full">
           
           {/* Mobile Back Button */}
           <button 
@@ -378,104 +432,108 @@ const FeaturedWorkView: React.FC = () => {
             ← Back to Projects
           </button>
 
-          {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-4 md:mb-1 w-full">
-            <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em]">
-              {selectedProject}
-            </h1>
+          {isLoading ? (
+             <div className="flex flex-col items-center justify-center h-[50vh] w-full">
+                <div className="w-8 h-8 border-4 border-gray-300 border-t-[#041727] rounded-full animate-spin mb-4"></div>
+                <p className="text-xs font-bold tracking-widest animate-pulse text-[#041727]">LOADING PROJECT</p>
+             </div>
+          ) : (
+            <div>
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-4 md:mb-1 w-full">
+                    <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em]">
+                    {selectedProject}
+                    </h1>
 
-            <div className="flex flex-wrap gap-3 shrink-0">
-              {content.links?.map((link, idx) => (
-                <a 
-                  key={idx}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold tracking-[-0.04em] hover:opacity-80 transition-opacity"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Description */}
-          <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] mb-4 md:mb-6 w-full text-justify">
-            {content.description}
-          </p>
-
-          {/* Images Container */}
-          <div className="w-full mb-12">
-             {content.images && content.images.length > 0 ? (
-                content.images.map((imgSrc, index) => (
-                  <img 
-                    key={index}
-                    src={imgSrc} 
-                    alt={`${selectedProject} preview ${index + 1}`} 
-                    className="w-full h-auto object-cover border border-gray-200 mb-12 last:mb-0"
-                    loading="eager"
-                    // @ts-ignore
-                    fetchPriority="high"
-                  />
-                ))
-             ) : (
-                <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-mono text-sm">
-                   {/* Placeholder hidden if empty, or distinct placeholder */}
+                    <div className="flex flex-wrap gap-3 shrink-0">
+                    {content.links?.map((link, idx) => (
+                        <a 
+                        key={idx}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold tracking-[-0.04em] hover:opacity-80 transition-opacity"
+                        >
+                        {link.label}
+                        </a>
+                    ))}
+                    </div>
                 </div>
-             )}
-          </div>
 
-          {/* Structured Sections (Context, Role, Problem, etc.) */}
-          {content.sections && content.sections.map((section, idx) => (
-            <div key={idx} className="mb-12 w-full">
-              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
-                {section.title}
-              </span>
-              <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
-                {section.body.split('\n').map((line, i) => {
-                   // Check for image token {{IMAGE:url}}
-                   const imageMatch = line.match(/^\{\{IMAGE:(.*)\}\}$/);
-                   if (imageMatch) {
-                     return (
+                {/* Description */}
+                <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] mb-4 md:mb-6 w-full text-justify">
+                    {content.description}
+                </p>
+
+                {/* Images Container */}
+                <div className="w-full mb-12">
+                    {content.images && content.images.length > 0 ? (
+                        content.images.map((imgSrc, index) => (
                         <img 
-                            key={i}
-                            src={imageMatch[1]} 
-                            alt={`Detail ${i}`}
-                            className="w-full h-auto object-cover my-8 border border-gray-200"
+                            key={index}
+                            src={imgSrc} 
+                            alt={`${selectedProject} preview ${index + 1}`} 
+                            className="w-full h-auto object-cover border border-gray-200 mb-12 last:mb-0"
+                            loading="eager"
+                            // @ts-ignore
+                            fetchPriority="high"
                         />
-                     );
-                   }
+                        ))
+                    ) : (
+                       null 
+                    )}
+                     {(!content.images || content.images.length === 0) && !content.sections && (
+                         <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-mono text-sm">
+                            No images available
+                         </div>
+                     )}
+                </div>
 
-                   // Check for numbered headers (e.g. "1. Header")
-                   const isNumberedHeader = /^\d+\.\s/.test(line);
-                   
-                   if (isNumberedHeader) {
-                     return (
-                       <div key={i} className="text-[#465460] font-bold mt-6 mb-2 text-left">
-                         {line}
-                       </div>
-                     );
-                   }
-                   
-                   // Handle empty lines for spacing
-                   if (line.trim() === '') return <br key={i} />;
-                   
-                   // Regular text
-                   return <div key={i}>{line}</div>;
-                })}
-              </div>
-            </div>
-          ))}
+                {/* Structured Sections */}
+                {content.sections && content.sections.map((section, idx) => (
+                    <div key={idx} className="mb-12 w-full">
+                    <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
+                        {section.title}
+                    </span>
+                    <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
+                        {section.body.split('\n').map((line, i) => {
+                        const imageMatch = line.match(/^\{\{IMAGE:(.*)\}\}$/);
+                        if (imageMatch) {
+                            return (
+                                <img 
+                                    key={i}
+                                    src={imageMatch[1]} 
+                                    alt={`Detail ${i}`}
+                                    className="w-full h-auto object-cover my-8 border border-gray-200"
+                                />
+                            );
+                        }
+                        const isNumberedHeader = /^\d+\.\s/.test(line);
+                        if (isNumberedHeader) {
+                            return (
+                            <div key={i} className="text-[#465460] font-bold mt-6 mb-2 text-left">
+                                {line}
+                            </div>
+                            );
+                        }
+                        if (line.trim() === '') return <br key={i} />;
+                        return <div key={i}>{line}</div>;
+                        })}
+                    </div>
+                    </div>
+                ))}
 
-          {/* Fallback Overview Section (if no structured sections but overview exists) */}
-          {!content.sections && content.overview && (
-            <div className="mb-12 w-full">
-              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
-                Overview
-              </span>
-              <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
-                {content.overview}
-              </p>
+                {/* Fallback Overview */}
+                {!content.sections && content.overview && (
+                    <div className="mb-12 w-full">
+                    <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
+                        Overview
+                    </span>
+                    <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
+                        {content.overview}
+                    </p>
+                    </div>
+                )}
             </div>
           )}
 
