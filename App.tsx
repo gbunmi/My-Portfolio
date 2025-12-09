@@ -175,7 +175,7 @@ const App: React.FC = () => {
     {isLoading && <Loader progress={loadProgress} />}
     <div className={`flex flex-col bg-[#F8F5F0] text-[#041727] font-mono selection:bg-yellow-200 ${isHome ? 'min-h-screen relative md:fixed md:inset-0 md:h-full' : 'fixed inset-0 w-full h-full'} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}>
       {/* Header */}
-      <header className="h-14 shrink-0 border-b border-[#CEC8BD] flex justify-between items-center px-4 md:px-8 z-50 bg-[#F8F5F0] sticky top-0 md:relative">
+      <header className="h-14 shrink-0 border-b border-[#DEDBD6] flex justify-between items-center px-4 md:px-8 z-50 bg-[#F8F5F0] sticky top-0 md:relative">
         <div className="flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-wider overflow-hidden">
           <a 
             href="/home" 

@@ -56,7 +56,7 @@ const EmploymentView: React.FC = () => {
       <div className="min-h-full relative md:grid md:grid-cols-2">
         
          {/* Left Column (Sticky Image) */}
-         <div className="hidden md:flex border-r border-[#CEC8BD] sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center bg-[#F8F5F0]">
+         <div className="hidden md:flex border-r border-[#DEDBD6] sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center bg-[#F8F5F0]">
             <img 
               src="https://i.ibb.co/7tvgYrB4/Generated-Image-November-24-2025-11-12-AM-1.png" 
               alt="Cat" 
@@ -68,7 +68,7 @@ const EmploymentView: React.FC = () => {
          <div className="flex flex-col z-10">
             
             {/* Heyfood (YC W21) */}
-            <div className="border-b border-[#CEC8BD] p-6 md:px-5 md:py-12">
+            <div className="border-b border-[#DEDBD6] p-6 md:px-5 md:py-12">
               <JobBlock 
                 title="Heyfood (YC W21)"
                 location="Ibadan, Nigeria"
@@ -78,7 +78,7 @@ const EmploymentView: React.FC = () => {
             </div>
 
             {/* Proficio Technologies */}
-            <div className="border-b border-[#CEC8BD] p-6 md:px-5 md:py-12">
+            <div className="border-b border-[#DEDBD6] p-6 md:px-5 md:py-12">
               <JobBlock 
                 title="Proficio Technologies"
                 location="Lagos, Nigeria"
@@ -88,7 +88,7 @@ const EmploymentView: React.FC = () => {
             </div>
 
             {/* Infiuss Health (YC S21) */}
-            <div className="border-b border-[#CEC8BD] p-6 md:px-5 md:py-12">
+            <div className="border-b border-[#DEDBD6] p-6 md:px-5 md:py-12">
               <JobBlock 
                 title="Infiuss Health (YC S21)"
                 roles={[
@@ -106,7 +106,7 @@ const EmploymentView: React.FC = () => {
             </div>
 
             {/* Blusalt Financial Services */}
-            <div className="border-b border-[#CEC8BD] p-6 md:px-5 md:py-12">
+            <div className="border-b border-[#DEDBD6] p-6 md:px-5 md:py-12">
               <JobBlock 
                 title="Blusalt Financial Services"
                 roles={[

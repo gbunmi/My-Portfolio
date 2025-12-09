@@ -376,7 +376,7 @@ const FeaturedWorkView: React.FC = () => {
       {/* Left Sidebar - Project List */}
       <div 
         className={`
-          w-full md:w-[300px] shrink-0 h-full overflow-y-auto border-b md:border-b-0 md:border-r border-[#CEC8BD] bg-[#F8F5F0] [&::-webkit-scrollbar]:hidden
+          w-full md:w-[300px] shrink-0 h-full overflow-y-auto border-b md:border-b-0 md:border-r border-[#DEDBD6] bg-[#F8F5F0] [&::-webkit-scrollbar]:hidden
           ${mobileView === 'detail' ? 'hidden md:block' : 'block'}
         `}
         style={{ scrollbarWidth: 'none' }}
@@ -389,7 +389,7 @@ const FeaturedWorkView: React.FC = () => {
               onClick={() => handleProjectClick(project)}
               className={`
                 group
-                w-full text-left px-6 py-6 md:px-8 md:py-6 border-b border-[#CEC8BD] 
+                w-full text-left px-6 py-6 md:px-8 md:py-6 border-b border-[#DEDBD6] 
                 font-bold text-sm md:text-base tracking-[-0.04em] transition-colors
                 ${isSelected 
                   ? 'bg-[#041727] text-white' 
@@ -428,7 +428,7 @@ const FeaturedWorkView: React.FC = () => {
 
           {isLoading ? (
              <div className="flex items-center justify-center w-full h-[calc(100vh-10rem)]">
-                <div className="w-8 h-8 border-4 border-[#CEC8BD] border-t-[#041727] rounded-full animate-spin"></div>
+                <div className="w-8 h-8 border-4 border-[#DEDBD6] border-t-[#041727] rounded-full animate-spin"></div>
              </div>
           ) : (
             <div>
@@ -466,7 +466,7 @@ const FeaturedWorkView: React.FC = () => {
                             key={index}
                             src={imgSrc} 
                             alt={`${selectedProject} preview ${index + 1}`} 
-                            className="w-full h-auto object-cover border border-[#CEC8BD] mb-12 last:mb-0"
+                            className="w-full h-auto object-cover border border-[#DEDBD6] mb-12 last:mb-0"
                             loading="eager"
                             // @ts-ignore
                             fetchPriority="high"
@@ -497,7 +497,7 @@ const FeaturedWorkView: React.FC = () => {
                                     key={i}
                                     src={imageMatch[1]} 
                                     alt={`Detail ${i}`}
-                                    className="w-full h-auto object-cover my-8 border border-[#CEC8BD]"
+                                    className="w-full h-auto object-cover my-8 border border-[#DEDBD6]"
                                 />
                             );
                         }
