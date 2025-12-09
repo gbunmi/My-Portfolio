@@ -433,9 +433,8 @@ const FeaturedWorkView: React.FC = () => {
           </button>
 
           {isLoading ? (
-             <div className="flex flex-col items-center justify-center h-[50vh] w-full">
-                <div className="w-8 h-8 border-4 border-gray-300 border-t-[#041727] rounded-full animate-spin mb-4"></div>
-                <p className="text-xs font-bold tracking-widest animate-pulse text-[#041727]">LOADING PROJECT</p>
+             <div className="flex items-center justify-center w-full h-[calc(100vh-10rem)]">
+                <div className="w-8 h-8 border-4 border-gray-300 border-t-[#041727] rounded-full animate-spin"></div>
              </div>
           ) : (
             <div>
