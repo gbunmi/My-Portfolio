@@ -8,7 +8,7 @@ const ASSETS = {
   contact: "https://i.ibb.co/Wp7Q3Bn7/Chat-GPT-Image-Jun-14-2025-09-43-52-PM-2.png",
   art: "https://i.ibb.co/67knWy9j/Chat-GPT-Image-Jun-14-2025-09-31-17-PM-1.png",
   music: "https://i.ibb.co/5hmYxq4V/Chat-GPT-Image-Jun-14-2025-09-17-57-PM-1.png",
-  // topHero: "https://raw.githubusercontent.com/gbunmi/images/main/Feet.png",
+  topHero: "https://raw.githubusercontent.com/gbunmi/images/main/Feet.png",
   bottomHero: "https://raw.githubusercontent.com/gbunmi/images/main/Body.png"
 };
 
