@@ -160,6 +160,8 @@ Users can:
 3. Interaction model and app structure
 {{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Screens%201.png}}
 {{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Screens%202.png}}
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Screens%203%20(1).png}}
+
 The app is structured around three key spaces:
 • Modules and prompts for choosing structured modules or abstract prompts
 • Creation workspace for previewing, adjusting, and iterating
@@ -176,7 +178,7 @@ The library and playback experience is designed to feel familiar yet optimized f
 • Quickly revisit modules or abstract prompts used to generate each track
 
 5. Visual identity and design system
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(6).png}}
+
 The visual language is cohesive across modules, prompts, and playback features:
 • Consistent typography and hierarchy for clarity
 • Expressive colors and icons to differentiate modules
