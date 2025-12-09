@@ -11,7 +11,7 @@ const FooterLink: React.FC<FooterLinkProps> = ({ label, href, className = '' }) 
     href={href} 
     target="_blank"
     rel="noopener noreferrer"
-    className={`group flex items-center justify-center h-14 hover:bg-[#ecece8] transition-colors text-[10px] sm:text-xs md:text-sm font-bold bg-[#F8F5F0] md:bg-transparent md:border-b-0 tracking-[-0.04em] flex-1 min-w-0 px-1 md:px-0 md:w-auto ${className}`}
+    className={`group flex items-center justify-center h-14 hover:bg-[#ecece8] transition-colors text-[10px] sm:text-xs md:text-sm font-bold bg-[#F8F5F0] tracking-[-0.04em] flex-1 min-w-0 px-1 md:px-0 md:w-auto ${className}`}
   >
     <span className="truncate transform transition-transform duration-300 group-hover:scale-110">{label}</span>
   </a>

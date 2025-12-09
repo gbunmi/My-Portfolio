@@ -8,7 +8,8 @@ const ASSETS = {
   contact: "https://i.ibb.co/Wp7Q3Bn7/Chat-GPT-Image-Jun-14-2025-09-43-52-PM-2.png",
   art: "https://i.ibb.co/67knWy9j/Chat-GPT-Image-Jun-14-2025-09-31-17-PM-1.png",
   music: "https://i.ibb.co/5hmYxq4V/Chat-GPT-Image-Jun-14-2025-09-17-57-PM-1.png",
-  heroImage: "https://i.ibb.co/hJqmKYFm/feea1261-6730-424b-aa60-41864f0a32a8-1.png" 
+  topHero: "https://raw.githubusercontent.com/gbunmi/images/main/Feet.png",
+  bottomHero: "https://raw.githubusercontent.com/gbunmi/images/main/Body.png"
 };
 
 interface HomeViewProps {
@@ -19,32 +20,47 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
   return (
     <div className="w-full md:h-full md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-px bg-gray-300">
         
-      {/* --- Hero Section --- */}
-      <div className="w-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 shrink-0 relative min-h-[55vh] md:h-full flex flex-col items-center justify-start pt-0 overflow-hidden bg-[#F8F5F0] pb-7 md:pb-4">
-        {/* Image */}
-        <img 
-          src={ASSETS.heroImage}
-          alt="Hero Composition" 
-          className="w-[90%] md:w-[40%] max-h-[60%] object-contain object-top opacity-100 mt-0"
-          loading="eager"
-          // @ts-ignore
-          fetchPriority="high"
-        />
-
-        {/* Tag */}
-        <div className="z-10 bg-[#041727] text-white my-4">
-          <span className="text-sm md:text-base font-bold tracking-tight font-mono">product designer.</span>
+      {/* --- Center Column (Unified Wrapper to remove borders) --- */}
+      <div className="w-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col md:h-full">
+        
+        {/* Top Hero Section */}
+        <div className="hidden md:flex w-full md:flex-1 items-start justify-center overflow-hidden">
+          <img 
+            src={ASSETS.topHero} 
+            alt="Top Hero" 
+            className="w-[50%] max-h-full object-contain object-top select-none pointer-events-none" 
+          />
         </div>
 
-        {/* Description Text */}
-        <div className="z-10 text-center px-6 pb-4">
-          <p className="text-sm md:text-lg font-medium leading-[20px] tracking-[-0.04em] text-[#041727]">
-            Hi, I’m Bunmi, a designer with a rich
-            <br className="hidden md:block" />
-            experience designing functional products
-            <br className="hidden md:block" />
-            across platforms and industries.
-          </p>
+        {/* Hero Content Section */}
+        <div className="w-full shrink-0 relative min-h-[55vh] md:min-h-0 md:flex-1 flex flex-col items-center justify-center overflow-hidden">
+          {/* Center Content Group */}
+          <div className="flex flex-col items-center justify-center w-full z-10 px-6">
+              {/* Tag */}
+              <div className="bg-[#041727] text-white mb-3 md:mb-4">
+                <span className="text-sm md:text-base font-bold tracking-tight font-mono">product designer.</span>
+              </div>
+
+              {/* Description Text */}
+              <div className="text-center">
+                <p className="text-sm md:text-lg font-medium leading-[20px] tracking-[-0.04em] text-[#041727]">
+                  Hi, I’m Bunmi, a designer with a rich
+                  <br className="hidden md:block" />
+                  experience designing functional products
+                  <br className="hidden md:block" />
+                  across platforms and industries.
+                </p>
+              </div>
+          </div>
+        </div>
+
+        {/* Bottom Hero Section */}
+        <div className="hidden md:flex w-full md:flex-1 items-end justify-center overflow-hidden">
+          <img 
+            src={ASSETS.bottomHero} 
+            alt="Bottom Hero" 
+            className="w-[50%] max-h-full object-contain object-bottom select-none pointer-events-none" 
+          />
         </div>
       </div>
 

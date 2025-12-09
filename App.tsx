@@ -34,7 +34,11 @@ const App: React.FC = () => {
 
     // If loading root, replace with /home to match requested format
     if (window.location.pathname === '/' || window.location.pathname === '') {
-      window.history.replaceState({}, '', '/home');
+      try {
+        window.history.replaceState({}, '', '/home');
+      } catch (e) {
+        console.warn('History replacement blocked:', e);
+      }
     }
 
     return () => window.removeEventListener('popstate', handlePopState);
@@ -111,7 +115,11 @@ const App: React.FC = () => {
         
         // Short delay to show 100%
         setTimeout(() => {
-            window.history.pushState({}, '', path);
+            try {
+              window.history.pushState({}, '', path);
+            } catch (e) {
+              console.warn('Navigation history blocked:', e);
+            }
             setView(newView);
             window.scrollTo(0, 0);
             // Small delay before revealing content
@@ -128,7 +136,11 @@ const App: React.FC = () => {
             clearInterval(interval);
             setLoadProgress(100);
             
-            window.history.pushState({}, '', path);
+            try {
+              window.history.pushState({}, '', path);
+            } catch (e) {
+              console.warn('Navigation history blocked:', e);
+            }
             setView(newView);
             window.scrollTo(0, 0);
             
@@ -187,14 +199,18 @@ const App: React.FC = () => {
       </header>
 
       {/* Main Content Area */}
-      <main className={`flex-1 bg-[#F8F5F0] border-t-0 ${isHome ? '' : 'min-h-0 relative'}`}>
+      <main className="flex-1 bg-[#F8F5F0] border-t-0 min-h-0 relative">
         {view === 'home' && <HomeView onNavigate={navigate} />}
         {view === 'employment' && <EmploymentView />}
         {view === 'featured' && <FeaturedWorkView />}
       </main>
 
       {/* Footer - Only show on Home view */}
-      {view === 'home' && <Footer />}
+      {view === 'home' && (
+        <div className="w-full">
+          <Footer />
+        </div>
+      )}
     </div>
     </>
   );
