@@ -146,11 +146,10 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
       {
         title: "What I Did",
         body: `1. Defined the product narrative
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(1).png}}
 Through iterative discussions, the vision became clear. Melodeo provides modular, context-driven music creation while supporting abstract prompts. Users should be able to generate, listen, and manage their music seamlessly.
 
 2. Designed end-to-end creation flows
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(2).png}}
+
 Users can:
 • Select a module such as HookSong, Apology Jukebox, or enter an abstract prompt
 • Provide context or instructions in text, mood, or style
@@ -159,7 +158,8 @@ Users can:
 • Save or export the track to their personal library
 
 3. Interaction model and app structure
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(3).png}}
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Screens%201.png}}
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Screens%202.png}}
 The app is structured around three key spaces:
 • Modules and prompts for choosing structured modules or abstract prompts
 • Creation workspace for previewing, adjusting, and iterating
@@ -167,15 +167,7 @@ The app is structured around three key spaces:
 
 This keeps creation, playback, and management simple and intuitive.
 
-4. Module and prompt experience design
-{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(4).png}}
-Modules and prompts are designed for clarity and immediacy:
-• HookSong generates catchy hooks quickly
-• Apology Jukebox produces music suited for a moment
-• Abstract prompts let users explore unstructured ideas
-• Real-time previews help users refine tracks efficiently
-
-5. Library, music player, and lyrics display
+4. Library, music player, and lyrics display
 {{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(5).png}}
 The library and playback experience is designed to feel familiar yet optimized for AI-generated tracks:
 • Browse saved tracks with clear metadata
@@ -183,14 +175,14 @@ The library and playback experience is designed to feel familiar yet optimized f
 • View lyrics in sync with playback
 • Quickly revisit modules or abstract prompts used to generate each track
 
-6. Visual identity and design system
+5. Visual identity and design system
 {{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20(6).png}}
 The visual language is cohesive across modules, prompts, and playback features:
 • Consistent typography and hierarchy for clarity
 • Expressive colors and icons to differentiate modules
 • Uniform controls for creation, playback, and saving
 
-7. Prototyping and validation
+6. Prototyping and validation
 Interactive prototypes tested module selection, abstract prompt input, music generation, playback, and library interactions. Insights informed layout adjustments, music player controls, and feedback cues.`
       },
       {
