@@ -28,7 +28,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <img 
             src={ASSETS.topHero} 
             alt="Top Hero" 
-            className="w-[50%] max-h-full object-contain object-top select-none pointer-events-none" 
+            className="w-[40%] max-h-full object-contain object-top select-none pointer-events-none" 
           />
         </div>
 
@@ -59,7 +59,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <img 
             src={ASSETS.bottomHero} 
             alt="Bottom Hero" 
-            className="w-[50%] max-h-full object-contain object-bottom select-none pointer-events-none" 
+            className="w-[40%] max-h-full object-contain object-bottom select-none pointer-events-none" 
           />
         </div>
       </div>
