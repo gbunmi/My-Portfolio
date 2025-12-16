@@ -38,12 +38,12 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <div className="flex flex-col items-center justify-center w-full z-10 px-6">
               {/* Tag */}
               <div className="bg-[#041727] text-white mb-3 md:mb-4">
-                <span className="text-sm md:text-base font-bold tracking-tight font-mono">product designer.</span>
+                <span className="text-sm md:text-base font-bold tracking-tight">product designer.</span>
               </div>
 
               {/* Description Text */}
               <div className="text-center">
-                <p className="text-sm md:text-lg font-medium leading-[20px] tracking-[-0.04em] text-[#041727]">
+                <p className="text-sm md:text-lg font-medium leading-[20px] text-[#041727] tracking-tight">
                   Hi, I’m Bunmi, a designer with a rich
                   <br className="hidden md:block" />
                   experience designing functional products

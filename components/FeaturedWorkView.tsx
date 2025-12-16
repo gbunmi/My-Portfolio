@@ -390,13 +390,13 @@ const FeaturedWorkView: React.FC = () => {
               className={`
                 group
                 w-full text-left px-6 py-6 md:px-8 md:py-6 border-b border-[#DEDBD6] 
-                font-bold text-sm md:text-base tracking-[-0.04em] transition-colors
+                font-bold text-sm md:text-base transition-colors
                 ${isSelected 
                   ? 'bg-[#041727] text-white' 
                   : 'bg-[#F8F5F0] text-[#041727] hover:bg-[#ecece8]'}
               `}
             >
-              <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-2">
+              <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-2 tracking-[-0.04em]">
                 {project}
               </span>
             </button>
@@ -421,7 +421,7 @@ const FeaturedWorkView: React.FC = () => {
           {/* Mobile Back Button */}
           <button 
             onClick={() => setMobileView('list')}
-            className="md:hidden mb-8 flex items-center gap-2 text-sm font-bold tracking-[-0.04em] text-[#041727] hover:opacity-70"
+            className="md:hidden mb-8 flex items-center gap-2 text-sm font-bold text-[#041727] hover:opacity-70 tracking-[-0.04em]"
           >
             ← Back to Projects
           </button>
@@ -445,7 +445,7 @@ const FeaturedWorkView: React.FC = () => {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold tracking-[-0.04em] hover:opacity-80 transition-opacity"
+                        className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold hover:opacity-80 transition-opacity tracking-[-0.04em]"
                         >
                         {link.label}
                         </a>
@@ -454,7 +454,7 @@ const FeaturedWorkView: React.FC = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] mb-4 md:mb-6 w-full text-justify">
+                <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed mb-4 md:mb-6 w-full text-justify tracking-[-0.04em]">
                     {content.description}
                 </p>
 
@@ -476,7 +476,7 @@ const FeaturedWorkView: React.FC = () => {
                        null 
                     )}
                      {(!content.images || content.images.length === 0) && !content.sections && (
-                         <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-mono text-sm">
+                         <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-sans text-sm">
                             No images available
                          </div>
                      )}
@@ -485,10 +485,10 @@ const FeaturedWorkView: React.FC = () => {
                 {/* Structured Sections */}
                 {content.sections && content.sections.map((section, idx) => (
                     <div key={idx} className="mb-12 w-full">
-                    <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
+                    <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold mb-4 tracking-[-0.04em]">
                         {section.title}
                     </span>
-                    <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
+                    <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em]">
                         {section.body.split('\n').map((line, i) => {
                         const imageMatch = line.match(/^\{\{IMAGE:(.*)\}\}$/);
                         if (imageMatch) {
@@ -504,7 +504,7 @@ const FeaturedWorkView: React.FC = () => {
                         const isNumberedHeader = /^\d+\.\s/.test(line);
                         if (isNumberedHeader) {
                             return (
-                            <div key={i} className="text-[#465460] font-bold mt-6 mb-2 text-left">
+                            <div key={i} className="text-[#465460] font-bold mt-6 mb-2 text-left tracking-[-0.04em]">
                                 {line}
                             </div>
                             );
@@ -519,10 +519,10 @@ const FeaturedWorkView: React.FC = () => {
                 {/* Fallback Overview */}
                 {!content.sections && content.overview && (
                     <div className="mb-12 w-full">
-                    <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] mb-4">
+                    <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold mb-4 tracking-[-0.04em]">
                         Overview
                     </span>
-                    <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed tracking-[-0.04em] w-full text-justify">
+                    <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em]">
                         {content.overview}
                     </p>
                     </div>

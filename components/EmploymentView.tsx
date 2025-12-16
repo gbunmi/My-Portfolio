@@ -37,7 +37,7 @@ interface JobBlockProps {
 
 const JobBlock: React.FC<JobBlockProps> = ({ title, location, dates, description, roles }) => (
   <div>
-    <h3 className="font-bold text-lg md:text-xl mb-3 tracking-[-0.04em] text-[#041727]">{title}</h3>
+    <h3 className="font-bold text-lg md:text-xl mb-3 text-[#041727] tracking-[-0.04em]">{title}</h3>
     {roles && roles.length > 0 ? (
       roles.map((role, index) => (
         <JobRole key={index} {...role} />
