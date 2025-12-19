@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 export const PROJECTS = [
   "Porta",
+  "Probe (Clinical Research AI)",
   "Melodeo",
   "Anystyle AI",
   "Medik",
@@ -51,6 +52,77 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
       { label: "Visit Website ↗", url: "https://Talestream.ai" }
     ],
     overview: "Detailed overview coming soon."
+  },
+  "Probe (Clinical Research AI)": {
+    description: "Probe is an AI-powered assistant designed for clinical researchers to streamline the process of analyzing complex medical data, managing trials, and surfacing insights from vast datasets efficiently.",
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/AI%20Assistant%20(1).png"
+    ],
+    links: [],
+    sections: [
+      {
+        title: "Context",
+        body: "I designed an AI Assistant embedded within a clinical research platform to help research teams plan studies, analyze protocols, and make faster, more informed decisions across the study lifecycle. The assistant supports tasks like study planning, literature discovery, participant matching, and study analysis. The goal was to reduce setup time, improve study quality, and remove friction caused by manual research, fragmented tools, and complex workflows."
+      },
+      {
+        title: "The Problem",
+        body: "Clinical research teams spend significant time interpreting complex protocol documents, planning studies without clear guidance on feasibility, searching and validating relevant literature, and coordinating tasks, timelines, and resources manually. These processes are slow, error-prone, and often require switching between multiple tools. New users especially struggle with knowing what to do next when setting up or managing a study."
+      },
+      {
+        title: "The Goal",
+        body: "Design an AI assistant that guides users through study setup and execution, surfaces actionable insights, and fits naturally into existing workflows. It needs to feel trustworthy, clear, and non-intrusive. Success meant users could move faster, make fewer mistakes, and feel more confident managing their studies."
+      },
+      {
+        title: "Key Modules",
+        body: `The AI Assistant is delivered through clearly defined modules:
+
+1. Study Plan Generator
+Users provide core study details and available team resources. The AI generates a structured study plan with tasks, timelines, and milestones.
+
+2. Study Analyzer
+Reviews uploaded protocol documents. Identifies study gaps, risks, and improvement opportunities.
+
+3. Literature Finder
+Allows users to enter multiple keywords. Surfaces relevant research articles with filters for study type, therapy area, and publication date.
+
+4. Participant Matcher
+Matches participants to studies using inclusion and exclusion criteria. Provides a match or eligibility score to support screening decisions.
+
+5. Questionnaire Generator
+Generates study-specific questions. Allows users to select, regenerate, and save preferred questions before final submission.
+
+6. E-Consent Generator
+Creates participant-friendly electronic consent forms. Ensures compliance while maintaining clarity for participants.
+
+7. Compliance Monitor
+Continuously tracks study activities against regulatory and protocol requirements. Flags potential compliance risks, deviations, and missing documentation.
+
+8. Regulatory Document Generator
+Generates required regulatory documents based on study details and region. Helps teams stay audit-ready with consistent, compliant documentation.`
+      },
+      {
+        title: "Design Approach",
+        body: `1. AI as a Guide, Not a Replacement
+I designed the assistant to support decision-making rather than automate it fully. Outputs are presented as suggestions, summaries, or recommendations, always allowing users to review and adjust.
+
+2. Progressive Disclosure
+Instead of overwhelming users with AI capabilities upfront, the assistant appears contextually and each tool focuses on one clear job. Advanced options are revealed only when needed.
+
+3. Trust & Transparency
+To build confidence, AI outputs are clearly labeled, recommendations include explanations, and users can trace insights back to their inputs or documents.`
+      },
+      {
+        title: "Design Decisions",
+        body: `1. Clear Entry Points
+Each AI tool lives behind a clear action like "Generate Study Plan" or "Analyze Study". This avoids ambiguity and sets expectations early.
+
+2. Structured Inputs
+AI accuracy depends on input quality. I used guided forms instead of free text where possible, along with examples and helper text to ensure the model has the right context.
+
+3. Review Before Action
+AI-generated content is never auto-applied. Users must review, select, and confirm. This was especially important for high-stakes tasks like questionnaire generation and protocol analysis.`
+      }
+    ]
   },
   "Porta": {
     description: "Porta is an AI-powered scene creation app that lets users place themselves or their ideas into existing scenes, generate moments instantly, and customize environments without writing complex prompts. Users can work from preset templates, reference scenes, or other creations, adjusting elements, style, and perspective in a single intuitive workspace.",
@@ -243,7 +315,7 @@ The medication section was built like a familiar e-commerce flow:
 • straightforward delivery tracking
 
 6. Lab test flows built around clarity
-Lab tests can be intimidating. I designed an experience that guides users calmly: test categories, transparent pricing, scheduling home sample collection, and result tracking tied back to their doctor.
+Lab tests can be Commissioned. I designed an experience that guides users calmly: test categories, transparent pricing, scheduling home sample collection, and result tracking tied back to their doctor.
 
 7. Visual identity and design system
 I developed the entire design language—typography, spacing, icons, colors, components. The system made the product consistent and gave engineering a predictable foundation.
