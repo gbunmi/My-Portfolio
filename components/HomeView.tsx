@@ -18,7 +18,7 @@ interface HomeViewProps {
 
 const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
   return (
-    <div className="w-full md:h-full md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-px bg-[#DEDBD6]">
+    <div className="w-full md:h-full md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-px bg-[#DEDBD6] scroll-smooth">
         
       {/* --- Center Column (Unified Wrapper to remove borders) --- */}
       <div className="w-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col md:h-full">

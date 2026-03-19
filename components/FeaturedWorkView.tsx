@@ -448,7 +448,7 @@ const FeaturedWorkView: React.FC = () => {
       {/* Left Sidebar - Project List */}
       <div 
         className={`
-          w-full md:w-[300px] shrink-0 h-full overflow-y-auto border-b md:border-b-0 md:border-r border-[#DEDBD6] bg-[#F8F5F0] [&::-webkit-scrollbar]:hidden
+          w-full md:w-[300px] shrink-0 h-full overflow-y-auto scroll-smooth border-b md:border-b-0 md:border-r border-[#DEDBD6] bg-[#F8F5F0] [&::-webkit-scrollbar]:hidden
           ${mobileView === 'detail' ? 'hidden md:block' : 'block'}
         `}
         style={{ scrollbarWidth: 'none' }}
@@ -482,7 +482,7 @@ const FeaturedWorkView: React.FC = () => {
       <div 
         ref={contentRef}
         className={`
-          flex-1 h-full overflow-y-auto bg-[#F8F5F0] relative
+          flex-1 h-full overflow-y-auto scroll-smooth bg-[#F8F5F0] relative
           ${mobileView === 'list' ? 'hidden md:block' : 'block'}
         `}
       >

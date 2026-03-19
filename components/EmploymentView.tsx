@@ -51,7 +51,7 @@ const JobBlock: React.FC<JobBlockProps> = ({ title, location, dates, description
 
 const EmploymentView: React.FC = () => {
   return (
-    <div className="h-full w-full bg-[#F8F5F0] overflow-y-auto">
+    <div className="h-full w-full bg-[#F8F5F0] overflow-y-auto scroll-smooth">
       {/* Inner wrapper must be relative and min-h-full to capture full scroll height */}
       <div className="min-h-full relative md:grid md:grid-cols-2">
         
