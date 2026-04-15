@@ -44,9 +44,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
               {/* Description Text */}
               <div className="text-center">
                 <p className="text-[17px] md:text-lg font-medium leading-[22px] text-[#041727] tracking-[-0.04em]">
-                  Hi, I’m Bunmi, a designer with a rich 
+                  Hi, I’m Bunmi, a designer with a rich{" "}
                   <br className="hidden md:block" />
-                  experience designing functional products
+                  experience designing functional products{" "}
                   <br className="hidden md:block" />
                   across platforms and industries.
                 </p>
