@@ -21,29 +21,29 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
     <div className="w-full md:h-full md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-px bg-[#DEDBD6] scroll-smooth">
         
       {/* --- Center Column (Unified Wrapper to remove borders) --- */}
-      <div className="w-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col md:h-full">
+      <div className="w-full h-[calc(100vh-3.5rem)] md:h-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col">
         
         {/* Top Hero Section */}
-        <div className="hidden md:flex w-full md:flex-1 items-start justify-center overflow-hidden">
+        <div className="flex w-full flex-1 items-start justify-center overflow-hidden">
           <img 
             src={ASSETS.topHero} 
             alt="Top Hero" 
-            className="w-[30%] max-h-full object-contain object-top select-none pointer-events-none" 
+            className="w-[40%] md:w-[30%] max-h-full object-contain object-top select-none pointer-events-none" 
           />
         </div>
 
         {/* Hero Content Section */}
-        <div className="w-full shrink-0 relative min-h-[55vh] md:min-h-0 md:flex-1 flex flex-col items-center justify-center overflow-hidden">
+        <div className="w-full shrink-0 relative flex flex-col items-center justify-center overflow-hidden py-8 md:py-0 md:flex-1">
           {/* Center Content Group */}
           <div className="flex flex-col items-center justify-center w-full z-10 px-6">
               {/* Tag */}
               <div className="bg-[#041727] text-white mb-3 md:mb-4">
-                <span className="text-sm md:text-base font-bold tracking-tight">product designer.</span>
+                <span className="text-sm md:text-base font-bold tracking-[-0.04em]">product designer.</span>
               </div>
 
               {/* Description Text */}
               <div className="text-center">
-                <p className="text-sm md:text-lg font-medium leading-[20px] text-[#041727] tracking-tight">
+                <p className="text-sm md:text-lg font-medium leading-[20px] text-[#041727] tracking-[-0.04em]">
                   Hi, I’m Bunmi, a designer with a rich
                   <br className="hidden md:block" />
                   experience designing functional products
@@ -55,11 +55,11 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
 
         {/* Bottom Hero Section */}
-        <div className="hidden md:flex w-full md:flex-1 items-end justify-center overflow-hidden">
+        <div className="flex w-full flex-1 items-end justify-center overflow-hidden">
           <img 
             src={ASSETS.bottomHero} 
             alt="Bottom Hero" 
-            className="w-[30%] max-h-full object-contain object-bottom select-none pointer-events-none" 
+            className="w-[40%] md:w-[30%] max-h-full object-contain object-bottom select-none pointer-events-none" 
           />
         </div>
       </div>

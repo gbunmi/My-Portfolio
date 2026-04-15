@@ -461,7 +461,7 @@ const FeaturedWorkView: React.FC = () => {
               onClick={() => handleProjectClick(project)}
               className={`
                 group
-                w-full text-left px-6 py-6 md:px-8 md:py-6 border-b border-[#DEDBD6] 
+                w-full text-left px-6 py-6 md:px-8 md:py-6 border-b border-[#DEDBD6]
                 font-bold text-sm md:text-base transition-colors
                 ${isSelected 
                   ? 'bg-[#041727] text-white' 

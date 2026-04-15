@@ -34,9 +34,14 @@ const GridItem: React.FC<GridItemProps> = ({ icon, imageSrc, label, subLabel, li
       <div className="text-center tracking-[-0.04em]">
         <p className="font-bold text-sm md:text-base lowercase leading-tight">
           {label}
-          {external && <span className="ml-1 inline-block transform -translate-y-[1px]">↗</span>}
+          {!subLabel && external && <span className="ml-1 inline-block transform -translate-y-[1px]">↗</span>}
         </p>
-        {subLabel && <p className="font-bold text-sm md:text-base lowercase leading-tight">{subLabel}</p>}
+        {subLabel && (
+          <p className="font-bold text-sm md:text-base lowercase leading-tight">
+            {subLabel}
+            {external && <span className="ml-1 inline-block transform -translate-y-[1px]">↗</span>}
+          </p>
+        )}
       </div>
       </>
   );

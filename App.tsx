@@ -193,8 +193,10 @@ const App: React.FC = () => {
             </>
           )}
         </div>
-        <div className="text-xs md:text-sm font-bold uppercase tracking-wider shrink-0 ml-4">
-          <Clock />
+        <div className="flex items-center gap-4 md:gap-8">
+          <div className="text-xs md:text-sm font-bold uppercase tracking-wider shrink-0">
+            <Clock />
+          </div>
         </div>
       </header>
 
