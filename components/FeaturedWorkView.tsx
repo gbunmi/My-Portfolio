@@ -1,16 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 export const PROJECTS = [
+  "Medik",
+  "Talestream",
+  "Euterpe",
+  "MagicCap",
+  "Penuel Samuel",
+  "Chinwe Ekeke",
+  "Medsaber",
+  "The Connected Awards",
   "Porta",
   "Probe (Clinical Research AI)",
   "Melodeo",
   "Anystyle AI",
-  "Medik",
-  "Penuel Samuel",
-  "Chinwe Ekeke",
-  "Euterpe",
-  "Medsaber",
-  "Talestream"
+  "Heyfood",
+  "Chorezen",
+  "Tuyaupay"
 ];
 
 export interface ProjectSection {
@@ -20,6 +25,7 @@ export interface ProjectSection {
 
 export interface ProjectContent {
   description: string;
+  categories: string[];
   images?: string[];
   links?: { label: string; url: string }[];
   overview?: string; // Keep for simple text
@@ -29,6 +35,7 @@ export interface ProjectContent {
 export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Anystyle AI": {
     description: "AnyStyle AI is a photo restyling app that lets users transform their images instantly. Pick a style, apply it, and get a polished new version of your photo without prompts or complex settings. It’s fast, visual, and built for anyone who wants fresh, creative and artistic variations of their pictures in seconds..",
+    categories: ["Mobile App"],
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Anystyle%20Cover.png"
 ],
@@ -39,6 +46,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   },
   "Euterpe": {
     description: "Project description coming soon.",
+    categories: ["Web App"],
     images: [],
     links: [
       { label: "Visit Website ↗", url: "https://euterpe.finance" }
@@ -47,6 +55,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   },
   "Talestream": {
     description: "Project description coming soon.",
+    categories: ["Mobile App"],
     images: [],
     links: [
       { label: "Visit Website ↗", url: "https://Talestream.ai" }
@@ -55,6 +64,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   },
   "Probe (Clinical Research AI)": {
     description: "Probe is an AI-powered assistant designed for clinical researchers to streamline the process of analyzing complex medical data, managing trials, and surfacing insights from vast datasets efficiently.",
+    categories: ["Web App"],
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/AI%20Assistant%20(1).png"
     ],
@@ -126,6 +136,7 @@ AI-generated content is never auto-applied. Users must review, select, and confi
   },
   "Porta": {
     description: "Porta is an AI-powered scene creation app that lets users place themselves or their ideas into existing scenes, generate moments instantly, and customize environments without writing complex prompts. Users can work from preset templates, reference scenes, or other creations, adjusting elements, style, and perspective in a single intuitive workspace.",
+    categories: ["Mobile App"],
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png"
     ],
@@ -196,6 +207,7 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
 
   "Melodeo": {
     description: "Melodeo addresses the complexity of music creation by offering AI-powered modules like HookSong and Apology Jukebox, alongside abstract prompts for open-ended creativity. Users can generate music instantly, save it in a personal library, and listen back with a full-featured music player and lyrics display.",
+    categories: ["Mobile App"],
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Cover.png"
     ],
@@ -268,12 +280,13 @@ Interactive prototypes tested module selection, abstract prompt input, music gen
 
   "Medik": {
     description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
+    categories: ["Mobile App"],
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20Cover.png",
     ],
     links: [
       { label: "Visit Site ↗", url: "https://medik.health" },
-      // { label: "Download app ↗", url: "#" }
+      { label: "Download app ↗", url: "#" }
     ],
     sections: [
       {
@@ -332,6 +345,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   
   "Penuel Samuel": {
     description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
+    categories: ["Portfolio"],
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Hero%20(4).png",
       "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20-%20About.png",
@@ -346,6 +360,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
 
   "Chinwe Ekeke": {
     description: "A virtual assistant portfolio built in Framer, showcasing skills, services, and client interactions to highlight professionalism and efficiency.",
+    categories: ["Portfolio"],
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20Hero.png",
       "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20About.png",
@@ -358,20 +373,94 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
       { label: "Visit Website ↗", url: "https://chinweekeke.framer.website/" }
     ],
     overview: ""
+  },
+  "Medsaber": {
+    description: "Project description coming soon.",
+    categories: ["Landing page / Website"],
+    images: [],
+    links: [],
+    overview: ""
+  },
+  "MagicCap": {
+    description: "Project description coming soon.",
+    categories: ["Mobile App"],
+    images: [],
+    links: [],
+    overview: ""
+  },
+  "The Connected Awards": {
+    description: "Project description coming soon.",
+    categories: ["Landing page / Website"],
+    images: [],
+    links: [],
+    overview: ""
+  },
+  "Heyfood": {
+    description: "Project description coming soon.",
+    categories: ["Brand"],
+    images: [],
+    links: [],
+    overview: "Detailed overview coming soon."
+  },
+  "Chorezen": {
+    description: "Project description coming soon.",
+    categories: ["Brand"],
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/2026.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Children's%20day.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/February.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Happy%20new%20month%20April.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/June.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/SM%20-%207.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/SM%20-%209%20(1).jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/SM%20-%209.jpg"
+    ],
+    links: [],
+    overview: "Detailed overview coming soon."
+  },
+  "Tuyaupay": {
+    description: "Project description coming soon.",
+    categories: ["Brand"],
+    images: [],
+    links: [],
+    overview: "Detailed overview coming soon."
   }
 };
 
 const DEFAULT_CONTENT: ProjectContent = {
   description: "Project description coming soon.",
+  categories: [],
   links: [],
   overview: "Detailed overview coming soon."
 };
 
+const CATEGORIES = [
+  "All",
+  "Mobile App",
+  "Web App",
+  "Landing page / Website",
+  "Portfolio",
+  "Brand"
+];
+
 const FeaturedWorkView: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
   const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
   const [isLoading, setIsLoading] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const filteredProjects = PROJECTS.filter(project => {
+    if (activeCategory === 'All') return true;
+    return PROJECT_DATA[project]?.categories.includes(activeCategory);
+  });
+
+  // Update selected project if active category changes and current project is hidden
+  useEffect(() => {
+    if (filteredProjects.length > 0 && !filteredProjects.includes(selectedProject)) {
+      setSelectedProject(filteredProjects[0]);
+    }
+  }, [activeCategory, filteredProjects, selectedProject]);
 
   // Scroll to top and handle loading state when selectedProject changes
   useEffect(() => {
@@ -435,6 +524,7 @@ const FeaturedWorkView: React.FC = () => {
   }, [selectedProject]);
 
   const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
+  const isBrandProject = content.categories.includes('Brand');
 
   const handleProjectClick = (project: string) => {
     if (project === selectedProject) return;
@@ -453,7 +543,28 @@ const FeaturedWorkView: React.FC = () => {
         `}
         style={{ scrollbarWidth: 'none' }}
       >
-        {PROJECTS.map((project) => {
+        {/* Category Filter */}
+        <div className="p-4 md:p-6 border-b border-[#DEDBD6] flex flex-wrap gap-2 bg-[#F8F5F0]">
+          {CATEGORIES.map((cat) => {
+            const isActive = cat === activeCategory;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`
+                  px-3 py-1.5 border text-[10px] md:text-[11px] font-bold transition-all tracking-[-0.04em]
+                  ${isActive 
+                    ? 'bg-[#041727] text-white border-[#041727]' 
+                    : 'bg-transparent border-[#DEDBD6] text-[#465460] hover:text-[#041727] hover:bg-[#ecece8] hover:border-transparent'}
+                `}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+
+        {filteredProjects.map((project) => {
           const isSelected = selectedProject === project;
           return (
             <button
@@ -532,30 +643,53 @@ const FeaturedWorkView: React.FC = () => {
 
                 {/* Images Container */}
                 <div className="w-full mb-12">
-                    {content.images && content.images.length > 0 ? (
-                        content.images.map((imgSrc, index) => (
-                        <img 
-                            key={index}
-                            src={imgSrc} 
-                            alt={`${selectedProject} preview ${index + 1}`} 
-                            className="w-full h-auto object-cover border border-[#DEDBD6] mb-12 last:mb-0"
-                            loading="eager"
-                            // @ts-ignore
-                            fetchPriority="high"
-                        />
-                        ))
+                    {isBrandProject ? (
+                        <div className="columns-2 md:columns-3 gap-4">
+                            {content.images && content.images.length > 0 ? (
+                                content.images.map((imgSrc, index) => (
+                                    <div key={index} className="break-inside-avoid mb-4 border border-[#DEDBD6]">
+                                        <img 
+                                            src={imgSrc} 
+                                            alt={`${selectedProject} Brand ${index + 1}`} 
+                                            className="w-full h-auto block"
+                                            loading="eager"
+                                        />
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="aspect-square md:aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-sans text-sm w-full">
+                                    No brand images available
+                                </div>
+                            )}
+                        </div>
                     ) : (
-                       null 
+                        <>
+                            {content.images && content.images.length > 0 ? (
+                                content.images.map((imgSrc, index) => (
+                                <img 
+                                    key={index}
+                                    src={imgSrc} 
+                                    alt={`${selectedProject} preview ${index + 1}`} 
+                                    className="w-full h-auto object-cover border border-[#DEDBD6] mb-12 last:mb-0"
+                                    loading="eager"
+                                    // @ts-ignore
+                                    fetchPriority="high"
+                                />
+                                ))
+                            ) : (
+                                null 
+                            )}
+                            {(!content.images || content.images.length === 0) && !content.sections && (
+                                <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-sans text-sm">
+                                    No images available
+                                </div>
+                            )}
+                        </>
                     )}
-                     {(!content.images || content.images.length === 0) && !content.sections && (
-                         <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-sans text-sm">
-                            No images available
-                         </div>
-                     )}
                 </div>
 
-                {/* Structured Sections */}
-                {content.sections && content.sections.map((section, idx) => (
+                {/* Structured Sections - Hidden for Brand */}
+                {!isBrandProject && content.sections && content.sections.map((section, idx) => (
                     <div key={idx} className="mb-12 w-full">
                     <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold mb-4 tracking-[-0.04em]">
                         {section.title}
@@ -588,8 +722,8 @@ const FeaturedWorkView: React.FC = () => {
                     </div>
                 ))}
 
-                {/* Fallback Overview */}
-                {!content.sections && content.overview && (
+                {/* Fallback Overview - Hidden for Brand */}
+                {!isBrandProject && !content.sections && content.overview && (
                     <div className="mb-12 w-full">
                     <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold mb-4 tracking-[-0.04em]">
                         Overview
