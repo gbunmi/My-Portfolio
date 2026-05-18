@@ -88,24 +88,30 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
 
 1. Study Plan Generator
 Users provide core study details and available team resources. The AI generates a structured study plan with tasks, timelines, and milestones.
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Study%20Plan.jpg}}
 
 2. Study Analyzer
 Reviews uploaded protocol documents. Identifies study gaps, risks, and improvement opportunities.
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Study%20Analyzer.jpg}}
 
 3. Literature Finder
 Allows users to enter multiple keywords. Surfaces relevant research articles with filters for study type, therapy area, and publication date.
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Literature%20Finder.jpg}}
 
 4. Participant Matcher
 Matches participants to studies using inclusion and exclusion criteria. Provides a match or eligibility score to support screening decisions.
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Participant%20Match.jpg}}
 
 5. Questionnaire Generator
 Generates study-specific questions. Allows users to select, regenerate, and save preferred questions before final submission.
 
 6. E-Consent Generator
 Creates participant-friendly electronic consent forms. Ensures compliance while maintaining clarity for participants.
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/E%20consent.jpg}}
 
 7. Compliance Monitor
 Continuously tracks study activities against regulatory and protocol requirements. Flags potential compliance risks, deviations, and missing documentation.
+{{IMAGE:https://raw.githubusercontent.com/gbunmi/images/main/Compliance%20(1).jpg}}
 
 8. Regulatory Document Generator
 Generates required regulatory documents based on study details and region. Helps teams stay audit-ready with consistent, compliant documentation.`
