@@ -383,7 +383,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   },
   "MagicCap": {
     description: "Project description coming soon.",
-    categories: ["Mobile App"],
+    categories: ["Landing page / Website"],
     images: [],
     links: [],
     overview: ""
@@ -396,14 +396,14 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
     overview: ""
   },
   "Heyfood": {
-    description: "Project description coming soon.",
+    description: "A food delivery platform that lets users discover restaurants and order meals quickly from their favorite local vendors.",
     categories: ["Brand"],
     images: [],
     links: [],
     overview: "Detailed overview coming soon."
   },
   "Chorezen": {
-    description: "Project description coming soon.",
+    description: "A cleaning service platform that connects users with professional cleaners for homes and offices, making scheduling and service access simple and reliable.",
     categories: ["Brand"],
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/2026.jpg",
@@ -419,9 +419,14 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
     overview: "Detailed overview coming soon."
   },
   "Tuyaupay": {
-    description: "Project description coming soon.",
+    description: "A global payments platform that enables users and businesses to send, receive, and manage cross-border transactions efficiently.",
     categories: ["Brand"],
-    images: [],
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200001.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200002.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200003.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200004.jpg"
+    ],
     links: [],
     overview: "Detailed overview coming soon."
   }
