@@ -124,6 +124,42 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
   return (
     <div className="w-full md:h-full md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-px bg-[#DEDBD6] scroll-smooth">
+      {/* SVG Liquid Filters */}
+      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true" style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
+        <defs>
+          <filter id="liquid-warp-top" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.04" numOctaves="2" result="noise">
+              <animate attributeName="baseFrequency" dur="10s" values="0.012 0.04;0.012 0.07;0.012 0.04" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="liquid-warp-bottom" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.04" numOctaves="2" result="noise">
+              <animate attributeName="baseFrequency" dur="10s" values="0.012 0.04;0.012 0.07;0.012 0.04" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
+      <style>{`
+        @keyframes liquidFloatTop {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-8px) rotate(-1deg) scale(1.015);
+          }
+        }
+        @keyframes liquidFloatBottom {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(8px) rotate(1deg) scale(1.015);
+          }
+        }
+      `}</style>
         
       {/* --- Center Column (Unified Wrapper to remove borders) --- */}
       <div className="w-full h-[calc(100vh-3.5rem)] md:h-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col">
@@ -146,7 +182,14 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             <img 
               src={ASSETS.topHero} 
               alt="Top Hero" 
-              className="max-h-full object-contain object-top select-none pointer-events-none filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.06)]" 
+              className="max-h-full object-contain object-top select-none pointer-events-none" 
+              style={{
+                animation: isHoveredTop ? 'liquidFloatTop 8s ease-in-out infinite' : 'none',
+                filter: isHoveredTop 
+                  ? 'url(#liquid-warp-top) drop-shadow(0 15px 30px rgba(4, 23, 39, 0.12))' 
+                  : 'drop-shadow(0 10px 20px rgba(0,0,0,0.06))',
+                transition: 'filter 0.6s ease-out',
+              }}
             />
             {/* Glossy Reflection Overlay */}
             <div 
@@ -201,7 +244,14 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             <img 
               src={ASSETS.bottomHero} 
               alt="Bottom Hero" 
-              className="max-h-full object-contain object-bottom select-none pointer-events-none filter drop-shadow-[0_-10px_20px_rgba(0,0,0,0.06)]" 
+              className="max-h-full object-contain object-bottom select-none pointer-events-none" 
+              style={{
+                animation: isHoveredBottom ? 'liquidFloatBottom 8s ease-in-out infinite' : 'none',
+                filter: isHoveredBottom 
+                  ? 'url(#liquid-warp-bottom) drop-shadow(0 -15px 30px rgba(4, 23, 39, 0.12))' 
+                  : 'drop-shadow(0 -10px 20px rgba(0,0,0,0.06))',
+                transition: 'filter 0.6s ease-out',
+              }}
             />
             {/* Glossy Reflection Overlay */}
             <div 
