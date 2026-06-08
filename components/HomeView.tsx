@@ -22,6 +22,78 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Interactive 3D tilt and glossy shine states for top hero
+  const [topTilt, setTopTilt] = useState({ rx: 0, ry: 0, s: 1, translateX: 0, translateY: 0 });
+  const [topShine, setTopShine] = useState({ x: 50, y: 50, opacity: 0 });
+  const [isHoveredTop, setIsHoveredTop] = useState(false);
+
+  // Interactive 3D tilt and glossy shine states for bottom hero
+  const [bottomTilt, setBottomTilt] = useState({ rx: 0, ry: 0, s: 1, translateX: 0, translateY: 0 });
+  const [bottomShine, setBottomShine] = useState({ x: 50, y: 50, opacity: 0 });
+  const [isHoveredBottom, setIsHoveredBottom] = useState(false);
+
+  const handleMouseMoveTop = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsHoveredTop(true);
+    const container = e.currentTarget;
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Normalize coordinates from -1 to 1
+    const normX = (x / rect.width) * 2 - 1;
+    const normY = (y / rect.height) * 2 - 1;
+
+    // Subtle natural 3D rotate - max 12 degrees
+    const rx = -normY * 12;
+    const ry = normX * 12;
+
+    // Magnetic parallax shift (max 8px translation)
+    const tx = normX * 8;
+    const ty = normY * 8 - 12; // Accentuated negative vertical shift for top hero
+
+    // Shine coordinates in percentages
+    const shineX = (x / rect.width) * 100;
+    const shineY = (y / rect.height) * 100;
+
+    setTopTilt({ rx, ry, s: 1.04, translateX: tx, translateY: ty });
+    setTopShine({ x: shineX, y: shineY, opacity: 0.18 });
+  };
+
+  const handleMouseLeaveTop = () => {
+    setIsHoveredTop(false);
+    setTopTilt({ rx: 0, ry: 0, s: 1, translateX: 0, translateY: 0 });
+    setTopShine({ x: 50, y: 50, opacity: 0 });
+  };
+
+  const handleMouseMoveBottom = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsHoveredBottom(true);
+    const container = e.currentTarget;
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const normX = (x / rect.width) * 2 - 1;
+    const normY = (y / rect.height) * 2 - 1;
+
+    const rx = -normY * 12;
+    const ry = normX * 12;
+
+    const tx = normX * 8;
+    const ty = normY * 8 + 12; // Accentuated positive vertical shift for bottom hero
+
+    const shineX = (x / rect.width) * 100;
+    const shineY = (y / rect.height) * 100;
+
+    setBottomTilt({ rx, ry, s: 1.04, translateX: tx, translateY: ty });
+    setBottomShine({ x: shineX, y: shineY, opacity: 0.18 });
+  };
+
+  const handleMouseLeaveBottom = () => {
+    setIsHoveredBottom(false);
+    setBottomTilt({ rx: 0, ry: 0, s: 1, translateX: 0, translateY: 0 });
+    setBottomShine({ x: 50, y: 50, opacity: 0 });
+  };
+
   useEffect(() => {
     let timer: any;
     const fullWord = words[currentWordIdx];
@@ -57,12 +129,35 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
       <div className="w-full h-[calc(100vh-3.5rem)] md:h-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col">
         
         {/* Top Hero Section */}
-        <div className="flex w-full flex-1 items-start justify-center overflow-hidden">
-          <img 
-            src={ASSETS.topHero} 
-            alt="Top Hero" 
-            className="w-[80%] md:w-[30%] max-h-full object-contain object-top select-none pointer-events-none" 
-          />
+        <div 
+          className="flex w-full flex-1 items-start justify-center overflow-hidden cursor-crosshair pb-4 md:pb-0"
+          style={{ perspective: '1000px' }}
+          onMouseMove={handleMouseMoveTop}
+          onMouseLeave={handleMouseLeaveTop}
+        >
+          <div
+            className="relative w-[80%] md:w-[35%] h-full flex items-start justify-center"
+            style={{
+              transform: `perspective(1000px) rotateX(${topTilt.rx}deg) rotateY(${topTilt.ry}deg) scale(${topTilt.s}) translate3d(${topTilt.translateX}px, ${topTilt.translateY}px, 0px)`,
+              transition: isHoveredTop ? 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)' : 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            <img 
+              src={ASSETS.topHero} 
+              alt="Top Hero" 
+              className="max-h-full object-contain object-top select-none pointer-events-none filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.06)]" 
+            />
+            {/* Glossy Reflection Overlay */}
+            <div 
+              className="absolute inset-0 pointer-events-none mix-blend-overlay rounded-2xl"
+              style={{
+                opacity: topShine.opacity,
+                background: `radial-gradient(circle at ${topShine.x}% ${topShine.y}%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%)`,
+                transition: 'opacity 0.3s ease',
+              }}
+            />
+          </div>
         </div>
 
         {/* Hero Content Section */}
@@ -89,12 +184,35 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
 
         {/* Bottom Hero Section */}
-        <div className="flex w-full flex-1 items-end justify-center overflow-hidden">
-          <img 
-            src={ASSETS.bottomHero} 
-            alt="Bottom Hero" 
-            className="w-[80%] md:w-[30%] max-h-full object-contain object-bottom select-none pointer-events-none" 
-          />
+        <div 
+          className="flex w-full flex-1 items-end justify-center overflow-hidden cursor-crosshair pt-4 md:pt-0"
+          style={{ perspective: '1000px' }}
+          onMouseMove={handleMouseMoveBottom}
+          onMouseLeave={handleMouseLeaveBottom}
+        >
+          <div
+            className="relative w-[80%] md:w-[35%] h-full flex items-end justify-center"
+            style={{
+              transform: `perspective(1000px) rotateX(${bottomTilt.rx}deg) rotateY(${bottomTilt.ry}deg) scale(${bottomTilt.s}) translate3d(${bottomTilt.translateX}px, ${bottomTilt.translateY}px, 0px)`,
+              transition: isHoveredBottom ? 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)' : 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            <img 
+              src={ASSETS.bottomHero} 
+              alt="Bottom Hero" 
+              className="max-h-full object-contain object-bottom select-none pointer-events-none filter drop-shadow-[0_-10px_20px_rgba(0,0,0,0.06)]" 
+            />
+            {/* Glossy Reflection Overlay */}
+            <div 
+              className="absolute inset-0 pointer-events-none mix-blend-overlay rounded-2xl"
+              style={{
+                opacity: bottomShine.opacity,
+                background: `radial-gradient(circle at ${bottomShine.x}% ${bottomShine.y}%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%)`,
+                transition: 'opacity 0.3s ease',
+              }}
+            />
+          </div>
         </div>
       </div>
 
