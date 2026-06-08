@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import GridItem from './GridItem';
 
 const ASSETS = {
@@ -17,6 +17,39 @@ interface HomeViewProps {
 }
 
 const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
+  const words = ["product designer.", "design engineer.", "brand designer."];
+  const [currentWordIdx, setCurrentWordIdx] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    let timer: any;
+    const fullWord = words[currentWordIdx];
+    
+    // Typing speed
+    let speed = isDeleting ? 50 : 80;
+
+    if (!isDeleting && currentText === fullWord) {
+      // Pause at full word
+      speed = 1500;
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, speed);
+    } else if (isDeleting && currentText === "") {
+      setIsDeleting(false);
+      setCurrentWordIdx((prev) => (prev + 1) % words.length);
+    } else {
+      timer = setTimeout(() => {
+        const nextText = isDeleting 
+          ? fullWord.substring(0, currentText.length - 1)
+          : fullWord.substring(0, currentText.length + 1);
+        setCurrentText(nextText);
+      }, speed);
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, currentWordIdx]);
+
   return (
     <div className="w-full md:h-full md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-px bg-[#DEDBD6] scroll-smooth">
         
@@ -37,18 +70,19 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           {/* Center Content Group */}
           <div className="flex flex-col items-center justify-center w-full z-10 px-6">
               {/* Tag */}
-              <div className="bg-[#041727] text-white mb-3 md:mb-4">
-                <span className="text-[17px] md:text-base font-bold tracking-[-0.04em]">product designer.</span>
+              <div className="bg-[#041727] text-white mb-3 md:mb-4 px-2 py-0.5 min-h-[28px] md:min-h-[32px] flex items-center justify-center gap-[1px]">
+                <span className="text-[17px] md:text-base font-bold tracking-[-0.04em]">{currentText}</span>
+                <span className="w-[1.5px] h-[1.125em] bg-white animate-pulse shrink-0" />
               </div>
 
               {/* Description Text */}
-              <div className="text-center">
-                <p className="text-[17px] md:text-lg font-medium leading-[22px] text-[#041727] tracking-[-0.04em]">
-                  Hi, I’m Bunmi, a designer with a rich{" "}
+              <div className="text-center max-w-[320px] sm:max-w-[500px] md:max-w-[580px]">
+                <p className="text-[17px] md:text-lg font-medium leading-[22px] md:leading-[26px] text-[#041727] tracking-[-0.04em]">
+                  Hi, I’m Bunmi, a multi-disciplinary designer with{" "}
                   <br className="hidden md:block" />
-                  experience designing functional products{" "}
+                  a rich experience designing functional products{" "}
                   <br className="hidden md:block" />
-                  across platforms and industries.
+                  and visuals across platforms and industries.
                 </p>
               </div>
           </div>

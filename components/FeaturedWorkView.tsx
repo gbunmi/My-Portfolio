@@ -2,18 +2,18 @@ import React, { useState, useRef, useEffect } from 'react';
 
 export const PROJECTS = [
   "Medik",
-  "Talestream",
-  "Euterpe",
-  "MagicCap",
+  // "Talestream",
+  // "Euterpe",
+  // "MagicCap",
   "Penuel Samuel",
   "Chinwe Ekeke",
-  "Medsaber",
-  "The Connected Awards",
+  // "Medsaber",
+  // "The Connected Awards",
   "Porta",
   "Probe (Clinical Research AI)",
   "Melodeo",
   "Anystyle AI",
-  "Heyfood",
+  // "Heyfood",
   "Chorezen",
   "Tuyaupay"
 ];
@@ -456,6 +456,11 @@ const CATEGORIES = [
 
 const FeaturedWorkView: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const activeCategories = CATEGORIES.filter(cat => {
+    if (cat === 'All') return true;
+    return PROJECTS.some(project => PROJECT_DATA[project]?.categories.includes(cat));
+  });
+
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
   const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
   const [isLoading, setIsLoading] = useState(false);
@@ -556,7 +561,7 @@ const FeaturedWorkView: React.FC = () => {
       >
         {/* Category Filter */}
         <div className="p-4 md:p-6 border-b border-[#DEDBD6] flex flex-wrap gap-2 bg-[#F8F5F0]">
-          {CATEGORIES.map((cat) => {
+          {activeCategories.map((cat) => {
             const isActive = cat === activeCategory;
             return (
               <button
