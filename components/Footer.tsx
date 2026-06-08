@@ -13,7 +13,12 @@ const FooterLink: React.FC<FooterLinkProps> = ({ label, href, className = '' }) 
     rel="noopener noreferrer"
     className={`group flex items-center justify-center h-14 hover:bg-[#ecece8] transition-colors text-[10px] sm:text-xs md:text-sm font-bold bg-[#F8F5F0] flex-1 min-w-0 px-1 md:px-0 md:w-auto ${className}`}
   >
-    <span className="truncate transform transition-transform duration-300 group-hover:scale-110 tracking-[-0.04em]">{label}</span>
+    <span className="relative block h-[1.2em] overflow-hidden tracking-[-0.04em] select-none">
+      <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1/2">
+        <span className="flex h-[1.2em] items-center justify-center truncate px-2">{label}</span>
+        <span className="flex h-[1.2em] items-center justify-center truncate px-2 text-[#041727]">{label}</span>
+      </span>
+    </span>
   </a>
 );
 

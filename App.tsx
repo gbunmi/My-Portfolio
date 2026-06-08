@@ -180,9 +180,14 @@ const App: React.FC = () => {
           <a 
             href="/home" 
             onClick={handleHomeClick}
-            className="hover:opacity-60 transition-opacity whitespace-nowrap shrink-0"
+            className="group block overflow-hidden whitespace-nowrap shrink-0"
           >
-            Bunmi Gbadamosi
+            <span className="relative block h-[1.2em] overflow-hidden select-none">
+              <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1/2">
+                <span className="flex h-[1.2em] items-center text-[#041727]">{`Bunmi Gbadamosi`}</span>
+                <span className="flex h-[1.2em] items-center text-[#465460]">{`Bunmi Gbadamosi`}</span>
+              </span>
+            </span>
           </a>
           {view !== 'home' && (
             <>
