@@ -70,8 +70,8 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           {/* Center Content Group */}
           <div className="flex flex-col items-center justify-center w-full z-10 px-6">
               {/* Tag */}
-              <div className="bg-[#041727] text-white mb-3 md:mb-4 px-2 py-0.5 min-h-[28px] md:min-h-[32px] flex items-center justify-center gap-[1px]">
-                <span className="text-[17px] md:text-base font-bold tracking-[-0.04em]">{currentText}</span>
+              <div className="bg-[#041727] text-white mb-3 md:mb-4 pl-[2px] pr-0 pt-0.5 pb-0 min-h-[28px] md:min-h-[32px] flex items-center justify-center gap-[1px]">
+                <span className="text-[17px] md:text-base font-bold tracking-[-0.04em] leading-[16px]">{currentText}</span>
                 <span className="w-[1.5px] h-[1.125em] bg-white animate-pulse shrink-0" />
               </div>
 
