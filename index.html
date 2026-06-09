@@ -35,12 +35,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300..700&display=swap" rel="stylesheet">
     <style>
+      html, body, #root {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box;
+      }
       html {
         scroll-behavior: smooth;
+        width: 100%;
+        height: 100%;
       }
       body {
         font-family: 'Overpass Mono', monospace;
         background-color: #F8F5F0;
+        width: 100%;
+        min-height: 100%;
       }
       /* Custom scrollbar to match the aesthetic */
       ::-webkit-scrollbar {

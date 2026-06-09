@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Interface for a single role's details
 interface JobRoleProps {
@@ -50,18 +50,111 @@ const JobBlock: React.FC<JobBlockProps> = ({ title, location, dates, description
 );
 
 const EmploymentView: React.FC = () => {
+  // Interactive 3D tilt and glossy shine states
+  const [imgTilt, setImgTilt] = useState({ rx: 0, ry: 0, s: 1, translateX: 0, translateY: 0 });
+  const [imgShine, setImgShine] = useState({ x: 50, y: 50, opacity: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsHovered(true);
+    const container = e.currentTarget;
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Normalize coordinates from -1 to 1
+    const normX = (x / rect.width) * 2 - 1;
+    const normY = (y / rect.height) * 2 - 1;
+
+    // Subtle natural 3D rotate - max 12 degrees
+    const rx = -normY * 12;
+    const ry = normX * 12;
+
+    // Magnetic parallax shift (max 8px translation)
+    const tx = normX * 8;
+    const ty = normY * 8 - 12; // Accentuated negative vertical shift for aesthetic lift
+
+    // Shine coordinates in percentages
+    const shineX = (x / rect.width) * 100;
+    const shineY = (y / rect.height) * 100;
+
+    setImgTilt({ rx, ry, s: 1.04, translateX: tx, translateY: ty });
+    setImgShine({ x: shineX, y: shineY, opacity: 0.18 });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setImgTilt({ rx: 0, ry: 0, s: 1, translateX: 0, translateY: 0 });
+    setImgShine({ x: 50, y: 50, opacity: 0 });
+  };
+
   return (
     <div className="h-full w-full bg-[#F8F5F0] overflow-y-auto scroll-smooth">
+      {/* SVG Liquid Filter for Employment Image */}
+      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true" style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
+        <defs>
+          <filter id="liquid-warp-img" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.04" numOctaves="2" result="noise">
+              <animate attributeName="baseFrequency" dur="10s" values="0.012 0.04;0.012 0.07;0.012 0.04" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
+      <style>{`
+        @keyframes liquidFloatImg {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-8px) rotate(-1deg) scale(1.015);
+          }
+        }
+      `}</style>
+
       {/* Inner wrapper must be relative and min-h-full to capture full scroll height */}
       <div className="min-h-full relative md:grid md:grid-cols-2">
         
          {/* Left Column (Sticky Image) */}
          <div className="hidden md:flex border-r border-[#DEDBD6] sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center bg-[#F8F5F0]">
-            <img 
-              src="https://i.ibb.co/7tvgYrB4/Generated-Image-November-24-2025-11-12-AM-1.png" 
-              alt="Cat" 
-              className="w-[70%] h-[70%] object-cover"
-            />
+            <div 
+              className="relative w-[70%] h-[70%] cursor-crosshair"
+              style={{ perspective: '1000px' }}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div
+                className="relative w-full h-full"
+                style={{
+                  transform: `perspective(1000px) rotateX(${imgTilt.rx}deg) rotateY(${imgTilt.ry}deg) scale(${imgTilt.s}) translate3d(${imgTilt.translateX}px, ${imgTilt.translateY}px, 0px)`,
+                  transition: isHovered ? 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)' : 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transformStyle: 'preserve-3d',
+                }}
+              >
+                <img 
+                  src="https://i.ibb.co/7tvgYrB4/Generated-Image-November-24-2025-11-12-AM-1.png" 
+                  alt="Cat" 
+                  className="w-full h-full object-cover select-none pointer-events-none rounded-2xl"
+                  style={{
+                    animation: isHovered ? 'liquidFloatImg 8s ease-in-out infinite' : 'none',
+                    filter: isHovered 
+                      ? 'url(#liquid-warp-img) drop-shadow(0 15px 30px rgba(4, 23, 39, 0.12))' 
+                      : 'drop-shadow(0 10px 20px rgba(0,0,0,0.06))',
+                    transition: 'filter 0.6s ease-out',
+                  }}
+                />
+                {/* Glossy Reflection Overlay */}
+                <div 
+                  className="absolute inset-0 pointer-events-none mix-blend-overlay rounded-2xl"
+                  style={{
+                    opacity: imgShine.opacity,
+                    background: `radial-gradient(circle at ${imgShine.x}% ${imgShine.y}%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%)`,
+                    transition: 'opacity 0.3s ease',
+                  }}
+                />
+              </div>
+            </div>
          </div>
          
          {/* Right Column (Content) */}

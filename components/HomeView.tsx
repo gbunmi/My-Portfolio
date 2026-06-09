@@ -162,11 +162,11 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
       `}</style>
         
       {/* --- Center Column (Unified Wrapper to remove borders) --- */}
-      <div className="w-full h-[calc(100vh-3.5rem)] md:h-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col">
+      <div className="w-full h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] md:h-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col">
         
         {/* Top Hero Section */}
         <div 
-          className="flex w-full flex-1 items-start justify-center overflow-hidden pb-4 md:pb-0"
+          className="flex w-full flex-1 items-start justify-center overflow-hidden pb-1 md:pb-0"
           style={{ perspective: '1000px' }}
         >
           <div
@@ -204,18 +204,18 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
 
         {/* Hero Content Section */}
-        <div className="w-full shrink-0 relative flex flex-col items-center justify-center overflow-hidden py-8 md:py-0 md:flex-1">
+        <div className="w-full shrink-0 relative flex flex-col items-center justify-center overflow-hidden py-4 md:py-0 md:flex-1">
           {/* Center Content Group */}
           <div className="flex flex-col items-center justify-center w-full z-10 px-6">
               {/* Tag */}
               <div className="bg-[#041727] text-white mb-3 md:mb-4 pl-[2px] pr-0 pt-0.5 pb-0 min-h-[28px] md:min-h-[32px] flex items-center justify-center gap-[1px]">
-                <span className="text-[17px] md:text-base font-bold tracking-[-0.04em] leading-[16px]">{currentText}</span>
+                <span className="text-[15px] md:text-base font-bold tracking-[-0.04em] leading-[16px]">{currentText}</span>
                 <span className="w-[1.5px] h-[1.125em] bg-white animate-pulse shrink-0" />
               </div>
 
               {/* Description Text */}
               <div className="text-center max-w-[320px] sm:max-w-[500px] md:max-w-[580px]">
-                <p className="text-[17px] md:text-lg font-medium leading-[22px] md:leading-[26px] text-[#041727] tracking-[-0.04em]">
+                <p className="text-[15px] md:text-lg font-medium leading-[20px] md:leading-[26px] text-[#041727] tracking-[-0.04em]">
                   Hi, I’m Bunmi, a multi-disciplinary designer with{" "}
                   <br className="hidden md:block" />
                   a rich experience designing functional products{" "}
@@ -228,7 +228,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
         {/* Bottom Hero Section */}
         <div 
-          className="flex w-full flex-1 items-end justify-center overflow-hidden pt-4 md:pt-0"
+          className="flex w-full flex-1 items-end justify-center overflow-hidden pt-1 md:pt-0"
           style={{ perspective: '1000px' }}
         >
           <div
