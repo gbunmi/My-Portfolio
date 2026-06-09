@@ -166,13 +166,13 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         
         {/* Top Hero Section */}
         <div 
-          className="flex w-full flex-1 items-start justify-center overflow-hidden cursor-crosshair pb-4 md:pb-0"
+          className="flex w-full flex-1 items-start justify-center overflow-hidden pb-4 md:pb-0"
           style={{ perspective: '1000px' }}
-          onMouseMove={handleMouseMoveTop}
-          onMouseLeave={handleMouseLeaveTop}
         >
           <div
-            className="relative w-[80%] md:w-[35%] h-full flex items-start justify-center"
+            className="relative w-[80%] md:w-[30%] h-full flex items-start justify-center cursor-crosshair"
+            onMouseMove={handleMouseMoveTop}
+            onMouseLeave={handleMouseLeaveTop}
             style={{
               transform: `perspective(1000px) rotateX(${topTilt.rx}deg) rotateY(${topTilt.ry}deg) scale(${topTilt.s}) translate3d(${topTilt.translateX}px, ${topTilt.translateY}px, 0px)`,
               transition: isHoveredTop ? 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)' : 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -228,13 +228,13 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
         {/* Bottom Hero Section */}
         <div 
-          className="flex w-full flex-1 items-end justify-center overflow-hidden cursor-crosshair pt-4 md:pt-0"
+          className="flex w-full flex-1 items-end justify-center overflow-hidden pt-4 md:pt-0"
           style={{ perspective: '1000px' }}
-          onMouseMove={handleMouseMoveBottom}
-          onMouseLeave={handleMouseLeaveBottom}
         >
           <div
-            className="relative w-[80%] md:w-[35%] h-full flex items-end justify-center"
+            className="relative w-[80%] md:w-[30%] h-full flex items-end justify-center cursor-crosshair"
+            onMouseMove={handleMouseMoveBottom}
+            onMouseLeave={handleMouseLeaveBottom}
             style={{
               transform: `perspective(1000px) rotateX(${bottomTilt.rx}deg) rotateY(${bottomTilt.ry}deg) scale(${bottomTilt.s}) translate3d(${bottomTilt.translateX}px, ${bottomTilt.translateY}px, 0px)`,
               transition: isHoveredBottom ? 'transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)' : 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
