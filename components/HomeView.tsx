@@ -273,8 +273,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-1 bg-[#F8F5F0]">
             <GridItem 
             imageSrc={ASSETS.featuredWork}
-            label="featured" 
-            subLabel="work"
+            label="work" 
             link="/featuredwork"
             onClick={(e) => { e?.preventDefault(); onNavigate('featured'); }}
           />
@@ -282,8 +281,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-2 bg-[#F8F5F0]">
           <GridItem 
             imageSrc={ASSETS.employment}
-            label="employment" 
-            subLabel="history"
+            label="job history" 
             link="/employment-history"
             onClick={(e) => { e?.preventDefault(); onNavigate('employment'); }}
           />
@@ -291,7 +289,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-3 bg-[#F8F5F0]">
           <GridItem 
             imageSrc={ASSETS.resume}
-            label="my resume" 
+            label="resume" 
             link="https://docs.google.com/document/d/184oLOD6dQO0yy9_3L5E6Ohgm5yzAmvTjfak6sxNiMok/edit?usp=sharing"
             external
           />
