@@ -24,30 +24,42 @@ const App: React.FC = () => {
   const [loadProgress, setLoadProgress] = useState(0);
 
   useEffect(() => {
-    // Initial site load sequence with organic progression
+    // Initial site load sequence with stepped, organic progression
     setLoadProgress(0);
+    const startTime = Date.now();
     const duration = 5000; // 5 seconds loading experience
-    const intervalTime = 30;
-    const stepCount = duration / intervalTime;
-    let currentStep = 0;
+
+    const timeline = [
+      { time: 0, progress: 0 },
+      { time: 800, progress: 12 },
+      { time: 1700, progress: 28 },
+      { time: 2700, progress: 47 },
+      { time: 3700, progress: 69 },
+      { time: 4300, progress: 83 },
+      { time: 4700, progress: 95 },
+      { time: 5000, progress: 100 }
+    ];
 
     const timer = setInterval(() => {
-      currentStep++;
-      const baseProgress = (currentStep / stepCount) * 100;
+      const elapsed = Date.now() - startTime;
       
-      if (currentStep >= stepCount) {
-        setLoadProgress(100);
+      // Determine the current stepped progress based on elapsed time
+      let currentProgress = 0;
+      for (const step of timeline) {
+        if (elapsed >= step.time) {
+          currentProgress = step.progress;
+        }
+      }
+
+      setLoadProgress(currentProgress);
+
+      if (elapsed >= duration) {
         clearInterval(timer);
         setTimeout(() => {
           setIsLoading(false);
         }, 300);
-      } else {
-        // Add a bit of natural loading velocity variance/jitter
-        const randomJitter = (Math.sin(currentStep * 0.1) * 3) + (Math.random() * 2 - 1);
-        const organicProgress = Math.min(99, Math.max(0, baseProgress + randomJitter));
-        setLoadProgress(organicProgress);
       }
-    }, intervalTime);
+    }, 50);
 
     return () => clearInterval(timer);
   }, []);
