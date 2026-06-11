@@ -14,7 +14,12 @@ const Loader: React.FC<LoaderProps> = ({ progress }) => {
   ];
 
   return (
-    <div className="fixed inset-0 z-[100] bg-[#F8F5F0] flex flex-col items-center justify-center gap-4">
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="fixed inset-0 z-[100] bg-[#F8F5F0] flex flex-col items-center justify-center gap-4"
+    >
       {/* Horizontal row of 4 images acting like loader dots */}
       <div className="flex items-center gap-2 justify-center h-20 select-none">
         {loaderImages.map((img, idx) => (
@@ -45,7 +50,7 @@ const Loader: React.FC<LoaderProps> = ({ progress }) => {
       <div className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] select-none">
         loading...{Math.floor(progress)}%
       </div>
-    </div>
+    </motion.div>
   );
 };
 
