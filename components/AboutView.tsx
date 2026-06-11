@@ -7,7 +7,7 @@ interface SectionImageProps {
 
 const SectionImage: React.FC<SectionImageProps> = ({ src, alt }) => {
   return (
-    <div className="relative w-full aspect-square max-w-[280px] md:max-w-[420px] mx-auto flex items-center justify-center select-none">
+    <div className="relative w-full aspect-square max-w-[280px] lg:max-w-[420px] mx-auto flex items-center justify-center select-none">
       <img
         src={src}
         alt={alt}
@@ -26,23 +26,23 @@ const AboutView: React.FC = () => {
 
   return (
     <div className="h-full w-full bg-[#F8F5F0] overflow-y-auto scroll-smooth">
-      <div className="min-h-full md:grid md:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
+      <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
         
         {/* Left spacer column matching existing grid geometry */}
-        <div className="hidden md:block bg-[#F8F5F0]" />
+        <div className="hidden lg:block bg-[#F8F5F0]" />
 
         {/* Center column of the grid: hosts all content */}
-        <div className="bg-[#F8F5F0] min-h-full px-10 py-12 flex flex-col items-center">
+        <div className="bg-[#F8F5F0] min-h-full px-4 lg:px-10 py-12 flex flex-col items-center">
           
-          <div className="w-full flex flex-col gap-12 md:gap-14">
+          <div className="w-full flex flex-col gap-12 lg:gap-14">
           
           {/* Section 1: the man */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-10 md:pb-12">
-            <div className="flex flex-col items-start gap-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-10 lg:pb-12">
+            <div className="flex flex-col items-start gap-2 order-2 lg:order-1">
               <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em]">
                 the man
               </span>
-              <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
+              <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
                 <p>
                   I spend most of my days designing products, but the things that shape me happen outside design files. I'm curious about almost everything, the kind of person who can disappear down a rabbit hole about ancient civilizations, startup growth loops, or why some songs feel nostalgic on the first listen.
                 </p>
@@ -54,21 +54,21 @@ const AboutView: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center order-1 lg:order-2">
               <SectionImage src={manImage} alt="The Man" />
             </div>
           </div>
 
           {/* Section 2: the designer */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-10 md:pb-12">
-            <div className="flex items-center justify-center order-last md:order-first">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-10 lg:pb-12">
+            <div className="flex items-center justify-center order-1 lg:order-1">
               <SectionImage src={designerImage} alt="The Designer" />
             </div>
-            <div className="flex flex-col items-start gap-2 md:order-last">
+            <div className="flex flex-col items-start gap-2 order-2 lg:order-2">
               <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em]">
                 the designer
               </span>
-              <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
+              <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
                 <p>
                   I've spent years designing products across fintech, healthcare, AI, marketplaces, web3, logistics, and a few categories that didn't have a name when we started building them. What excites me isn't moving buttons around a screen. It's understanding how people think, where they get stuck, and how thoughtful design can quietly solve problems without demanding attention.
                 </p>
@@ -80,12 +80,12 @@ const AboutView: React.FC = () => {
           </div>
 
           {/* Section 3: the builder */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-10 md:pb-12">
-            <div className="flex flex-col items-start gap-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-10 lg:pb-12">
+            <div className="flex flex-col items-start gap-2 order-2 lg:order-1">
               <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em]">
                 the builder
               </span>
-              <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
+              <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
                 <p>
                   Design is where most of my projects begin, but rarely where they end. Thanks to AI tools and a growing collection of coding skills, I've become the kind of person who designs something in the morning and has a working version by the evening.
                 </p>
@@ -94,21 +94,21 @@ const AboutView: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center order-1 lg:order-2">
               <SectionImage src={builderImage} alt="The Builder" />
             </div>
           </div>
 
           {/* Section 4: the artist */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-4">
-            <div className="flex items-center justify-center order-last md:order-first">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-4">
+            <div className="flex items-center justify-center order-1 lg:order-1">
               <SectionImage src={artistImage} alt="The Artist" />
             </div>
-            <div className="flex flex-col items-start gap-2 md:order-last">
+            <div className="flex flex-col items-start gap-2 order-2 lg:order-2">
               <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em]">
                 the artist
               </span>
-              <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
+              <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
                 <p>
                   Outside of product design, I spend time creating digital paintings and producing music. Sometimes it's experimenting with colors and compositions, other times it's layering sounds and endlessly tweaking tracks that were supposedly finished hours ago.
                 </p>
@@ -119,16 +119,17 @@ const AboutView: React.FC = () => {
             </div>
           </div>
 
+          </div>
+
         </div>
 
       </div>
 
       {/* Right spacer column matching existing grid geometry */}
-      <div className="hidden md:block bg-[#F8F5F0]" />
+      <div className="hidden lg:block bg-[#F8F5F0]" />
 
     </div>
-  </div>
-);
+  );
 };
 
 export default AboutView;

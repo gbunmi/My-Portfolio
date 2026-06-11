@@ -114,10 +114,10 @@ const EmploymentView: React.FC = () => {
       `}</style>
 
       {/* Inner wrapper must be relative and min-h-full to capture full scroll height */}
-      <div className="min-h-full relative md:grid md:grid-cols-2">
+      <div className="min-h-full relative lg:grid lg:grid-cols-2">
         
          {/* Left Column (Sticky Image) */}
-         <div className="hidden md:flex border-r border-[#DEDBD6] sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center bg-[#F8F5F0]">
+         <div className="hidden lg:flex border-r border-[#DEDBD6] sticky top-0 h-[calc(100vh-3.5rem)] items-center justify-center bg-[#F8F5F0]">
             <div 
               className="relative w-[70%] h-[70%] cursor-crosshair"
               style={{ perspective: '1000px' }}

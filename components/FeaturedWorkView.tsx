@@ -549,13 +549,13 @@ const FeaturedWorkView: React.FC = () => {
   };
 
   return (
-    <div className="h-full w-full bg-[#F8F5F0] flex flex-col md:flex-row overflow-hidden">
+    <div className="h-full w-full bg-[#F8F5F0] flex flex-col lg:flex-row overflow-hidden">
       
       {/* Left Sidebar - Project List */}
       <div 
         className={`
-          w-full md:w-[300px] shrink-0 h-full overflow-y-auto scroll-smooth border-b md:border-b-0 md:border-r border-[#DEDBD6] bg-[#F8F5F0] [&::-webkit-scrollbar]:hidden
-          ${mobileView === 'detail' ? 'hidden md:block' : 'block'}
+          w-full lg:w-[300px] shrink-0 h-full overflow-y-auto scroll-smooth border-b lg:border-b-0 lg:border-r border-[#DEDBD6] bg-[#F8F5F0] [&::-webkit-scrollbar]:hidden
+          ${mobileView === 'detail' ? 'hidden lg:block' : 'block'}
         `}
         style={{ scrollbarWidth: 'none' }}
       >
@@ -588,7 +588,7 @@ const FeaturedWorkView: React.FC = () => {
               onClick={() => handleProjectClick(project)}
               className={`
                 group
-                w-full text-left px-6 py-6 md:px-8 md:py-6 border-b border-[#DEDBD6]
+                w-full text-left px-6 py-6 lg:px-8 lg:py-6 border-b border-[#DEDBD6]
                 font-bold text-sm md:text-base transition-colors
                 ${isSelected 
                   ? 'bg-[#041727] text-white' 
@@ -602,7 +602,7 @@ const FeaturedWorkView: React.FC = () => {
           );
         })}
         {/* Fill remaining height on desktop to avoid empty space looking weird */}
-        <div className="hidden md:block h-full bg-[#F8F5F0]" />
+        <div className="hidden lg:block h-full bg-[#F8F5F0]" />
       </div>
 
       {/* Right Content - Project Details */}
@@ -610,17 +610,17 @@ const FeaturedWorkView: React.FC = () => {
         ref={contentRef}
         className={`
           flex-1 h-full overflow-y-auto scroll-smooth bg-[#F8F5F0] relative
-          ${mobileView === 'list' ? 'hidden md:block' : 'block'}
+          ${mobileView === 'list' ? 'hidden lg:block' : 'block'}
         `}
       >
         
         {/* Content Container - Centered and Full Width with reduced padding */}
-        <div className="px-6 py-8 md:px-20 xl:px-32 w-full mx-auto min-h-full">
+        <div className="px-6 py-8 lg:px-20 xl:px-32 w-full mx-auto min-h-full">
           
           {/* Mobile Back Button */}
           <button 
             onClick={() => setMobileView('list')}
-            className="md:hidden mb-8 flex items-center gap-2 text-sm font-bold text-[#041727] hover:opacity-70 tracking-[-0.04em]"
+            className="lg:hidden mb-8 flex items-center gap-2 text-sm font-bold text-[#041727] hover:opacity-70 tracking-[-0.04em]"
           >
             ← Back to Projects
           </button>

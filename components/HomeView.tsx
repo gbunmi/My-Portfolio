@@ -123,7 +123,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
   }, [currentText, isDeleting, currentWordIdx]);
 
   return (
-    <div className="w-full md:h-full md:overflow-hidden flex flex-col md:grid md:grid-cols-[240px_1fr_240px] md:grid-rows-3 gap-px bg-[#DEDBD6] scroll-smooth">
+    <div className="w-full lg:h-full lg:overflow-hidden flex flex-col lg:grid lg:grid-cols-[240px_1fr_240px] lg:grid-rows-3 gap-px bg-[#DEDBD6] scroll-smooth">
       {/* SVG Liquid Filters */}
       <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true" style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
         <defs>
@@ -160,17 +160,17 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           }
         }
       `}</style>
-        
+
       {/* --- Center Column (Unified Wrapper to remove borders) --- */}
-      <div className="w-full h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] md:h-full md:w-auto md:col-span-1 md:col-start-2 md:row-start-1 md:row-span-3 bg-[#F8F5F0] flex flex-col">
+      <div className="w-full h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] lg:h-full lg:w-auto lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-3 bg-[#F8F5F0] flex flex-col">
         
         {/* Top Hero Section */}
         <div 
-          className="flex w-full flex-1 items-start justify-center overflow-hidden pb-1 md:pb-0"
+          className="flex w-full flex-1 items-start justify-center overflow-hidden pb-1 lg:pb-0"
           style={{ perspective: '1000px' }}
         >
           <div
-            className="relative w-[80%] md:w-[30%] h-full flex items-start justify-center cursor-crosshair"
+            className="relative w-[80%] lg:w-[30%] h-full flex items-start justify-center cursor-crosshair"
             onMouseMove={handleMouseMoveTop}
             onMouseLeave={handleMouseLeaveTop}
             style={{
@@ -204,22 +204,22 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
 
         {/* Hero Content Section */}
-        <div className="w-full shrink-0 relative flex flex-col items-center justify-center overflow-hidden py-4 md:py-0 md:flex-1">
+        <div className="w-full shrink-0 relative flex flex-col items-center justify-center overflow-hidden py-4 lg:py-0 lg:flex-1">
           {/* Center Content Group */}
           <div className="flex flex-col items-center justify-center w-full z-10 px-6">
               {/* Tag */}
-              <div className="bg-[#041727] text-white mb-3 md:mb-4 pl-[2px] pr-0 pt-0.5 pb-0 min-h-[28px] md:min-h-[32px] flex items-center justify-center gap-[1px]">
-                <span className="text-[15px] md:text-base font-bold tracking-[-0.04em] leading-[16px]">{currentText}</span>
+              <div className="bg-[#041727] text-white mb-3 lg:mb-4 pl-[2px] pr-0 pt-0.5 pb-0 min-h-[28px] lg:min-h-[32px] flex items-center justify-center gap-[1px]">
+                <span className="text-[15px] lg:text-base font-bold tracking-[-0.04em] leading-[16px]">{currentText}</span>
                 <span className="w-[1.5px] h-[1.125em] bg-white animate-pulse shrink-0" />
               </div>
 
               {/* Description Text */}
-              <div className="text-center max-w-[320px] sm:max-w-[500px] md:max-w-[580px]">
-                <p className="text-[15px] md:text-lg font-medium leading-[20px] md:leading-[26px] text-[#041727] tracking-[-0.04em]">
+              <div className="text-center max-w-[320px] sm:max-w-[500px] lg:max-w-[580px]">
+                <p className="text-[15px] lg:text-lg font-medium leading-[20px] lg:leading-[26px] text-[#041727] tracking-[-0.04em]">
                   Hi, I’m Bunmi, a multi-disciplinary designer with{" "}
-                  <br className="hidden md:block" />
+                  <br className="hidden lg:block" />
                   a rich experience designing functional products{" "}
-                  <br className="hidden md:block" />
+                  <br className="hidden lg:block" />
                   and visuals across platforms and industries.
                 </p>
               </div>
@@ -228,11 +228,11 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
         {/* Bottom Hero Section */}
         <div 
-          className="flex w-full flex-1 items-end justify-center overflow-hidden pt-1 md:pt-0"
+          className="flex w-full flex-1 items-end justify-center overflow-hidden pt-1 lg:pt-0"
           style={{ perspective: '1000px' }}
         >
           <div
-            className="relative w-[80%] md:w-[30%] h-full flex items-end justify-center cursor-crosshair"
+            className="relative w-[80%] lg:w-[30%] h-full flex items-end justify-center cursor-crosshair"
             onMouseMove={handleMouseMoveBottom}
             onMouseLeave={handleMouseLeaveBottom}
             style={{
@@ -267,10 +267,10 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
       </div>
 
       {/* --- Grid Items Wrapper --- */}
-      <div className="grid grid-cols-2 w-full md:contents shrink-0 gap-px bg-[#DEDBD6]">
+      <div className="grid grid-cols-2 w-full lg:contents shrink-0 gap-px bg-[#DEDBD6]">
         
         {/* Left Column Items */}
-        <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-1 bg-[#F8F5F0]">
+        <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-1 lg:row-start-1 bg-[#F8F5F0]">
             <GridItem 
             imageSrc={ASSETS.featuredWork}
             label="work" 
@@ -278,7 +278,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             onClick={(e) => { e?.preventDefault(); onNavigate('featured'); }}
           />
         </div>
-        <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-2 bg-[#F8F5F0]">
+        <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-1 lg:row-start-2 bg-[#F8F5F0]">
           <GridItem 
             imageSrc={ASSETS.employment}
             label="job history" 
@@ -286,7 +286,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             onClick={(e) => { e?.preventDefault(); onNavigate('employment'); }}
           />
         </div>
-        <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-3 bg-[#F8F5F0]">
+        <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-1 lg:row-start-3 bg-[#F8F5F0]">
           <GridItem 
             imageSrc={ASSETS.art}
             label="about me" 
@@ -296,7 +296,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
 
         {/* Right Column Items */}
-        <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-3 md:row-start-1 bg-[#F8F5F0]">
+        <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-3 lg:row-start-1 bg-[#F8F5F0]">
           <GridItem 
             imageSrc={ASSETS.contact}
             label="contact" 
@@ -304,7 +304,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             external
           />
         </div>
-        <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-3 md:row-start-2 bg-[#F8F5F0]">
+        <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-3 lg:row-start-2 bg-[#F8F5F0]">
           <GridItem 
             imageSrc={ASSETS.resume}
             label="resume" 
@@ -312,7 +312,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             external
           />
         </div>
-        <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-3 md:row-start-3 bg-[#F8F5F0]">
+        <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-3 lg:row-start-3 bg-[#F8F5F0]">
             <GridItem 
             imageSrc={ASSETS.music}
             label="music" 
