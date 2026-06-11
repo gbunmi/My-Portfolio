@@ -20,8 +20,37 @@ const App: React.FC = () => {
   };
 
   const [view, setView] = useState<ViewState>(() => getViewFromPath(window.location.pathname));
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
+
+  useEffect(() => {
+    // Initial site load sequence with organic progression
+    setLoadProgress(0);
+    const duration = 5000; // 5 seconds loading experience
+    const intervalTime = 30;
+    const stepCount = duration / intervalTime;
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      const baseProgress = (currentStep / stepCount) * 100;
+      
+      if (currentStep >= stepCount) {
+        setLoadProgress(100);
+        clearInterval(timer);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 300);
+      } else {
+        // Add a bit of natural loading velocity variance/jitter
+        const randomJitter = (Math.sin(currentStep * 0.1) * 3) + (Math.random() * 2 - 1);
+        const organicProgress = Math.min(99, Math.max(0, baseProgress + randomJitter));
+        setLoadProgress(organicProgress);
+      }
+    }, intervalTime);
+
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     // Disable browser scroll restoration to ensure we control the scroll position
