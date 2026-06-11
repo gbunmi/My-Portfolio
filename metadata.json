@@ -1,5 +1,6 @@
 {
   "name": "Bunmi Gbadamosi Portfolio",
   "description": "A brutalist, grid-based portfolio design for a product designer featuring responsive layout and monospace typography.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

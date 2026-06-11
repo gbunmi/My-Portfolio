@@ -13,7 +13,7 @@ const ASSETS = {
 };
 
 interface HomeViewProps {
-  onNavigate: (view: 'home' | 'employment' | 'featured') => void;
+  onNavigate: (view: 'home' | 'employment' | 'featured' | 'about') => void;
 }
 
 const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
@@ -288,10 +288,10 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-1 md:row-start-3 bg-[#F8F5F0]">
           <GridItem 
-            imageSrc={ASSETS.resume}
-            label="resume" 
-            link="https://docs.google.com/document/d/184oLOD6dQO0yy9_3L5E6Ohgm5yzAmvTjfak6sxNiMok/edit?usp=sharing"
-            external
+            imageSrc={ASSETS.art}
+            label="about me" 
+            link="/about"
+            onClick={(e) => { e?.preventDefault(); onNavigate('about'); }}
           />
         </div>
 
@@ -306,9 +306,9 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
         <div className="aspect-square md:aspect-auto md:h-full w-full md:w-auto md:col-span-1 md:col-start-3 md:row-start-2 bg-[#F8F5F0]">
           <GridItem 
-            imageSrc={ASSETS.art}
-            label="art" 
-            link="https://www.artstation.com/g-bunmi"
+            imageSrc={ASSETS.resume}
+            label="resume" 
+            link="https://docs.google.com/document/d/184oLOD6dQO0yy9_3L5E6Ohgm5yzAmvTjfak6sxNiMok/edit?usp=sharing"
             external
           />
         </div>

@@ -4,9 +4,10 @@ import Footer from './components/Footer';
 import HomeView from './components/HomeView';
 import EmploymentView from './components/EmploymentView';
 import FeaturedWorkView, { PROJECT_DATA } from './components/FeaturedWorkView';
+import AboutView from './components/AboutView';
 import Loader from './components/Loader';
 
-type ViewState = 'home' | 'employment' | 'featured';
+type ViewState = 'home' | 'employment' | 'featured' | 'about';
 
 const App: React.FC = () => {
   // --- Router Logic ---
@@ -14,6 +15,7 @@ const App: React.FC = () => {
     const p = path.toLowerCase();
     if (p.includes('/featuredwork')) return 'featured';
     if (p.includes('/employment-history')) return 'employment';
+    if (p.includes('/about')) return 'about';
     return 'home';
   };
 
@@ -94,6 +96,7 @@ const App: React.FC = () => {
     let path = '/home';
     if (newView === 'featured') path = '/featuredwork';
     if (newView === 'employment') path = '/employment-history';
+    if (newView === 'about') path = '/about';
 
     // Always trigger loading state to provide visual feedback for navigation
     setIsLoading(true);
@@ -163,6 +166,8 @@ const App: React.FC = () => {
         return 'EMPLOYMENT HISTORY';
       case 'featured':
         return 'FEATURED WORK';
+      case 'about':
+        return 'ABOUT ME';
       default:
         return '';
     }
@@ -210,6 +215,7 @@ const App: React.FC = () => {
         {view === 'home' && <HomeView onNavigate={navigate} />}
         {view === 'employment' && <EmploymentView />}
         {view === 'featured' && <FeaturedWorkView />}
+        {view === 'about' && <AboutView />}
       </main>
 
       {/* Footer - Only show on Home view */}
