@@ -123,10 +123,10 @@ const AboutView: React.FC = () => {
 
         </div>
 
-      </div>
+        {/* Right spacer column matching existing grid geometry */}
+        <div className="hidden lg:block bg-[#F8F5F0]" />
 
-      {/* Right spacer column matching existing grid geometry */}
-      <div className="hidden lg:block bg-[#F8F5F0]" />
+      </div>
 
     </div>
   );
