@@ -215,7 +215,7 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
               {/* Description Text */}
               <div className="text-center max-w-[320px] sm:max-w-[500px] lg:max-w-[580px]">
-                <p className="text-[15px] lg:text-lg font-medium leading-[20px] lg:leading-[26px] text-[#041727] tracking-[-0.04em]">
+                <p className="text-[15px] lg:text-[16px] font-medium leading-[20px] lg:leading-[24px] text-[#041727] tracking-[-0.04em]">
                   Hi, I’m Bunmi, a multi-disciplinary designer with{" "}
                   <br className="hidden lg:block" />
                   a rich experience designing functional products{" "}
