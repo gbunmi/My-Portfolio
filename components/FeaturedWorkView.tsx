@@ -653,7 +653,7 @@ const FeaturedWorkView: React.FC = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed mb-4 md:mb-6 w-full text-justify tracking-[-0.04em]">
+                <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed mb-4 md:mb-6 w-full text-justify tracking-[-0.04em]">
                     {content.description}
                 </p>
 
@@ -710,7 +710,7 @@ const FeaturedWorkView: React.FC = () => {
                     <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold mb-4 tracking-[-0.04em]">
                         {section.title}
                     </span>
-                    <div className="text-sm md:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em]">
+                    <div className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em]">
                         {section.body.split('\n').map((line, i) => {
                         const imageMatch = line.match(/^\{\{IMAGE:(.*)\}\}$/);
                         if (imageMatch) {
@@ -744,7 +744,7 @@ const FeaturedWorkView: React.FC = () => {
                     <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold mb-4 tracking-[-0.04em]">
                         Overview
                     </span>
-                    <p className="text-sm md:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em]">
+                    <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em]">
                         {content.overview}
                     </p>
                     </div>

@@ -43,13 +43,13 @@ const AboutView: React.FC = () => {
                 the man
               </span>
               <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   I spend most of my days designing products, but the things that shape me happen outside design files. I'm curious about almost everything, the kind of person who can disappear down a rabbit hole about ancient civilizations, startup growth loops, or why some songs feel nostalgic on the first listen.
                 </p>
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   When I'm not working, you'll usually find me exploring digital painting, making music, building side projects I'll swear are "just experiments," or convincing myself that this latest idea definitely won't turn into another full product. It usually does.
                 </p>
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   At the core, I enjoy making things useful, beautiful, and a little more human than they were yesterday.
                 </p>
               </div>
@@ -69,10 +69,10 @@ const AboutView: React.FC = () => {
                 the designer
               </span>
               <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   I've spent years designing products across fintech, healthcare, AI, marketplaces, web3, logistics, and a few categories that didn't have a name when we started building them. What excites me isn't moving buttons around a screen. It's understanding how people think, where they get stuck, and how thoughtful design can quietly solve problems without demanding attention.
                 </p>
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   I like clean interfaces, clear systems, and products that feel obvious in hindsight. The best compliment for a design isn't "wow." It's "that was easy."
                 </p>
               </div>
@@ -86,10 +86,10 @@ const AboutView: React.FC = () => {
                 the builder
               </span>
               <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   Design is where most of my projects begin, but rarely where they end. Thanks to AI tools and a growing collection of coding skills, I've become the kind of person who designs something in the morning and has a working version by the evening.
                 </p>
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   I enjoy building web apps, websites, internal tools, and experimental products, often turning rough concepts into functioning experiences without waiting for a full development team. It's one of the most exciting shifts in technology today: the gap between having an idea and bringing it to life has never been smaller.
                 </p>
               </div>
@@ -109,10 +109,10 @@ const AboutView: React.FC = () => {
                 the artist
               </span>
               <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   Outside of product design, I spend time creating digital paintings and producing music. Sometimes it's experimenting with colors and compositions, other times it's layering sounds and endlessly tweaking tracks that were supposedly finished hours ago.
                 </p>
-                <p className="text-[16px] leading-[24px]">
+                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
                   I enjoy both because they give me space to create without constraints. No user stories, no conversion metrics, no roadmap. Just curiosity, experimentation, and the satisfaction of making something from nothing.
                 </p>
               </div>

@@ -20,7 +20,7 @@ const JobRole: React.FC<JobRoleProps> = ({ location, dates, description }) => (
         {dates}
       </span>
     </div>
-    <p className="text-sm md:text-base leading-relaxed font-medium text-[#041727] tracking-[-0.04em]">
+    <p className="text-sm lg:text-[14px] leading-relaxed font-medium text-[#041727] tracking-[-0.04em]">
       {description}
     </p>
   </div>
