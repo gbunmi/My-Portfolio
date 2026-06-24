@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSmoothScroll } from './useSmoothScroll';
 
 // Interface for a single role's details
 interface JobRoleProps {
@@ -88,8 +89,10 @@ const EmploymentView: React.FC = () => {
     setImgShine({ x: 50, y: 50, opacity: 0 });
   };
 
+  const scrollRef = useSmoothScroll<HTMLDivElement>();
+
   return (
-    <div className="h-full w-full bg-[#F8F5F0] overflow-y-auto scroll-smooth">
+    <div ref={scrollRef} className="h-full w-full bg-[#F8F5F0] overflow-y-auto scroll-smooth">
       {/* SVG Liquid Filter for Employment Image */}
       <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true" style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
         <defs>

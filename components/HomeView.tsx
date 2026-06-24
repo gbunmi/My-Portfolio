@@ -280,18 +280,18 @@ const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </div>
         <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-1 lg:row-start-2 bg-[#F8F5F0]">
           <GridItem 
-            imageSrc={ASSETS.employment}
-            label="job history" 
-            link="/employment-history"
-            onClick={(e) => { e?.preventDefault(); onNavigate('employment'); }}
-          />
-        </div>
-        <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-1 lg:row-start-3 bg-[#F8F5F0]">
-          <GridItem 
             imageSrc={ASSETS.art}
             label="about me" 
             link="/about"
             onClick={(e) => { e?.preventDefault(); onNavigate('about'); }}
+          />
+        </div>
+        <div className="aspect-square lg:aspect-auto lg:h-full w-full lg:w-auto lg:col-span-1 lg:col-start-1 lg:row-start-3 bg-[#F8F5F0]">
+          <GridItem 
+            imageSrc={ASSETS.employment}
+            label="job history" 
+            link="/employment-history"
+            onClick={(e) => { e?.preventDefault(); onNavigate('employment'); }}
           />
         </div>
 

@@ -46,9 +46,8 @@ const Loader: React.FC<LoaderProps> = ({ progress }) => {
         ))}
       </div>
 
-      {/* Styled to match about page section headers */}
       <div className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em] select-none">
-        loading...{Math.floor(progress)}%
+        loading [{Math.floor(progress)}%]
       </div>
     </motion.div>
   );

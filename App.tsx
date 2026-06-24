@@ -23,6 +23,8 @@ const App: React.FC = () => {
   const [view, setView] = useState<ViewState>(() => getViewFromPath(window.location.pathname));
   const [isLoading, setIsLoading] = useState(true);
   const [loadProgress, setLoadProgress] = useState(0);
+  const [activeProject, setActiveProject] = useState<string | null>(null);
+  const [isViewingCaseStudy, setIsViewingCaseStudy] = useState(false);
 
   useEffect(() => {
     // Initial site load sequence with stepped, organic progression
@@ -73,6 +75,7 @@ const App: React.FC = () => {
 
     const handlePopState = () => {
       setView(getViewFromPath(window.location.pathname));
+      setIsViewingCaseStudy(false);
     };
     window.addEventListener('popstate', handlePopState);
 
@@ -135,6 +138,7 @@ const App: React.FC = () => {
   };
 
   const navigate = async (newView: ViewState) => {
+    setIsViewingCaseStudy(false);
     let path = '/home';
     if (newView === 'featured') path = '/featuredwork';
     if (newView === 'employment') path = '/employment-history';
@@ -205,9 +209,9 @@ const App: React.FC = () => {
   const getPageTitle = (view: ViewState) => {
     switch (view) {
       case 'employment':
-        return 'EMPLOYMENT HISTORY';
+        return 'JOB HISTORY';
       case 'featured':
-        return 'FEATURED WORK';
+        return 'WORK';
       case 'about':
         return 'ABOUT ME';
       default:
@@ -241,9 +245,26 @@ const App: React.FC = () => {
           {view !== 'home' && (
             <>
               <span className="text-[#041727] shrink-0">//</span>
-              <span className="text-[#465460] whitespace-nowrap truncate">
-                {getPageTitle(view)}
-              </span>
+              {view === 'featured' && isViewingCaseStudy ? (
+                <button
+                  onClick={() => setIsViewingCaseStudy(false)}
+                  className="text-[#465460] hover:text-[#041727] transition-colors cursor-pointer whitespace-nowrap truncate text-left"
+                >
+                  {getPageTitle(view)}
+                </button>
+              ) : (
+                <span className="text-[#465460] whitespace-nowrap truncate">
+                  {getPageTitle(view)}
+                </span>
+              )}
+              {view === 'featured' && isViewingCaseStudy && activeProject && (
+                <>
+                  <span className="text-[#041727] shrink-0">//</span>
+                  <span className="text-[#465460] whitespace-nowrap truncate">
+                    {activeProject.toUpperCase()}
+                  </span>
+                </>
+              )}
             </>
           )}
         </div>
@@ -258,7 +279,13 @@ const App: React.FC = () => {
       <main className="flex-1 bg-[#F8F5F0] border-t-0 min-h-0 relative">
         {view === 'home' && <HomeView onNavigate={navigate} />}
         {view === 'employment' && <EmploymentView />}
-        {view === 'featured' && <FeaturedWorkView />}
+        {view === 'featured' && (
+          <FeaturedWorkView 
+            onProjectChange={setActiveProject}
+            viewingCaseStudy={isViewingCaseStudy}
+            onViewingCaseStudyChange={setIsViewingCaseStudy}
+          />
+        )}
         {view === 'about' && <AboutView />}
       </main>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSmoothScroll } from './useSmoothScroll';
 
 interface SectionImageProps {
   src: string;
@@ -24,8 +25,10 @@ const AboutView: React.FC = () => {
   const builderImage = "https://raw.githubusercontent.com/gbunmi/images/main/Monitor.png";
   const artistImage = "https://raw.githubusercontent.com/gbunmi/images/main/Flower%20(1).png";
 
+  const scrollRef = useSmoothScroll<HTMLDivElement>();
+
   return (
-    <div className="h-full w-full bg-[#F8F5F0] overflow-y-auto scroll-smooth">
+    <div ref={scrollRef} className="h-full w-full bg-[#F8F5F0] overflow-y-auto scroll-smooth">
       <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
         
         {/* Left spacer column matching existing grid geometry */}

@@ -1,21 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { useSmoothScroll } from './useSmoothScroll';
 
 export const PROJECTS = [
-  "Medik",
-  // "Talestream",
-  // "Euterpe",
-  // "MagicCap",
-  "Penuel Samuel",
-  "Chinwe Ekeke",
-  // "Medsaber",
-  // "The Connected Awards",
+  "Aurial",
   "Porta",
-  "Probe (Clinical Research AI)",
   "Melodeo",
   "Anystyle AI",
-  // "Heyfood",
-  "Chorezen",
-  "Tuyaupay"
+  "Medik",
+  "Penuel Samuel",
+  "Chinwe Ekeke",
+  "Probe (Clinical Research AI)",
+  "Chorezen"
 ];
 
 export interface ProjectSection {
@@ -27,15 +23,37 @@ export interface ProjectContent {
   description: string;
   categories: string[];
   images?: string[];
+  verticalImages?: string[];
+  carouselImage?: string;
   links?: { label: string; url: string }[];
   overview?: string; // Keep for simple text
   sections?: ProjectSection[]; // New structured content
 }
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
+  "Aurial": {
+    description: "Aurial is a modern collection of audio production tools. The project explores how complex audio engineering concepts can be made approachable through thoughtful interface design, intuitive visual feedback, and a modular plugin architecture.",
+    categories: ["Audio Tools", "Mobile App"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Aurial.png",
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%201.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%202.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%203.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%204.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%205.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%206.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%207.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%208.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%209.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%2010.jpg",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%2011.jpg"
+    ],
+    links: []
+  },
   "Anystyle AI": {
-    description: "AnyStyle AI is a photo restyling app that lets users transform their images instantly. Pick a style, apply it, and get a polished new version of your photo without prompts or complex settings. It’s fast, visual, and built for anyone who wants fresh, creative and artistic variations of their pictures in seconds..",
+    description: "AnyStyle AI is a photo restyling app that transforms images instantly. Users pick a style to get a polished new version of their photo without complex prompts, making artistic variations fast and accessible.",
     categories: ["Mobile App"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20New.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Anystyle%20Cover.png"
 ],
@@ -45,7 +63,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     overview: "Detailed overview coming soon."
   },
   "Euterpe": {
-    description: "Project description coming soon.",
+    description: "Euterpe is a next-generation web application designed to simplify financial workflows. It streamlines transactions and reporting with an intuitive interface and clear visualizations.",
     categories: ["Web App"],
     images: [],
     links: [
@@ -54,7 +72,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     overview: "Detailed overview coming soon."
   },
   "Talestream": {
-    description: "Project description coming soon.",
+    description: "Talestream is an AI-powered storytelling mobile application that transforms raw ideas into engaging audio narratives. It enables content creators and individuals to share stories seamlessly.",
     categories: ["Mobile App"],
     images: [],
     links: [
@@ -63,8 +81,9 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     overview: "Detailed overview coming soon."
   },
   "Probe (Clinical Research AI)": {
-    description: "Probe is an AI-powered assistant designed for clinical researchers to streamline the process of analyzing complex medical data, managing trials, and surfacing insights from vast datasets efficiently.",
+    description: "Probe is an AI-powered assistant designed for clinical researchers to analyze complex medical data and manage trials. It streamlines protocol analysis and matches participants to simplify trial workflows.",
     categories: ["Web App"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/AI%20Assistant%20(1).png"
     ],
@@ -141,8 +160,9 @@ AI-generated content is never auto-applied. Users must review, select, and confi
     ]
   },
   "Porta": {
-    description: "Porta is an AI-powered scene creation app that lets users place themselves or their ideas into existing scenes, generate moments instantly, and customize environments without writing complex prompts. Users can work from preset templates, reference scenes, or other creations, adjusting elements, style, and perspective in a single intuitive workspace.",
+    description: "Porta is an AI-powered scene generation app that allows users to place themselves into custom environments instantly. It offers intuitive templates and social remix tools for hassle-free creation.",
     categories: ["Mobile App"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Porta.jpg",
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png"
     ],
@@ -212,13 +232,14 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
   },
 
   "Melodeo": {
-    description: "Melodeo addresses the complexity of music creation by offering AI-powered modules like HookSong and Apology Jukebox, alongside abstract prompts for open-ended creativity. Users can generate music instantly, save it in a personal library, and listen back with a full-featured music player and lyrics display.",
+    description: "Melodeo is an AI-powered music creation platform featuring context-driven generation modules and a built-in player. It simplifies songwriting and provides synced lyrics for a cohesive experience.",
     categories: ["Mobile App"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%202%20(1).png",
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Cover.png"
     ],
     links: [
-      { label: "Visit Website ↗", url: "https://www.melodeo.app/" }
+       { label: "Visit Website ↗", url: "https://www.melodeo.app/" }
     ],
     sections: [
       {
@@ -285,8 +306,9 @@ Interactive prototypes tested module selection, abstract prompt input, music gen
   },
 
   "Medik": {
-    description: "Medik is a healthtech platform designed to make healthcare more accessible in Nigeria. Through a mobile app, users can book consultations, purchase medication, order medical tests, and access urgent or mental health services—all in one place. I led the product design from research through execution.",
+    description: "Medik is a comprehensive healthtech platform that makes healthcare more accessible in Nigeria. It allows users to schedule doctor consultations, order medications, and book lab tests in a single place.",
     categories: ["Mobile App"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20Cover.png",
     ],
@@ -350,8 +372,9 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   },
   
   "Penuel Samuel": {
-    description: "A personal portfolio for Penuel Samuel showcasing front-end development projects, interactive web components, and responsive design skills, highlighting practical coding expertise.",
+    description: "A personal portfolio showcasing front-end development projects, interactive web components, and responsive design systems. It highlights robust, clean coding practices and performance-driven implementations.",
     categories: ["Portfolio"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20New.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Hero%20(4).png",
       "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20-%20About.png",
@@ -365,8 +388,9 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   },
 
   "Chinwe Ekeke": {
-    description: "A virtual assistant portfolio built in Framer, showcasing skills, services, and client interactions to highlight professionalism and efficiency.",
+    description: "A highly polished virtual assistant portfolio highlighting a range of services, skill sets, and client testimonials. It highlights professionalism, organizational efficiency, and clean layouts.",
     categories: ["Portfolio"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20Ekeke.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20Hero.png",
       "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20About.png",
@@ -381,36 +405,37 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
     overview: ""
   },
   "Medsaber": {
-    description: "Project description coming soon.",
+    description: "Medsaber is a modern medical platform landing page that presents healthcare solutions with clarity. It emphasizes intuitive service exploration and patient-centric responsive web design.",
     categories: ["Landing page / Website"],
     images: [],
     links: [],
     overview: ""
   },
   "MagicCap": {
-    description: "Project description coming soon.",
+    description: "MagicCap is a creative software landing page focusing on intelligent screen capture and video annotation. It offers clean product presentation, feature breakdowns, and responsive interactive tours.",
     categories: ["Landing page / Website"],
     images: [],
     links: [],
     overview: ""
   },
   "The Connected Awards": {
-    description: "Project description coming soon.",
+    description: "The Connected Awards is a platform designed to celebrate outstanding tech achievements. It manages key nominations and public voting processes through a secure, structured interface.",
     categories: ["Landing page / Website"],
     images: [],
     links: [],
     overview: ""
   },
   "Heyfood": {
-    description: "A food delivery platform that lets users discover restaurants and order meals quickly from their favorite local vendors.",
+    description: "Heyfood is a fast-growing restaurant discovery and food delivery platform. It connects local vendors with hungry customers using real-time dispatching and localized search algorithms.",
     categories: ["Brand"],
     images: [],
     links: [],
     overview: "Detailed overview coming soon."
   },
   "Chorezen": {
-    description: "A cleaning service platform that connects users with professional cleaners for homes and offices, making scheduling and service access simple and reliable.",
+    description: "Chorezen is an on-demand cleaning service platform connecting users with professional office and home sanitization teams. It features visual branding, scheduling tools, and secure booking flows.",
     categories: ["Brand"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chorezen.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/2026.jpg",
       "https://raw.githubusercontent.com/gbunmi/images/main/Children's%20day.jpg",
@@ -421,11 +446,17 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
       "https://raw.githubusercontent.com/gbunmi/images/main/SM%20-%209%20(1).jpg",
       "https://raw.githubusercontent.com/gbunmi/images/main/SM%20-%209.jpg"
     ],
-    links: [],
+    verticalImages: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Chorezen%201.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Chorezen%203.png"
+    ],
+    links: [
+      { label: "Visit Website ↗", url: "https://chorezen.com.ng/" }
+    ],
     overview: "Detailed overview coming soon."
   },
   "Tuyaupay": {
-    description: "A global payments platform that enables users and businesses to send, receive, and manage cross-border transactions efficiently.",
+    description: "Tuyaupay is a global payments brand enabling cross-border currency transfers for businesses and individuals. It streamlines transactions through clean checkout flows and reliable architecture.",
     categories: ["Brand"],
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200001.jpg",
@@ -445,314 +476,500 @@ const DEFAULT_CONTENT: ProjectContent = {
   overview: "Detailed overview coming soon."
 };
 
-const CATEGORIES = [
-  "All",
-  "Mobile App",
-  "Web App",
-  "Landing page / Website",
-  "Portfolio",
-  "Brand"
-];
+interface FeaturedWorkViewProps {
+  onProjectChange?: (project: string) => void;
+  viewingCaseStudy?: boolean;
+  onViewingCaseStudyChange?: (val: boolean) => void;
+}
 
-const FeaturedWorkView: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const activeCategories = CATEGORIES.filter(cat => {
-    if (cat === 'All') return true;
-    return PROJECTS.some(project => PROJECT_DATA[project]?.categories.includes(cat));
-  });
-
-  const [selectedProject, setSelectedProject] = useState(PROJECTS[0]);
+const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({ 
+  onProjectChange, 
+  viewingCaseStudy: propViewingCaseStudy, 
+  onViewingCaseStudyChange 
+}) => {
+  const [selectedProject, setSelectedProject] = useState("Aurial");
+  const [localViewingCaseStudy, setLocalViewingCaseStudy] = useState(false);
+  const viewingCaseStudy = propViewingCaseStudy !== undefined ? propViewingCaseStudy : localViewingCaseStudy;
+  
+  const setViewingCaseStudy = (val: boolean) => {
+    setLocalViewingCaseStudy(val);
+    if (onViewingCaseStudyChange) {
+      onViewingCaseStudyChange(val);
+    }
+  };
   const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
   const [isLoading, setIsLoading] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const selectedProjectRef = useRef(selectedProject);
+  const caseStudyScrollRef = useSmoothScroll<HTMLDivElement>();
 
-  const filteredProjects = PROJECTS.filter(project => {
-    if (activeCategory === 'All') return true;
-    return PROJECT_DATA[project]?.categories.includes(activeCategory);
-  });
-
-  // Update selected project if active category changes and current project is hidden
-  useEffect(() => {
-    if (filteredProjects.length > 0 && !filteredProjects.includes(selectedProject)) {
-      setSelectedProject(filteredProjects[0]);
-    }
-  }, [activeCategory, filteredProjects, selectedProject]);
-
-  // Scroll to top and handle loading state when selectedProject changes
-  useEffect(() => {
-    setIsLoading(true);
-
-    if (contentRef.current) {
-        contentRef.current.scrollTop = 0;
-    }
-    // Ensure mobile browser also resets if layout allows
-    window.scrollTo(0, 0);
-
-    const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
-    
-    // Collect all images to preload
-    const imagesToLoad: string[] = [...(content.images || [])];
-    
-    // Extract images from sections
-    content.sections?.forEach(section => {
-        const matches = section.body.match(/\{\{IMAGE:(.*?)\}\}/g);
-        if (matches) {
-            matches.forEach(match => {
-                const url = match.replace('{{IMAGE:', '').replace('}}', '');
-                imagesToLoad.push(url);
-            });
-        }
-    });
-
-    if (imagesToLoad.length === 0) {
-        // Minimal delay for smooth transition even without images
-        const timer = setTimeout(() => setIsLoading(false), 300);
-        return () => clearTimeout(timer);
-    }
-
-    let loadedCount = 0;
-    let isMounted = true;
-
-    const checkAllLoaded = () => {
-        if (!isMounted) return;
-        loadedCount++;
-        if (loadedCount >= imagesToLoad.length) {
-            setIsLoading(false);
-        }
-    };
-
-    imagesToLoad.forEach(src => {
-        const img = new Image();
-        img.src = src;
-        img.onload = checkAllLoaded;
-        img.onerror = checkAllLoaded;
-    });
-
-    // Fallback safety timeout (2s)
-    const safetyTimer = setTimeout(() => {
-        if (isMounted) setIsLoading(false);
-    }, 2000);
-
-    return () => {
-        isMounted = false;
-        clearTimeout(safetyTimer);
-    };
-  }, [selectedProject]);
+  const oneFullSetHeightRef = useRef<number>(0);
+  const item0OffsetTopRef = useRef<number>(0);
+  const itemSlotHeightRef = useRef<number>(0);
 
   const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
   const isBrandProject = content.categories.includes('Brand');
 
-  const handleProjectClick = (project: string) => {
-    if (project === selectedProject) return;
-    setSelectedProject(project);
+  // Sync ref with selectedProject and notify parent
+  useEffect(() => {
+    selectedProjectRef.current = selectedProject;
+    if (onProjectChange) {
+      onProjectChange(selectedProject);
+    }
+  }, [selectedProject, onProjectChange]);
+
+  // Smooth local loaders
+  useEffect(() => {
+    setIsLoading(true);
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [selectedProject]);
+
+  // Track scroll position of preview project items, calculate loop elegantly
+  useEffect(() => {
+    if (viewingCaseStudy) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const recalculateBounds = () => {
+      const children = container.children;
+      if (children.length < PROJECTS.length * 3) return;
+
+      const item0 = children[0] as HTMLElement;
+      const itemN = children[PROJECTS.length] as HTMLElement;
+      
+      const oneFullSetHeight = itemN.offsetTop - item0.offsetTop;
+      oneFullSetHeightRef.current = oneFullSetHeight;
+      item0OffsetTopRef.current = item0.offsetTop;
+      itemSlotHeightRef.current = oneFullSetHeight / PROJECTS.length;
+    };
+
+    const updateActiveProject = () => {
+      const oneFullSet = oneFullSetHeightRef.current;
+      const slotHeight = itemSlotHeightRef.current;
+      const item0Offset = item0OffsetTopRef.current;
+
+      if (oneFullSet <= 0 || slotHeight <= 0) return;
+
+      const currentScroll = container.scrollTop;
+      const containerHeight = container.clientHeight;
+      const centerScroll = currentScroll + containerHeight / 2;
+
+      const relativeScroll = centerScroll - item0Offset;
+      const approxIndex = Math.floor(relativeScroll / slotHeight);
+
+      if (approxIndex >= 0) {
+        const projectIndex = approxIndex % PROJECTS.length;
+        const closestProject = PROJECTS[projectIndex];
+        
+        if (closestProject && closestProject !== selectedProjectRef.current) {
+          setSelectedProject(closestProject);
+        }
+      }
+    };
+
+    let isShiftingScroll = false;
+
+    const handleScrollLoop = () => {
+      if (isShiftingScroll) return;
+
+      const oneFullSetHeight = oneFullSetHeightRef.current;
+      if (oneFullSetHeight <= 0) return;
+
+      const currentScroll = container.scrollTop;
+
+      // Symmetrically keep the scroll position bounded inside Set 2
+      if (currentScroll < oneFullSetHeight) {
+        isShiftingScroll = true;
+        container.scrollTop = currentScroll + oneFullSetHeight;
+        isShiftingScroll = false;
+      } else if (currentScroll >= 2 * oneFullSetHeight) {
+        isShiftingScroll = true;
+        container.scrollTop = currentScroll - oneFullSetHeight;
+        isShiftingScroll = false;
+      }
+
+      updateActiveProject();
+    };
+
+    container.addEventListener('scroll', handleScrollLoop, { passive: true });
+    window.addEventListener('resize', () => {
+      recalculateBounds();
+      updateActiveProject();
+    }, { passive: true });
+
+    // Initial positioning: scroll to the middle copy of the selected project
+    const initTimer = setTimeout(() => {
+      recalculateBounds();
+      const N = PROJECTS.length;
+      const targetIndex = N + PROJECTS.indexOf(selectedProjectRef.current);
+      const el = container.querySelector(`[data-index="${targetIndex}"]`) as HTMLElement;
+      
+      if (el) {
+        const containerHeight = container.clientHeight;
+        const elementTop = el.offsetTop;
+        const elementHeight = el.clientHeight;
+        const targetScrollTop = elementTop - (containerHeight / 2) + (elementHeight / 2);
+        container.scrollTop = targetScrollTop;
+      }
+      updateActiveProject();
+    }, 100);
+
+    return () => {
+      container.removeEventListener('scroll', handleScrollLoop);
+      window.removeEventListener('resize', () => {});
+      clearTimeout(initTimer);
+    };
+  }, [viewingCaseStudy]);
+
+  const handleProjectClick = (project: string, indexInTriple: number) => {
+    if (project === selectedProject) {
+      setViewingCaseStudy(true);
+    } else {
+      setSelectedProject(project);
+      setViewingCaseStudy(false); // default to preview mode on new select
+      
+      // Scroll container to the corresponding selected project inside the container instantly without laggy animations
+      setTimeout(() => {
+        const container = containerRef.current;
+        const el = container?.querySelector(`[data-index="${indexInTriple}"]`) as HTMLElement;
+        if (container && el) {
+          const containerHeight = container.clientHeight;
+          const elementTop = el.offsetTop;
+          const elementHeight = el.clientHeight;
+          
+          const targetScrollTop = elementTop - (containerHeight / 2) + (elementHeight / 2);
+          container.scrollTop = targetScrollTop;
+        }
+      }, 50);
+    }
     setMobileView('detail');
+  };
+
+  // Render full Case study layout
+  const renderCaseStudyContent = () => {
+    return (
+      <div className="w-full">
+        {/* Header with Case Study Title & Action Links */}
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6 w-full pb-6">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em]">
+              {selectedProject}
+            </h1>
+          </div>
+
+          <div className="flex flex-wrap gap-2 shrink-0">
+            {content.links?.map((link, idx) => (
+              <a 
+                key={idx}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#041727] text-white px-3 py-1.5 text-xs font-bold hover:bg-opacity-80 transition-colors tracking-[-0.04em]"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Intro Description */}
+        <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed mb-8 w-full text-left tracking-[-0.04em]">
+          {content.description}
+        </p>
+
+        {/* Project Images */}
+        <div className="w-full mb-12">
+          {isBrandProject ? (
+            <div className="columns-2 md:columns-3 gap-4">
+              {content.images && content.images.length > 0 ? (
+                content.images.map((imgSrc, index) => (
+                  <div key={index} className="break-inside-avoid mb-4 border border-[#DEDBD6] bg-[#ecece8]">
+                    <img 
+                      src={imgSrc} 
+                      alt={`${selectedProject} Brand ${index + 1}`} 
+                      className="w-full h-auto block"
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="aspect-square md:aspect-video bg-[#ecece8] flex items-center justify-center text-[#465460] font-sans text-sm w-full border border-[#DEDBD6]">
+                  No images available
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              {content.images && content.images.length > 0 ? (
+                content.images.map((imgSrc, index) => (
+                  <img 
+                    key={index}
+                    src={imgSrc} 
+                    alt={`${selectedProject} preview ${index + 1}`} 
+                    className="w-full h-auto object-cover border border-[#DEDBD6] mb-8 last:mb-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                ))
+              ) : null}
+              {(!content.images || content.images.length === 0) && !content.sections && (
+                <div className="w-full aspect-video bg-[#ecece8] border border-[#DEDBD6] flex items-center justify-center text-[#465460] font-sans text-sm">
+                  No images available
+                </div>
+              )}
+            </>
+          )}
+
+          {content.verticalImages && content.verticalImages.length > 0 && (
+            <div className="mt-12 w-full">
+              <hr className="border-[#DEDBD6] mb-12" />
+              <div className="flex flex-col gap-12">
+                {content.verticalImages.map((imgSrc, index) => (
+                  <img 
+                    key={index}
+                    src={imgSrc} 
+                    alt={`${selectedProject} vertical preview ${index + 1}`} 
+                    className="w-full h-auto object-cover border border-[#DEDBD6]"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Structured Sections */}
+        {!isBrandProject && content.sections && content.sections.map((section, idx) => (
+          <div key={idx} className="mb-12 w-full">
+            <span className="inline-block bg-[#041727] text-white px-2 py-0.5 text-xs font-bold mb-4 tracking-[-0.04em]">
+              {section.title}
+            </span>
+            <div className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed w-full text-left tracking-[-0.04em] flex flex-col gap-4">
+              {section.body.split('\n').map((line, i) => {
+                const imageMatch = line.match(/^\{\{IMAGE:(.*)\}\}$/);
+                if (imageMatch) {
+                  return (
+                    <img 
+                      key={i}
+                      src={imageMatch[1]} 
+                      alt={`Detail ${i}`}
+                      className="w-full h-auto object-cover my-6 border border-[#DEDBD6]"
+                      referrerPolicy="no-referrer"
+                    />
+                  );
+                }
+                const isNumberedHeader = /^\d+\.\s/.test(line);
+                if (isNumberedHeader) {
+                  return (
+                    <div key={i} className="text-[#041727] font-bold mt-4 mb-1 text-left tracking-[-0.04em]">
+                      {line}
+                    </div>
+                  );
+                }
+                if (line.trim() === '') return <br key={i} />;
+                return <div key={i}>{line}</div>;
+              })}
+            </div>
+          </div>
+        ))}
+
+        {/* Fallback Overview */}
+        {!isBrandProject && !content.sections && content.overview && (
+          <div className="mb-12 w-full">
+            <span className="inline-block bg-[#041727] text-white px-2 py-0.5 text-xs font-bold mb-4 tracking-[-0.04em]">
+              Overview
+            </span>
+            <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed w-full text-left tracking-[-0.04em]">
+              {content.overview}
+            </p>
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
     <div className="h-full w-full bg-[#F8F5F0] flex flex-col lg:flex-row overflow-hidden">
       
-      {/* Left Sidebar - Project List */}
+      {/* 1. LEFT COLUMN: Projects list & Retro computer */}
       <div 
         className={`
-          w-full lg:w-[300px] shrink-0 h-full overflow-y-auto scroll-smooth border-b lg:border-b-0 lg:border-r border-[#DEDBD6] bg-[#F8F5F0] [&::-webkit-scrollbar]:hidden
-          ${mobileView === 'detail' ? 'hidden lg:block' : 'block'}
+          w-full lg:w-[280px] lg:border-r border-[#DEDBD6] bg-[#F8F5F0] flex flex-col shrink-0 h-full overflow-hidden
+          ${viewingCaseStudy ? 'hidden' : (mobileView === 'detail' ? 'hidden lg:flex' : 'flex')}
         `}
-        style={{ scrollbarWidth: 'none' }}
       >
-        {/* Category Filter */}
-        <div className="p-4 md:p-6 border-b border-[#DEDBD6] flex flex-wrap gap-2 bg-[#F8F5F0]">
-          {activeCategories.map((cat) => {
-            const isActive = cat === activeCategory;
+        {/* Retro Monitor Image Container */}
+        <div className="py-8 justify-center flex bg-[#F8F5F0]">
+          <img 
+            src="https://raw.githubusercontent.com/gbunmi/images/main/Monitor.png" 
+            alt="Desktop Monitor" 
+            className="w-[180px] h-[180px] object-contain opacity-95 select-none"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+
+        {/* Projects list */}
+        <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-6 flex flex-col gap-[2px] select-none">
+          {PROJECTS.map((project, idx) => {
+            const isSelected = selectedProject === project;
+            const targetIndex = PROJECTS.length + idx;
             return (
               <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
+                key={project}
+                onClick={() => handleProjectClick(project, targetIndex)}
                 className={`
-                  px-3 py-1.5 border text-[10px] md:text-[11px] font-bold transition-all tracking-[-0.04em]
-                  ${isActive 
-                    ? 'bg-[#041727] text-white border-[#041727]' 
-                    : 'bg-transparent border-[#DEDBD6] text-[#465460] hover:text-[#041727] hover:bg-[#ecece8] hover:border-transparent'}
+                  group w-full text-left px-8 py-0
+                  text-sm tracking-[-0.04em] tracking-tight transition-all duration-200
+                  ${isSelected 
+                    ? 'font-bold text-[#041727]' 
+                    : 'font-normal text-[#465460] hover:text-[#041727]'}
                 `}
               >
-                {cat}
+                <span className="inline-block transform transition-transform duration-200 group-hover:translate-x-1">
+                  {project}
+                </span>
               </button>
             );
           })}
         </div>
-
-        {filteredProjects.map((project) => {
-          const isSelected = selectedProject === project;
-          return (
-            <button
-              key={project}
-              onClick={() => handleProjectClick(project)}
-              className={`
-                group
-                w-full text-left px-6 py-6 lg:px-8 lg:py-6 border-b border-[#DEDBD6]
-                font-bold text-sm md:text-base transition-colors
-                ${isSelected 
-                  ? 'bg-[#041727] text-white' 
-                  : 'bg-[#F8F5F0] text-[#041727] hover:bg-[#ecece8]'}
-              `}
-            >
-              <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-2 tracking-[-0.04em]">
-                {project}
-              </span>
-            </button>
-          );
-        })}
-        {/* Fill remaining height on desktop to avoid empty space looking weird */}
-        <div className="hidden lg:block h-full bg-[#F8F5F0]" />
       </div>
 
-      {/* Right Content - Project Details */}
+      {/* 2. MAIN WORKSPACE / SPLIT AREA (Middle & Right Columns on Desktop) */}
       <div 
         ref={contentRef}
         className={`
-          flex-1 h-full overflow-y-auto scroll-smooth bg-[#F8F5F0] relative
-          ${mobileView === 'list' ? 'hidden lg:block' : 'block'}
+          flex-1 h-full overflow-y-auto bg-[#F8F5F0] flex flex-col relative
+          ${(mobileView === 'list' && !viewingCaseStudy) ? 'hidden lg:flex' : 'flex'}
         `}
       >
         
-        {/* Content Container - Centered and Full Width with reduced padding */}
-        <div className="px-6 py-8 lg:px-20 xl:px-32 w-full mx-auto min-h-full">
-          
-          {/* Mobile Back Button */}
+        {/* Mobile Navigation Bar */}
+        <div className="lg:hidden flex items-center px-4 py-4 border-b border-[#DEDBD6] bg-[#F8F5F0] shrink-0">
           <button 
-            onClick={() => setMobileView('list')}
-            className="lg:hidden mb-8 flex items-center gap-2 text-sm font-bold text-[#041727] hover:opacity-70 tracking-[-0.04em]"
+            onClick={() => {
+              if (viewingCaseStudy) {
+                setViewingCaseStudy(false);
+              } else {
+                setMobileView('list');
+              }
+            }}
+            className="text-xs font-bold tracking-[-0.04em] text-[#041727] hover:opacity-75 flex items-center gap-1 pb-0.5"
           >
-            ← Back to Projects
+            ← {viewingCaseStudy ? 'Back to overview' : 'Back to workspace'}
           </button>
-
-          {isLoading ? (
-             <div className="flex items-center justify-center w-full h-[calc(100vh-10rem)]">
-                <div className="w-8 h-8 border-4 border-[#DEDBD6] border-t-[#041727] rounded-full animate-spin"></div>
-             </div>
-          ) : (
-            <div>
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-4 md:mb-1 w-full">
-                    <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em]">
-                    {selectedProject}
-                    </h1>
-
-                    <div className="flex flex-wrap gap-3 shrink-0">
-                    {content.links?.map((link, idx) => (
-                        <a 
-                        key={idx}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-[#041727] text-white px-3 py-1 text-xs md:text-sm font-bold hover:opacity-80 transition-opacity tracking-[-0.04em]"
-                        >
-                        {link.label}
-                        </a>
-                    ))}
-                    </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed mb-4 md:mb-6 w-full text-justify tracking-[-0.04em]">
-                    {content.description}
-                </p>
-
-                {/* Images Container */}
-                <div className="w-full mb-12">
-                    {isBrandProject ? (
-                        <div className="columns-2 md:columns-3 gap-4">
-                            {content.images && content.images.length > 0 ? (
-                                content.images.map((imgSrc, index) => (
-                                    <div key={index} className="break-inside-avoid mb-4 border border-[#DEDBD6]">
-                                        <img 
-                                            src={imgSrc} 
-                                            alt={`${selectedProject} Brand ${index + 1}`} 
-                                            className="w-full h-auto block"
-                                            loading="eager"
-                                        />
-                                    </div>
-                                ))
-                            ) : (
-                                <div className="aspect-square md:aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-sans text-sm w-full">
-                                    No brand images available
-                                </div>
-                            )}
-                        </div>
-                    ) : (
-                        <>
-                            {content.images && content.images.length > 0 ? (
-                                content.images.map((imgSrc, index) => (
-                                <img 
-                                    key={index}
-                                    src={imgSrc} 
-                                    alt={`${selectedProject} preview ${index + 1}`} 
-                                    className="w-full h-auto object-cover border border-[#DEDBD6] mb-12 last:mb-0"
-                                    loading="eager"
-                                    // @ts-ignore
-                                    fetchPriority="high"
-                                />
-                                ))
-                            ) : (
-                                null 
-                            )}
-                            {(!content.images || content.images.length === 0) && !content.sections && (
-                                <div className="w-full aspect-video bg-[#ecece8] flex items-center justify-center text-gray-400 font-sans text-sm">
-                                    No images available
-                                </div>
-                            )}
-                        </>
-                    )}
-                </div>
-
-                {/* Structured Sections - Hidden for Brand */}
-                {!isBrandProject && content.sections && content.sections.map((section, idx) => (
-                    <div key={idx} className="mb-12 w-full">
-                    <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold mb-4 tracking-[-0.04em]">
-                        {section.title}
-                    </span>
-                    <div className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em]">
-                        {section.body.split('\n').map((line, i) => {
-                        const imageMatch = line.match(/^\{\{IMAGE:(.*)\}\}$/);
-                        if (imageMatch) {
-                            return (
-                                <img 
-                                    key={i}
-                                    src={imageMatch[1]} 
-                                    alt={`Detail ${i}`}
-                                    className="w-full h-auto object-cover my-8 border border-[#DEDBD6]"
-                                />
-                            );
-                        }
-                        const isNumberedHeader = /^\d+\.\s/.test(line);
-                        if (isNumberedHeader) {
-                            return (
-                            <div key={i} className="text-[#465460] font-bold mt-6 mb-2 text-left tracking-[-0.04em]">
-                                {line}
-                            </div>
-                            );
-                        }
-                        if (line.trim() === '') return <br key={i} />;
-                        return <div key={i}>{line}</div>;
-                        })}
-                    </div>
-                    </div>
-                ))}
-
-                {/* Fallback Overview - Hidden for Brand */}
-                {!isBrandProject && !content.sections && content.overview && (
-                    <div className="mb-12 w-full">
-                    <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold mb-4 tracking-[-0.04em]">
-                        Overview
-                    </span>
-                    <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em]">
-                        {content.overview}
-                    </p>
-                    </div>
-                )}
-            </div>
-          )}
-
         </div>
+
+        {/* If Case Study is Opened, render full wide detailed layout */}
+        {viewingCaseStudy ? (
+          <div ref={caseStudyScrollRef} className="flex-1 w-full overflow-y-auto bg-[#F8F5F0] scroll-smooth">
+            <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
+              
+              {/* Left spacer column matching existing grid geometry */}
+              <div className="hidden lg:block bg-[#F8F5F0]" />
+
+              {/* Center column of the grid: hosts all content */}
+              <div className="bg-[#F8F5F0] min-h-full px-4 lg:px-10 py-12 flex flex-col">
+                {isLoading ? (
+                  <div className="flex items-center justify-center h-64">
+                    <div className="w-8 h-8 border-4 border-[#DEDBD6] border-t-[#041727] rounded-full animate-spin"></div>
+                  </div>
+                ) : (
+                  renderCaseStudyContent()
+                )}
+              </div>
+
+              {/* Right spacer column matching existing grid geometry */}
+              <div className="hidden lg:block bg-[#F8F5F0]" />
+
+            </div>
+          </div>
+        ) : (
+          /* WORK PREVIEW MODE (Split layout: scrolling images, non-scrolling description) */
+          <div className="flex-1 flex flex-col lg:flex-row lg:gap-0 overflow-hidden h-full">
+
+            {/* A. LEFT SPLIT VIEW: Vertical Gallery list (scrolls) */}
+            <div 
+              ref={containerRef}
+              className="w-full lg:w-[320px] xl:w-[360px] lg:border-r border-[#DEDBD6] shrink-0 lg:h-full lg:overflow-y-auto lg:snap-y lg:snap-mandatory py-12 lg:py-16 [&::-webkit-scrollbar]:hidden flex flex-col gap-[8px] items-center justify-start select-none bg-[#F8F5F0] overflow-x-hidden"
+            >
+              {(() => {
+                const TRIPLED_PROJECTS: { name: string; tripleIndex: number }[] = [];
+                for (let k = 0; k < 3; k++) {
+                  PROJECTS.forEach((p, idx) => {
+                    TRIPLED_PROJECTS.push({ name: p, tripleIndex: k * PROJECTS.length + idx });
+                  });
+                }
+
+                return TRIPLED_PROJECTS.map(({ name: project, tripleIndex }) => {
+                  const isSelected = selectedProject === project;
+                  const coverImg = PROJECT_DATA[project]?.carouselImage;
+
+                  return (
+                     <div 
+                       key={`${project}-${tripleIndex}`} 
+                       data-project={project}
+                       data-index={tripleIndex}
+                       onClick={() => handleProjectClick(project, tripleIndex)}
+                       className={`w-[180px] md:w-[220px] lg:w-[260px] xl:w-[280px] aspect-square relative border cursor-pointer group overflow-hidden shrink-0 select-none outline-none focus:outline-none active:outline-none lg:snap-center
+                        ${isSelected 
+                          ? 'border-[#DEDBD6] bg-[#ecece8] opacity-100 z-10 scale-100 shadow-sm' 
+                          : 'border-[#DEDBD6] bg-[#ecece8] opacity-45 hover:opacity-90 hover:border-[#465460] z-0 scale-95'}`}
+                    >
+                      {coverImg ? (
+                        <img 
+                          src={coverImg} 
+                          alt={project}
+                          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${isSelected ? 'grayscale-0' : 'grayscale group-hover:grayscale-0'}`}
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[#ecece8] flex flex-col items-center justify-center p-4 text-center">
+                          <span className="text-[10px] font-bold text-[#465460] uppercase tracking-wider mb-2 opacity-50">
+                            preview incoming
+                          </span>
+                          <span className="text-xs md:text-sm font-bold text-[#041727] uppercase tracking-tight line-clamp-2 px-2">
+                            {project}
+                          </span>
+                        </div>
+                      )}
+                      
+                      {/* Subtle hover overlay zoom transition overlay without any text buttons */}
+                      <div className="absolute inset-0 bg-[#041727] bg-opacity-[0.01] group-hover:bg-opacity-[0.03] transition-opacity duration-300" />
+                    </div>
+                  );
+                });
+              })()}
+            </div>
+
+            {/* B. RIGHT SPLIT VIEW: Title & Description block (static/non-scrolling, changes respectively on update) */}
+            <div className="w-full lg:flex-1 p-8 lg:p-16 xl:p-20 h-auto lg:h-full overflow-hidden flex flex-col justify-center bg-[#F8F5F0]">
+              <div className="max-w-md w-full flex flex-col justify-start">
+                {/* Title Box matching custom design label exactly */}
+                <div className="mb-4">
+                  <span className="inline-block bg-[#041727] text-[#F8F5F0] px-1.5 py-0.5 text-sm font-bold tracking-[-0.04em] select-none">
+                    {selectedProject}
+                  </span>
+                </div>
+                {/* Concise Description */}
+                <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-[18px] text-left tracking-[-0.04em]">
+                  {PROJECT_DATA[selectedProject]?.description || "Project description coming soon."}
+                </p>
+              </div>
+            </div>
+
+          </div>
+        )}
+
       </div>
     </div>
   );
