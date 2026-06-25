@@ -871,7 +871,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
 
         {/* If Case Study is Opened, render full wide detailed layout */}
         {viewingCaseStudy ? (
-          <div ref={caseStudyScrollRef} className="flex-1 w-full overflow-y-auto bg-[#F8F5F0] scroll-smooth">
+          <div ref={caseStudyScrollRef} className="flex-1 w-full overflow-y-auto bg-[#F8F5F0]">
             <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
               
               {/* Left spacer column matching existing grid geometry */}

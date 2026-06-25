@@ -28,7 +28,7 @@ const AboutView: React.FC = () => {
   const scrollRef = useSmoothScroll<HTMLDivElement>();
 
   return (
-    <div ref={scrollRef} className="h-full w-full bg-[#F8F5F0] overflow-y-auto scroll-smooth">
+    <div ref={scrollRef} className="h-full w-full bg-[#F8F5F0] overflow-y-auto">
       <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
         
         {/* Left spacer column matching existing grid geometry */}

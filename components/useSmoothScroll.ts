@@ -20,6 +20,17 @@ export function useSmoothScroll<T extends HTMLElement = HTMLDivElement>() {
       // Check if scroll is vertical. If deltaX is large, it's a horizontal scroll
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
 
+      // Trackpad detection: trackpads send very frequent events with fractional deltas.
+      // Traditional mouse wheels usually send integer values (like 100, 120, etc.) or larger distinct ticks.
+      // If we detect a trackpad, we let the browser handle it natively to keep native acceleration, physics, and gestures.
+      const isTrackpad = e.deltaY % 1 !== 0 || Math.abs(e.deltaY) < 15;
+      if (isTrackpad) {
+        // Synchronize our state so that if the user switches to a mouse wheel, it starts from the correct position
+        targetScrollTop = container.scrollTop;
+        currentScrollTop = container.scrollTop;
+        return;
+      }
+
       e.preventDefault();
 
       // Gentle travel scaling factor
