@@ -286,7 +286,7 @@ const App: React.FC = () => {
             onViewingCaseStudyChange={setIsViewingCaseStudy}
           />
         )}
-        {view === 'about' && <AboutView />}
+        {view === 'about' && <AboutView onNavigate={navigate} />}
       </main>
 
       {/* Footer - Only show on Home view */}

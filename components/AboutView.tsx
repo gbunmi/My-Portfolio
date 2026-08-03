@@ -19,7 +19,11 @@ const SectionImage: React.FC<SectionImageProps> = ({ src, alt }) => {
   );
 };
 
-const AboutView: React.FC = () => {
+interface AboutViewProps {
+  onNavigate?: (view: 'home' | 'employment' | 'featured' | 'about') => void;
+}
+
+const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
   const manImage = "https://raw.githubusercontent.com/gbunmi/images/main/Compass.png";
   const designerImage = "https://raw.githubusercontent.com/gbunmi/images/main/Cube%20(1).png";
   const builderImage = "https://raw.githubusercontent.com/gbunmi/images/main/Monitor.png";
@@ -27,15 +31,34 @@ const AboutView: React.FC = () => {
 
   const scrollRef = useSmoothScroll<HTMLDivElement>();
 
-  return (
-    <div ref={scrollRef} className="h-full w-full bg-[#F8F5F0] overflow-y-auto">
-      <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
-        
-        {/* Left spacer column matching existing grid geometry */}
-        <div className="hidden lg:block bg-[#F8F5F0]" />
+  const handleNav = (targetView: 'home' | 'employment' | 'featured' | 'about', e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(targetView);
+    } else {
+      let path = '/home';
+      if (targetView === 'featured') path = '/featuredwork';
+      if (targetView === 'employment') path = '/employment-history';
+      if (targetView === 'about') path = '/about';
+      try {
+        window.history.pushState({}, '', path);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      } catch (err) {
+        window.location.href = path;
+      }
+    }
+  };
 
-        {/* Center column of the grid: hosts all content */}
-        <div className="bg-[#F8F5F0] min-h-full px-4 lg:px-10 py-12 flex flex-col items-center">
+  return (
+    <div className="relative h-full w-full">
+      <div ref={scrollRef} className="h-full w-full bg-[#F8F5F0] overflow-y-auto">
+        <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
+          
+          {/* Left spacer column matching existing grid geometry */}
+          <div className="hidden lg:block bg-[#F8F5F0]" />
+
+          {/* Center column of the grid: hosts all content */}
+          <div className="bg-[#F8F5F0] min-h-full px-4 lg:px-10 pt-12 pb-36 flex flex-col items-center">
           
           <div className="w-full flex flex-col gap-12 lg:gap-14">
           
@@ -129,6 +152,67 @@ const AboutView: React.FC = () => {
         {/* Right spacer column matching existing grid geometry */}
         <div className="hidden lg:block bg-[#F8F5F0]" />
 
+      </div>
+
+    </div>
+
+      {/* Floating Bottom Navigation Bar (Fixed at the bottom of the viewport, styled in web's UI color) */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#F8F5F0] border border-[#DEDBD6] rounded-[12px] p-3 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-1.5 select-none whitespace-nowrap">
+        <a 
+          href="/featuredwork" 
+          onClick={(e) => handleNav('featured', e)}
+          className="flex items-center gap-1 hover:opacity-75 transition-opacity text-[#041727] font-mono font-medium text-[11px] sm:text-[11px] md:text-xs tracking-tight"
+        >
+          <img 
+            src="https://i.ibb.co/whCkWQLR/34da72d8-4bcd-41b5-b1fa-4cc8a3a682a5-1.png" 
+            alt="Work" 
+            className="w-4 h-4 object-contain select-none pointer-events-none" 
+            referrerPolicy="no-referrer"
+          />
+          <span>work</span>
+        </a>
+        <span className="w-px h-2.5 bg-[#041727]/20 select-none self-center" />
+        <a 
+          href="/employment-history" 
+          onClick={(e) => handleNav('employment', e)}
+          className="flex items-center gap-1 hover:opacity-75 transition-opacity text-[#041727] font-mono font-medium text-[11px] sm:text-[11px] md:text-xs tracking-tight"
+        >
+          <img 
+            src="https://i.ibb.co/5XmF30xW/Chat-GPT-Image-Jun-14-2025-09-39-45-PM-2.png" 
+            alt="Job History" 
+            className="w-4 h-4 object-contain select-none pointer-events-none" 
+            referrerPolicy="no-referrer"
+          />
+          <span>job history</span>
+        </a>
+        <span className="w-px h-2.5 bg-[#041727]/20 select-none self-center" />
+        <a 
+          href="https://docs.google.com/document/d/184oLOD6dQO0yy9_3L5E6Ohgm5yzAmvTjfak6sxNiMok/edit?usp=sharing" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 hover:opacity-75 transition-opacity text-[#041727] font-mono font-medium text-[11px] sm:text-[11px] md:text-xs tracking-tight"
+        >
+          <img 
+            src="https://i.ibb.co/Z1XXJsD0/0673400d-8c0f-4cb8-8eb7-78cdb94d73b5-1.png" 
+            alt="Resume" 
+            className="w-4 h-4 object-contain select-none pointer-events-none" 
+            referrerPolicy="no-referrer"
+          />
+          <span>resume</span>
+        </a>
+        <span className="w-px h-2.5 bg-[#041727]/20 select-none self-center" />
+        <a 
+          href="mailto:g.bunmi1@gmail.com" 
+          className="flex items-center gap-1 hover:opacity-75 transition-opacity text-[#041727] font-mono font-medium text-[11px] sm:text-[11px] md:text-xs tracking-tight"
+        >
+          <img 
+            src="https://i.ibb.co/Wp7Q3Bn7/Chat-GPT-Image-Jun-14-2025-09-43-52-PM-2.png" 
+            alt="Contact" 
+            className="w-4 h-4 object-contain select-none pointer-events-none" 
+            referrerPolicy="no-referrer"
+          />
+          <span>contact</span>
+        </a>
       </div>
 
     </div>

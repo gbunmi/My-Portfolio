@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useSmoothScroll } from './useSmoothScroll';
 
 export const PROJECTS = [
+  "annie",
   "Aurial",
   "Porta",
   "Melodeo",
@@ -22,6 +23,7 @@ export interface ProjectSection {
 export interface ProjectContent {
   description: string;
   categories: string[];
+  tags?: string[];
   images?: string[];
   verticalImages?: string[];
   carouselImage?: string;
@@ -31,9 +33,20 @@ export interface ProjectContent {
 }
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
+  "annie": {
+    description: "annie is an experimental music playground that reimagines how ideas become songs. Instead of recreating the traditional DAW, it explores a more playful, visual, and approachable way to make music in the browser.",
+    categories: ["Web App", "Music Playground"],
+    tags: ["Web audio", "Music playground", "Interface design"],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/annie%20cover.jpg",
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/annie%20cover.jpg"
+    ],
+    links: []
+  },
   "Aurial": {
     description: "Aurial is a modern collection of audio production tools. The project explores how complex audio engineering concepts can be made approachable through thoughtful interface design, intuitive visual feedback, and a modular plugin architecture.",
     categories: ["Audio Tools", "Mobile App"],
+    tags: ["VST design", "UI design"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Aurial.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%201.jpg",
@@ -53,6 +66,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Anystyle AI": {
     description: "AnyStyle AI is a photo restyling app that transforms images instantly. Users pick a style to get a polished new version of their photo without complex prompts, making artistic variations fast and accessible.",
     categories: ["Mobile App"],
+    tags: ["AI vision", "Mobile app", "Interaction design"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20New.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Anystyle%20Cover.png"
@@ -65,6 +79,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Euterpe": {
     description: "Euterpe is a next-generation web application designed to simplify financial workflows. It streamlines transactions and reporting with an intuitive interface and clear visualizations.",
     categories: ["Web App"],
+    tags: ["Fintech", "Web app", "Dashboard design"],
     images: [],
     links: [
       { label: "Visit Website ↗", url: "https://euterpe.finance" }
@@ -74,6 +89,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Talestream": {
     description: "Talestream is an AI-powered storytelling mobile application that transforms raw ideas into engaging audio narratives. It enables content creators and individuals to share stories seamlessly.",
     categories: ["Mobile App"],
+    tags: ["AI storytelling", "Mobile app", "Product design"],
     images: [],
     links: [
       { label: "Visit Website ↗", url: "https://Talestream.ai" }
@@ -83,6 +99,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Probe (Clinical Research AI)": {
     description: "Probe is an AI-powered assistant designed for clinical researchers to analyze complex medical data and manage trials. It streamlines protocol analysis and matches participants to simplify trial workflows.",
     categories: ["Web App"],
+    tags: ["Healthcare AI", "UX architecture", "Product design"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/AI%20Assistant%20(1).png"
@@ -162,6 +179,7 @@ AI-generated content is never auto-applied. Users must review, select, and confi
   "Porta": {
     description: "Porta is an AI-powered scene generation app that allows users to place themselves into custom environments instantly. It offers intuitive templates and social remix tools for hassle-free creation.",
     categories: ["Mobile App"],
+    tags: ["AI scene gen", "Interaction design", "Mobile app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Porta.jpg",
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png"
@@ -234,6 +252,7 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
   "Melodeo": {
     description: "Melodeo is an AI-powered music creation platform featuring context-driven generation modules and a built-in player. It simplifies songwriting and provides synced lyrics for a cohesive experience.",
     categories: ["Mobile App"],
+    tags: ["AI music player", "Mobile app", "UX/UI design"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%202%20(1).png",
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Cover.png"
@@ -308,6 +327,7 @@ Interactive prototypes tested module selection, abstract prompt input, music gen
   "Medik": {
     description: "Medik is a comprehensive healthtech platform that makes healthcare more accessible in Nigeria. It allows users to schedule doctor consultations, order medications, and book lab tests in a single place.",
     categories: ["Mobile App"],
+    tags: ["Healthtech", "Mobile app", "Product design"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20Cover.png",
@@ -374,6 +394,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Penuel Samuel": {
     description: "A personal portfolio showcasing front-end development projects, interactive web components, and responsive design systems. It highlights robust, clean coding practices and performance-driven implementations.",
     categories: ["Portfolio"],
+    tags: ["Portfolio design", "Frontend dev", "Interactive web"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20New.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Hero%20(4).png",
@@ -390,6 +411,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Chinwe Ekeke": {
     description: "A highly polished virtual assistant portfolio highlighting a range of services, skill sets, and client testimonials. It highlights professionalism, organizational efficiency, and clean layouts.",
     categories: ["Portfolio"],
+    tags: ["Branding", "Portfolio design", "VA portfolio"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20Ekeke.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20Hero.png",
@@ -407,6 +429,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Medsaber": {
     description: "Medsaber is a modern medical platform landing page that presents healthcare solutions with clarity. It emphasizes intuitive service exploration and patient-centric responsive web design.",
     categories: ["Landing page / Website"],
+    tags: ["Landing page", "Web design", "Healthcare"],
     images: [],
     links: [],
     overview: ""
@@ -414,6 +437,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "MagicCap": {
     description: "MagicCap is a creative software landing page focusing on intelligent screen capture and video annotation. It offers clean product presentation, feature breakdowns, and responsive interactive tours.",
     categories: ["Landing page / Website"],
+    tags: ["SaaS utility", "Video capture", "Landing page"],
     images: [],
     links: [],
     overview: ""
@@ -421,6 +445,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "The Connected Awards": {
     description: "The Connected Awards is a platform designed to celebrate outstanding tech achievements. It manages key nominations and public voting processes through a secure, structured interface.",
     categories: ["Landing page / Website"],
+    tags: ["Event platform", "UX design", "Web app"],
     images: [],
     links: [],
     overview: ""
@@ -428,6 +453,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Heyfood": {
     description: "Heyfood is a fast-growing restaurant discovery and food delivery platform. It connects local vendors with hungry customers using real-time dispatching and localized search algorithms.",
     categories: ["Brand"],
+    tags: ["Food delivery", "Brand identity", "UX design"],
     images: [],
     links: [],
     overview: "Detailed overview coming soon."
@@ -435,6 +461,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Chorezen": {
     description: "Chorezen is an on-demand cleaning service platform connecting users with professional office and home sanitization teams. It features visual branding, scheduling tools, and secure booking flows.",
     categories: ["Brand"],
+    tags: ["Brand strategy", "Visual identity", "Sanitization"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chorezen.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/2026.jpg",
@@ -458,6 +485,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Tuyaupay": {
     description: "Tuyaupay is a global payments brand enabling cross-border currency transfers for businesses and individuals. It streamlines transactions through clean checkout flows and reliable architecture.",
     categories: ["Brand"],
+    tags: ["Fintech brand", "Visual design", "Payments"],
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200001.jpg",
       "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200002.jpg",
@@ -472,6 +500,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
 const DEFAULT_CONTENT: ProjectContent = {
   description: "Project description coming soon.",
   categories: [],
+  tags: [],
   links: [],
   overview: "Detailed overview coming soon."
 };
@@ -660,7 +689,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
         {/* Header with Case Study Title & Action Links */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6 w-full pb-6">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em]">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em] mb-2">
               {selectedProject}
             </h1>
           </div>
@@ -681,9 +710,18 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
         </div>
 
         {/* Intro Description */}
-        <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed mb-8 w-full text-left tracking-[-0.04em]">
+        <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed mb-4 w-full text-left tracking-[-0.04em]">
           {content.description}
         </p>
+        {content.tags && content.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-8">
+            {content.tags.map((tag, tIdx) => (
+              <span key={tIdx} className="font-mono text-[10px] font-bold text-[#041727]/70 border border-[#DEDBD6] px-2 py-0.5 rounded-none bg-[#F8F5F0]/50 select-none">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Project Images */}
         <div className="w-full mb-12">
@@ -961,9 +999,18 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
                   </span>
                 </div>
                 {/* Concise Description */}
-                <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-[18px] text-left tracking-[-0.04em]">
+                <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-[18px] text-left tracking-[-0.04em] mb-4">
                   {PROJECT_DATA[selectedProject]?.description || "Project description coming soon."}
                 </p>
+                {PROJECT_DATA[selectedProject]?.tags && PROJECT_DATA[selectedProject].tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {PROJECT_DATA[selectedProject].tags.map((tag, tIdx) => (
+                      <span key={tIdx} className="font-mono text-[10px] font-bold text-[#041727]/70 border border-[#DEDBD6] px-2 py-0.5 rounded-none bg-[#F8F5F0]/50 select-none">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
