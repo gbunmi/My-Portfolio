@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useSmoothScroll } from './useSmoothScroll';
+import Loader from './Loader';
 
 export const PROJECTS = [
   "Porta",
@@ -36,7 +37,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Annie": {
     description: "Annie is an experimental music playground that reimagines how ideas become songs. Instead of recreating the traditional DAW, it explores a more playful, visual, and approachable way to make music in the browser.",
     categories: ["Web App", "Music Playground"],
-    tags: ["Web audio", "Music playground", "Interface design"],
+    tags: ["Music", "DAW", "Web app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/annie%20cover.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/annie%20cover.jpg"
@@ -46,7 +47,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Aurial": {
     description: "Aurial is a modern collection of audio production tools. The project explores how complex audio engineering concepts can be made approachable through thoughtful interface design, intuitive visual feedback, and a modular plugin architecture.",
     categories: ["Audio Tools", "Mobile App"],
-    tags: ["VST design", "UI design"],
+    tags: ["VST", "Music", "Presentation"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Aurial.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%201.jpg",
@@ -66,7 +67,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Anystyle AI": {
     description: "AnyStyle AI is a photo restyling app that transforms images instantly. Users pick a style to get a polished new version of their photo without complex prompts, making artistic variations fast and accessible.",
     categories: ["Mobile App"],
-    tags: ["AI vision", "Mobile app", "Interaction design"],
+    tags: ["Photo Editing", "AI", "Mobile app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20New.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Anystyle%20Cover.png"
@@ -99,7 +100,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Probe": {
     description: "Probe is an AI-powered assistant designed for clinical researchers to analyze complex medical data and manage trials. It streamlines protocol analysis and matches participants to simplify trial workflows.",
     categories: ["Web App"],
-    tags: ["Healthcare AI", "UX architecture", "Product design"],
+    tags: ["Saas", "Health", "AI", "Web app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/AI%20Assistant%20(1).png"
@@ -179,7 +180,7 @@ AI-generated content is never auto-applied. Users must review, select, and confi
   "Porta": {
     description: "Porta is an AI-powered scene generation app that allows users to place themselves into custom environments instantly. It offers intuitive templates and social remix tools for hassle-free creation.",
     categories: ["Mobile App"],
-    tags: ["AI scene gen", "Interaction design", "Mobile app"],
+    tags: ["Social", "AI", "Mobile app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Porta.jpg",
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png"
@@ -252,7 +253,7 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
   "Melodeo": {
     description: "Melodeo is an AI-powered music creation platform featuring context-driven generation modules and a built-in player. It simplifies songwriting and provides synced lyrics for a cohesive experience.",
     categories: ["Mobile App"],
-    tags: ["AI music player", "Mobile app", "UX/UI design"],
+    tags: ["Music", "AI", "Mobile app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%202%20(1).png",
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Cover.png"
@@ -394,7 +395,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Penuel Samuel": {
     description: "A personal portfolio showcasing front-end development projects, interactive web components, and responsive design systems. It highlights robust, clean coding practices and performance-driven implementations.",
     categories: ["Portfolio"],
-    tags: ["Portfolio design", "Frontend dev", "Interactive web"],
+    tags: ["Portfolio", "Website"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20New.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Hero%20(4).png",
@@ -411,7 +412,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Chinwe Ekeke": {
     description: "A highly polished virtual assistant portfolio highlighting a range of services, skill sets, and client testimonials. It highlights professionalism, organizational efficiency, and clean layouts.",
     categories: ["Portfolio"],
-    tags: ["Branding", "Portfolio design", "VA portfolio"],
+    tags: ["Portfolio", "Website"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20Ekeke.jpg",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20-%20Hero.png",
@@ -461,7 +462,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   "Chorezen": {
     description: "Chorezen is an on-demand cleaning service platform connecting users with professional office and home sanitization teams. It features visual branding, scheduling tools, and secure booking flows.",
     categories: ["Brand"],
-    tags: ["Brand strategy", "Visual identity", "Sanitization"],
+    tags: ["Website", "Marketing"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chorezen.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/2026.jpg",
@@ -505,6 +506,34 @@ const DEFAULT_CONTENT: ProjectContent = {
   overview: "Detailed overview coming soon."
 };
 
+const getProjectImageUrls = (projectName: string): string[] => {
+  const projectContent = PROJECT_DATA[projectName];
+  if (!projectContent) return [];
+  const urls = new Set<string>();
+
+  if (projectContent.carouselImage) urls.add(projectContent.carouselImage);
+  if (projectContent.images) {
+    projectContent.images.forEach(img => img && urls.add(img));
+  }
+  if (projectContent.verticalImages) {
+    projectContent.verticalImages.forEach(img => img && urls.add(img));
+  }
+  if (projectContent.sections) {
+    projectContent.sections.forEach(sec => {
+      if (sec.body) {
+        sec.body.split('\n').forEach(line => {
+          const match = line.match(/^\{\{IMAGE:(.*)\\}\\}$/);
+          if (match && match[1]) {
+            urls.add(match[1]);
+          }
+        });
+      }
+    });
+  }
+
+  return Array.from(urls);
+};
+
 interface FeaturedWorkViewProps {
   onProjectChange?: (project: string) => void;
   viewingCaseStudy?: boolean;
@@ -528,6 +557,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
   };
   const [mobileView, setMobileView] = useState<'list' | 'detail'>('list');
   const [isLoading, setIsLoading] = useState(false);
+  const [loadProgress, setLoadProgress] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const selectedProjectRef = useRef(selectedProject);
@@ -548,17 +578,99 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
     }
   }, [selectedProject, onProjectChange]);
 
-  // Smooth local loaders
+  // Preload project image assets before content area opens/renders (only for case study detail page)
   useEffect(() => {
+    if (!viewingCaseStudy) {
+      setIsLoading(false);
+      setLoadProgress(0);
+      return;
+    }
+
+    let isMounted = true;
     setIsLoading(true);
+    setLoadProgress(0);
+
     if (contentRef.current) {
       contentRef.current.scrollTop = 0;
     }
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 200);
-    return () => clearTimeout(timer);
-  }, [selectedProject]);
+
+    const urls = getProjectImageUrls(selectedProject);
+
+    if (urls.length === 0) {
+      let curr = 0;
+      const interval = setInterval(() => {
+        curr += 25;
+        if (isMounted) setLoadProgress(Math.min(100, curr));
+        if (curr >= 100) {
+          clearInterval(interval);
+          if (isMounted) setIsLoading(false);
+        }
+      }, 40);
+      return () => {
+        isMounted = false;
+        clearInterval(interval);
+      };
+    }
+
+    let loadedCount = 0;
+    const total = urls.length;
+
+    const updateProgress = () => {
+      loadedCount++;
+      const targetPct = Math.floor((loadedCount / total) * 100);
+      if (isMounted) {
+        setLoadProgress(prev => Math.max(prev, targetPct));
+      }
+    };
+
+    // Smoothly tick up progress so user sees continuous progress updates
+    const tickInterval = setInterval(() => {
+      if (isMounted) {
+        setLoadProgress(prev => {
+          if (prev < 90) return prev + 4;
+          return prev;
+        });
+      }
+    }, 40);
+
+    const loadImagesPromises = urls.map(url => {
+      return new Promise<void>(resolve => {
+        const img = new Image();
+        img.onload = () => {
+          updateProgress();
+          resolve();
+        };
+        img.onerror = () => {
+          updateProgress();
+          resolve();
+        };
+        img.src = url;
+      });
+    });
+
+    const minDisplayTimer = new Promise<void>(resolve => setTimeout(resolve, 400));
+    const safetyTimeout = new Promise<void>(resolve => setTimeout(resolve, 3500));
+
+    Promise.race([
+      Promise.all([Promise.all(loadImagesPromises), minDisplayTimer]).then(() => {}),
+      safetyTimeout
+    ]).then(() => {
+      clearInterval(tickInterval);
+      if (isMounted) {
+        setLoadProgress(100);
+        setTimeout(() => {
+          if (isMounted) {
+            setIsLoading(false);
+          }
+        }, 180);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+      clearInterval(tickInterval);
+    };
+  }, [selectedProject, viewingCaseStudy]);
 
   // Track scroll position of preview project items, calculate loop elegantly
   useEffect(() => {
@@ -714,10 +826,10 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
           {content.description}
         </p>
         {content.tags && content.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-8">
+          <div className="flex flex-wrap gap-2 mb-8 text-sm lg:text-[14px] text-[#465460] font-medium tracking-[-0.04em]">
             {content.tags.map((tag, tIdx) => (
-              <span key={tIdx} className="font-mono text-[10px] font-bold text-[#041727]/70 border border-[#DEDBD6] px-2 py-0.5 rounded-none bg-[#F8F5F0]/50 select-none">
-                {tag}
+              <span key={tIdx}>
+                {`{${tag}}`}
               </span>
             ))}
           </div>
@@ -734,7 +846,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
                       src={imgSrc} 
                       alt={`${selectedProject} Brand ${index + 1}`} 
                       className="w-full h-auto block"
-                      loading="lazy"
+                      loading="eager"
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -754,7 +866,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
                     src={imgSrc} 
                     alt={`${selectedProject} preview ${index + 1}`} 
                     className="w-full h-auto object-cover border border-[#DEDBD6] mb-8 last:mb-0"
-                    loading="lazy"
+                    loading="eager"
                     referrerPolicy="no-referrer"
                   />
                 ))
@@ -777,7 +889,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
                     src={imgSrc} 
                     alt={`${selectedProject} vertical preview ${index + 1}`} 
                     className="w-full h-auto object-cover border border-[#DEDBD6]"
-                    loading="lazy"
+                    loading="eager"
                     referrerPolicy="no-referrer"
                   />
                 ))}
@@ -907,6 +1019,13 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
           </button>
         </div>
 
+        {/* Site Loader overlay when opening case study */}
+        <AnimatePresence>
+          {viewingCaseStudy && isLoading && (
+            <Loader progress={loadProgress} />
+          )}
+        </AnimatePresence>
+
         {/* If Case Study is Opened, render full wide detailed layout */}
         {viewingCaseStudy ? (
           <div ref={caseStudyScrollRef} className="flex-1 w-full overflow-y-auto bg-[#F8F5F0]">
@@ -917,13 +1036,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
 
               {/* Center column of the grid: hosts all content */}
               <div className="bg-[#F8F5F0] min-h-full px-4 lg:px-10 py-12 flex flex-col">
-                {isLoading ? (
-                  <div className="flex items-center justify-center h-64">
-                    <div className="w-8 h-8 border-4 border-[#DEDBD6] border-t-[#041727] rounded-full animate-spin"></div>
-                  </div>
-                ) : (
-                  renderCaseStudyContent()
-                )}
+                {renderCaseStudyContent()}
               </div>
 
               {/* Right spacer column matching existing grid geometry */}
@@ -1003,10 +1116,10 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
                   {PROJECT_DATA[selectedProject]?.description || "Project description coming soon."}
                 </p>
                 {PROJECT_DATA[selectedProject]?.tags && PROJECT_DATA[selectedProject].tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-2 text-sm lg:text-[14px] text-[#465460] font-medium tracking-[-0.04em]">
                     {PROJECT_DATA[selectedProject].tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="font-mono text-[10px] font-bold text-[#041727]/70 border border-[#DEDBD6] px-2 py-0.5 rounded-none bg-[#F8F5F0]/50 select-none">
-                        {tag}
+                      <span key={tIdx}>
+                        {`{${tag}}`}
                       </span>
                     ))}
                   </div>
