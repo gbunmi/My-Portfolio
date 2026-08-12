@@ -35,7 +35,7 @@ export interface ProjectContent {
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Annie": {
-    description: "Annie is an experimental music playground that reimagines how ideas become songs. Instead of recreating the traditional DAW, it explores a more playful, visual, and approachable way to make music in the browser.",
+    description: "An experimental music playground that explores a different way to make music in the browser. Rather than recreating a traditional DAW, I designed a more playful and visual experience that makes experimenting with sound feel immediate and approachable.",
     categories: ["Web App", "Music Playground"],
     tags: ["Music", "DAW", "Web app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/annie%20cover.jpg",
@@ -45,7 +45,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     links: []
   },
   "Aurial": {
-    description: "Aurial is a modern collection of audio production tools. The project explores how complex audio engineering concepts can be made approachable through thoughtful interface design, intuitive visual feedback, and a modular plugin architecture.",
+    description: "A collection of modern audio production tools exploring how complex sound engineering can feel intuitive. I focused on interface design, visual feedback, and modular interactions to make powerful audio workflows easier to understand and use.",
     categories: ["Audio Tools", "Mobile App"],
     tags: ["VST", "Music", "Presentation"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Aurial.png",
@@ -65,7 +65,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     links: []
   },
   "Anystyle AI": {
-    description: "AnyStyle AI is a photo restyling app that transforms images instantly. Users pick a style to get a polished new version of their photo without complex prompts, making artistic variations fast and accessible.",
+    description: "A photo restyling experience built around one simple idea: choose a style and transform your image instantly. I focused on making AI image generation feel effortless, removing the complexity of prompts and putting visual exploration at the center of the experience.",
     categories: ["Mobile App"],
     tags: ["Photo Editing", "AI", "Mobile app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20New.jpg",
@@ -98,7 +98,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     overview: "Detailed overview coming soon."
   },
   "Probe": {
-    description: "Probe is an AI-powered assistant designed for clinical researchers to analyze complex medical data and manage trials. It streamlines protocol analysis and matches participants to simplify trial workflows.",
+    description: "An AI-powered research assistant built for clinical researchers working with complex medical data and clinical trials. I focused on simplifying protocol analysis and participant matching, turning dense research workflows into a clearer, more manageable experience.",
     categories: ["Web App"],
     tags: ["Saas", "Health", "AI", "Web app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.png",
@@ -178,7 +178,7 @@ AI-generated content is never auto-applied. Users must review, select, and confi
     ]
   },
   "Porta": {
-    description: "Porta is an AI-powered scene generation app that allows users to place themselves into custom environments instantly. It offers intuitive templates and social remix tools for hassle-free creation.",
+    description: "AI-powered scene generation made simple. I shaped the experience around instant scene creation, intuitive templates, remixing, and sharing, turning a complex image-generation workflow into something visual and approachable.",
     categories: ["Mobile App"],
     tags: ["Social", "AI", "Mobile app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Porta.jpg",
@@ -251,7 +251,7 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
   },
 
   "Melodeo": {
-    description: "Melodeo is an AI-powered music creation platform featuring context-driven generation modules and a built-in player. It simplifies songwriting and provides synced lyrics for a cohesive experience.",
+    description: "An AI-powered music creation platform built to make songwriting more intuitive. I shaped the experience across context-driven generation, synced lyrics, and an integrated player, bringing the creative process into one focused workspace.",
     categories: ["Mobile App"],
     tags: ["Music", "AI", "Mobile app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%202%20(1).png",
@@ -326,7 +326,7 @@ Interactive prototypes tested module selection, abstract prompt input, music gen
   },
 
   "Medik": {
-    description: "Medik is a comprehensive healthtech platform that makes healthcare more accessible in Nigeria. It allows users to schedule doctor consultations, order medications, and book lab tests in a single place.",
+    description: "A healthtech platform designed to make healthcare more accessible in Nigeria. I shaped the experience across doctor consultations, medication orders, and lab bookings, bringing essential healthcare services together in one place.",
     categories: ["Mobile App"],
     tags: ["Healthtech", "Mobile app", "Product design"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.jpg",
@@ -393,7 +393,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   },
   
   "Penuel Samuel": {
-    description: "A personal portfolio showcasing front-end development projects, interactive web components, and responsive design systems. It highlights robust, clean coding practices and performance-driven implementations.",
+    description: "A personal portfolio designed to showcase Penuel Samuel's front-end development work. I focused on creating a clean, structured experience that lets his projects and technical capabilities take center stage.",
     categories: ["Portfolio"],
     tags: ["Portfolio", "Website"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20New.jpg",
@@ -410,7 +410,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   },
 
   "Chinwe Ekeke": {
-    description: "A highly polished virtual assistant portfolio highlighting a range of services, skill sets, and client testimonials. It highlights professionalism, organizational efficiency, and clean layouts.",
+    description: "A polished virtual assistant portfolio built to communicate expertise, professionalism, and trust. I designed the experience around Chinwe's services, skills, and client testimonials, with a clear structure that makes her capabilities easy to understand.",
     categories: ["Portfolio"],
     tags: ["Portfolio", "Website"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20Ekeke.jpg",
@@ -460,7 +460,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
     overview: "Detailed overview coming soon."
   },
   "Chorezen": {
-    description: "Chorezen is an on-demand cleaning service platform connecting users with professional office and home sanitization teams. It features visual branding, scheduling tools, and secure booking flows.",
+    description: "An on-demand cleaning service connecting customers with professional home and office cleaning teams. My work covered the product's landing page and social media marketing, creating a visual system that communicates the service clearly while making it feel approachable and trustworthy.",
     categories: ["Brand"],
     tags: ["Website", "Marketing"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chorezen.png",
