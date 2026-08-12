@@ -3,16 +3,16 @@ import { motion } from 'motion/react';
 import { useSmoothScroll } from './useSmoothScroll';
 
 export const PROJECTS = [
-  "annie",
-  "Aurial",
   "Porta",
   "Melodeo",
-  "Anystyle AI",
+  "Probe",
   "Medik",
   "Penuel Samuel",
   "Chinwe Ekeke",
-  "Probe (Clinical Research AI)",
-  "Chorezen"
+  "Aurial",
+  "Chorezen",
+  "Annie",
+  "Anystyle AI"
 ];
 
 export interface ProjectSection {
@@ -33,8 +33,8 @@ export interface ProjectContent {
 }
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
-  "annie": {
-    description: "annie is an experimental music playground that reimagines how ideas become songs. Instead of recreating the traditional DAW, it explores a more playful, visual, and approachable way to make music in the browser.",
+  "Annie": {
+    description: "Annie is an experimental music playground that reimagines how ideas become songs. Instead of recreating the traditional DAW, it explores a more playful, visual, and approachable way to make music in the browser.",
     categories: ["Web App", "Music Playground"],
     tags: ["Web audio", "Music playground", "Interface design"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/annie%20cover.jpg",
@@ -96,7 +96,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     ],
     overview: "Detailed overview coming soon."
   },
-  "Probe (Clinical Research AI)": {
+  "Probe": {
     description: "Probe is an AI-powered assistant designed for clinical researchers to analyze complex medical data and manage trials. It streamlines protocol analysis and matches participants to simplify trial workflows.",
     categories: ["Web App"],
     tags: ["Healthcare AI", "UX architecture", "Product design"],
@@ -516,7 +516,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
   viewingCaseStudy: propViewingCaseStudy, 
   onViewingCaseStudyChange 
 }) => {
-  const [selectedProject, setSelectedProject] = useState("Aurial");
+  const [selectedProject, setSelectedProject] = useState("Porta");
   const [localViewingCaseStudy, setLocalViewingCaseStudy] = useState(false);
   const viewingCaseStudy = propViewingCaseStudy !== undefined ? propViewingCaseStudy : localViewingCaseStudy;
   
