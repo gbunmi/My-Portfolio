@@ -11,9 +11,10 @@ export const PROJECTS = [
   "Penuel Samuel",
   "Chinwe Ekeke",
   "Aurial",
-  "Chorezen",
-  "Annie",
-  "Anystyle AI"
+  "Chorezen"
+  // Temporarily hidden:
+  // "Annie",
+  // "Anystyle AI"
 ];
 
 export interface ProjectSection {
@@ -566,6 +567,8 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
   const oneFullSetHeightRef = useRef<number>(0);
   const item0OffsetTopRef = useRef<number>(0);
   const itemSlotHeightRef = useRef<number>(0);
+  const scrollAnimIdRef = useRef<number | null>(null);
+  const isAutoScrollingRef = useRef(false);
 
   const content = PROJECT_DATA[selectedProject] || DEFAULT_CONTENT;
   const isBrandProject = content.categories.includes('Brand');
@@ -719,7 +722,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
     let isShiftingScroll = false;
 
     const handleScrollLoop = () => {
-      if (isShiftingScroll) return;
+      if (isShiftingScroll || isAutoScrollingRef.current) return;
 
       const oneFullSetHeight = oneFullSetHeightRef.current;
       if (oneFullSetHeight <= 0) return;
@@ -740,7 +743,20 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
       updateActiveProject();
     };
 
+    const handleUserInterrupt = () => {
+      if (scrollAnimIdRef.current) {
+        cancelAnimationFrame(scrollAnimIdRef.current);
+        scrollAnimIdRef.current = null;
+        isAutoScrollingRef.current = false;
+        if (containerRef.current) {
+          containerRef.current.style.scrollSnapType = '';
+        }
+      }
+    };
+
     container.addEventListener('scroll', handleScrollLoop, { passive: true });
+    container.addEventListener('wheel', handleUserInterrupt, { passive: true });
+    container.addEventListener('touchstart', handleUserInterrupt, { passive: true });
     window.addEventListener('resize', () => {
       recalculateBounds();
       updateActiveProject();
@@ -764,32 +780,103 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
     }, 100);
 
     return () => {
+      if (scrollAnimIdRef.current) {
+        cancelAnimationFrame(scrollAnimIdRef.current);
+      }
       container.removeEventListener('scroll', handleScrollLoop);
+      container.removeEventListener('wheel', handleUserInterrupt);
+      container.removeEventListener('touchstart', handleUserInterrupt);
       window.removeEventListener('resize', () => {});
       clearTimeout(initTimer);
     };
   }, [viewingCaseStudy]);
 
-  const handleProjectClick = (project: string, indexInTriple: number) => {
+  const smoothScrollToProject = (project: string) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const projIdx = PROJECTS.indexOf(project);
+    if (projIdx === -1) return;
+
+    // Pick candidate copies across Set 0, Set 1, and Set 2 to find the shortest, most natural scroll path
+    const candidateIndices = [projIdx, PROJECTS.length + projIdx, PROJECTS.length * 2 + projIdx];
+    let minDiff = Infinity;
+    let targetScrollTop = container.scrollTop;
+
+    for (const cIdx of candidateIndices) {
+      const el = container.querySelector(`[data-index="${cIdx}"]`) as HTMLElement;
+      if (el) {
+        const cTarget = el.offsetTop - (container.clientHeight / 2) + (el.clientHeight / 2);
+        const diff = Math.abs(cTarget - container.scrollTop);
+        if (diff < minDiff) {
+          minDiff = diff;
+          targetScrollTop = cTarget;
+        }
+      }
+    }
+
+    if (scrollAnimIdRef.current) {
+      cancelAnimationFrame(scrollAnimIdRef.current);
+      scrollAnimIdRef.current = null;
+    }
+
+    const startScrollTop = container.scrollTop;
+    const distance = targetScrollTop - startScrollTop;
+    if (Math.abs(distance) < 2) {
+      container.scrollTop = targetScrollTop;
+      return;
+    }
+
+    // Gentle, smooth duration (650ms) with cubic ease-in-out curve
+    const duration = 650;
+    const startTime = performance.now();
+    isAutoScrollingRef.current = true;
+
+    // Temporarily pause CSS scroll-snap so programmatic glide is perfectly smooth
+    const prevSnapType = container.style.scrollSnapType;
+    container.style.scrollSnapType = 'none';
+
+    const animateScroll = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+
+      // Gentle cubic ease-in-out
+      const ease = progress < 0.5 
+        ? 4 * progress * progress * progress 
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+      container.scrollTop = startScrollTop + distance * ease;
+
+      if (progress < 1) {
+        scrollAnimIdRef.current = requestAnimationFrame(animateScroll);
+      } else {
+        container.scrollTop = targetScrollTop;
+        isAutoScrollingRef.current = false;
+        scrollAnimIdRef.current = null;
+        container.style.scrollSnapType = prevSnapType;
+
+        // Seamlessly re-normalize scroll bounds to middle set if needed
+        const oneFullSet = oneFullSetHeightRef.current;
+        if (oneFullSet > 0) {
+          if (container.scrollTop < oneFullSet) {
+            container.scrollTop += oneFullSet;
+          } else if (container.scrollTop >= 2 * oneFullSet) {
+            container.scrollTop -= oneFullSet;
+          }
+        }
+      }
+    };
+
+    scrollAnimIdRef.current = requestAnimationFrame(animateScroll);
+  };
+
+  const handleProjectClick = (project: string, _indexInTriple?: number) => {
     if (project === selectedProject) {
       setViewingCaseStudy(true);
     } else {
       setSelectedProject(project);
       setViewingCaseStudy(false); // default to preview mode on new select
-      
-      // Scroll container to the corresponding selected project inside the container instantly without laggy animations
-      setTimeout(() => {
-        const container = containerRef.current;
-        const el = container?.querySelector(`[data-index="${indexInTriple}"]`) as HTMLElement;
-        if (container && el) {
-          const containerHeight = container.clientHeight;
-          const elementTop = el.offsetTop;
-          const elementHeight = el.clientHeight;
-          
-          const targetScrollTop = elementTop - (containerHeight / 2) + (elementHeight / 2);
-          container.scrollTop = targetScrollTop;
-        }
-      }, 50);
+      smoothScrollToProject(project);
     }
     setMobileView('detail');
   };
