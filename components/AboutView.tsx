@@ -2,10 +2,21 @@ import React from 'react';
 
 interface AboutSection {
   tag: string;
-  body: string;
+  body: React.ReactNode;
   image: string;
   imageAlt: string;
 }
+
+const InlineLink: React.FC<{ href: string; label: string }> = ({ href, label }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="font-bold text-[#041727] hover:text-[#465460] transition-colors whitespace-nowrap"
+  >
+    {`[${label}]`}
+  </a>
+);
 
 const ABOUT_SECTIONS: AboutSection[] = [
   {
@@ -16,19 +27,37 @@ const ABOUT_SECTIONS: AboutSection[] = [
   },
   {
     tag: "the designer",
-    body: "I’m a Product Designer with 5+ years of experience designing products across fintech, healthcare, AI, marketplaces, web3, logistics, and consumer technology. I led design at Heyfood (YC W21) for 4 years, working across the customer, rider, vendor, and operations experiences as the company grew.",
+    body: (
+      <>
+        I’m a Product Designer with 5+ years of experience designing products across fintech, healthcare, AI, marketplaces, web3, logistics, and consumer technology. I led design at{' '}
+        <InlineLink href="https://heyfood.africa" label="Heyfood (YC W21)" />{' '}
+        for 4 years, working across the customer, rider, vendor, and operations experiences as the company grew.
+      </>
+    ),
     image: "https://raw.githubusercontent.com/gbunmi/images/main/Cube%20(1).png",
     imageAlt: "Rubik's Cube"
   },
   {
     tag: "the builder",
-    body: "Design is where most of my projects begin, but rarely where they end. With AI tools and a growing collection of coding skills, I’ve become increasingly comfortable taking an idea from Figma to something people can actually use.",
+    body: (
+      <>
+        Design is where most of my projects begin, but rarely where they end. With AI tools and a growing set of coding skills, I can take an idea from Figma to a working product. I’ve built{' '}
+        <InlineLink href="https://cardvice.app" label="Cardvice" />, a card-based platform for everyday advice, and{' '}
+        <InlineLink href="https://annie.blendingbytes.com" label="Annie" />, a music playground that reimagines how ideas become songs.
+      </>
+    ),
     image: "https://raw.githubusercontent.com/gbunmi/images/main/Monitor.png",
     imageAlt: "Retro Computer Monitor"
   },
   {
     tag: "the artist",
-    body: "Outside of product design, I spend time making digital paintings and producing music. Sometimes I’m experimenting with colors and compositions, other times I’m layering sounds and tweaking tracks that were supposed to be finished hours ago.",
+    body: (
+      <>
+        I sometimes make digital paintings, some of which live on{' '}
+        <InlineLink href="https://www.artstation.com/g-bunmi" label="ArtStation" />. Other times, I’m making music, experimenting with sounds and melodies until something comes together. You can listen to some of it on{' '}
+        <InlineLink href="https://open.spotify.com/artist/1qktTPa4kJCpNl2hIr8mTP" label="Spotify" />.
+      </>
+    ),
     image: "https://raw.githubusercontent.com/gbunmi/images/main/Flower%20(1).png",
     imageAlt: "Origami Sunflower"
   }
