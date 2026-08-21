@@ -42,8 +42,8 @@ const ABOUT_SECTIONS: AboutSection[] = [
     body: (
       <>
         Design is where most of my projects begin, but rarely where they end. With AI tools and a growing set of coding skills, I can take an idea from Figma to a working product. I’ve built{' '}
-        <InlineLink href="https://cardvice.app" label="Cardvice" />, a card-based platform for everyday advice, and{' '}
-        <InlineLink href="https://annie.blendingbytes.com" label="Annie" />, a music playground that reimagines how ideas become songs.
+        <InlineLink href="https://cardvice.vercel.app/" label="Cardvice" />, a card-based platform for everyday advice, and{' '}
+        <InlineLink href="https://playannie.vercel.app/" label="Annie" />, a music playground that reimagines how ideas become songs.
       </>
     ),
     image: "https://raw.githubusercontent.com/gbunmi/images/main/Monitor.png",
