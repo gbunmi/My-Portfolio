@@ -593,6 +593,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
 
   const oneFullSetHeightRef = useRef<number>(0);
   const item0OffsetTopRef = useRef<number>(0);
+  const centerOffsetRef = useRef<number>(0);
   const itemSlotHeightRef = useRef<number>(0);
   const scrollAnimIdRef = useRef<number | null>(null);
   const isAutoScrollingRef = useRef(false);
@@ -721,6 +722,9 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
       oneFullSetHeightRef.current = oneFullSetHeight;
       item0OffsetTopRef.current = item0.offsetTop;
       itemSlotHeightRef.current = oneFullSetHeight / targetProjects.length;
+      // scrollTop at which Set 1's first item sits dead centre. The loop bounds are
+      // measured from here so they line up with the snap points rather than raw scrollTop.
+      centerOffsetRef.current = item0.offsetTop - container.clientHeight / 2 + item0.clientHeight / 2;
     };
 
     const updateActiveProject = () => {
@@ -757,15 +761,25 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
       if (oneFullSetHeight <= 0) return;
 
       const currentScroll = container.scrollTop;
+      const relativeScroll = currentScroll - centerOffsetRef.current;
 
       // Symmetrically keep the scroll position bounded inside Set 2
-      if (currentScroll < oneFullSetHeight) {
+      let shift = 0;
+      if (relativeScroll < oneFullSetHeight) {
+        shift = oneFullSetHeight;
+      } else if (relativeScroll >= 2 * oneFullSetHeight) {
+        shift = -oneFullSetHeight;
+      }
+
+      if (shift !== 0) {
         isShiftingScroll = true;
-        container.scrollTop = currentScroll + oneFullSetHeight;
-        isShiftingScroll = false;
-      } else if (currentScroll >= 2 * oneFullSetHeight) {
-        isShiftingScroll = true;
-        container.scrollTop = currentScroll - oneFullSetHeight;
+        // Mandatory snap re-targets whenever scrollTop is assigned from script, which is
+        // what makes the wrap stutter mid-gesture. Suspend it for the duration of the jump.
+        const prevSnapType = container.style.scrollSnapType;
+        container.style.scrollSnapType = 'none';
+        container.scrollTop = currentScroll + shift;
+        void container.offsetHeight; // flush the jump before snapping is restored
+        container.style.scrollSnapType = prevSnapType;
         isShiftingScroll = false;
       }
 
@@ -917,7 +931,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
     return (
       <div className="w-full">
         {/* Header with Case Study Title & Action Links */}
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6 w-full pb-6">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-4 w-full">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-[#041727] tracking-[-0.04em] mb-2">
               {selectedProject}

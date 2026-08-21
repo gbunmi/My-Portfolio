@@ -43,13 +43,14 @@ const AboutView: React.FC<AboutViewProps> = () => {
     <div className="relative h-full w-full bg-[#F8F5F0] overflow-hidden select-none">
       
       {/* Desktop Layout: Fits viewport exactly (100% height, 0 scroll) with 1:1 square icon cells */}
+      {/* Spacer columns are fixed at 240px to match the case study grid geometry */}
       <div className="hidden lg:flex h-full w-full bg-[#F8F5F0]">
-        
+
         {/* Column 1: Left empty spacer with right vertical border */}
-        <div className="flex-1 min-w-[40px] bg-[#F8F5F0] border-r border-[#DEDBD6] h-full" />
+        <div className="w-[240px] shrink-0 bg-[#F8F5F0] border-r border-[#DEDBD6] h-full" />
 
         {/* Column 2: Text content column - 4 equal compact rows with tight spacing */}
-        <div className="flex-[3] max-w-[680px] bg-[#F8F5F0] grid grid-rows-4 h-full">
+        <div className="flex-1 min-w-0 bg-[#F8F5F0] grid grid-rows-4 h-full">
           {ABOUT_SECTIONS.map((sec, idx) => (
             <div 
               key={idx} 
@@ -89,7 +90,7 @@ const AboutView: React.FC<AboutViewProps> = () => {
         </div>
 
         {/* Column 4: Right empty spacer */}
-        <div className="flex-1 min-w-[40px] bg-[#F8F5F0] h-full" />
+        <div className="w-[240px] shrink-0 bg-[#F8F5F0] h-full" />
 
       </div>
 
