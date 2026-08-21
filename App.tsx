@@ -98,16 +98,36 @@ const App: React.FC = () => {
 
   const preloadImages = async () => {
     // Gather all images from featured work
-    const imagesToLoad: string[] = [];
+    const imagesToLoad: string[] = [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Monitor.png"
+    ];
     Object.values(PROJECT_DATA).forEach(project => {
+      if (project.carouselImage) {
+        imagesToLoad.push(project.carouselImage);
+      }
       if (project.images && project.images.length > 0) {
         imagesToLoad.push(...project.images);
+      }
+      if (project.verticalImages && project.verticalImages.length > 0) {
+        imagesToLoad.push(...project.verticalImages);
+      }
+      if (project.sections) {
+        project.sections.forEach(section => {
+          const matches = section.body.match(/\{\{IMAGE:(.*?)\}\}/g);
+          if (matches) {
+            matches.forEach(m => {
+              const url = m.replace('{{IMAGE:', '').replace('}}', '');
+              if (url) imagesToLoad.push(url);
+            });
+          }
+        });
       }
     });
 
     if (imagesToLoad.length === 0) return;
 
-    const total = imagesToLoad.length;
+    const uniqueImages = Array.from(new Set(imagesToLoad));
+    const total = uniqueImages.length;
     let loaded = 0;
 
     const updateProgress = () => {
@@ -116,7 +136,7 @@ const App: React.FC = () => {
         setLoadProgress(percentage);
     };
 
-    const promises = imagesToLoad.map(src => {
+    const promises = uniqueImages.map(src => {
       return new Promise<void>((resolve) => {
         const img = new Image();
         img.src = src;
@@ -242,7 +262,7 @@ const App: React.FC = () => {
               </span>
             </span>
           </a>
-          {view !== 'home' && (
+          {view !== 'home' && view !== 'about' && (
             <>
               <span className="text-[#041727] shrink-0">//</span>
               {view === 'featured' && isViewingCaseStudy ? (

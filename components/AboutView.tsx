@@ -1,218 +1,121 @@
 import React from 'react';
-import { useSmoothScroll } from './useSmoothScroll';
 
-interface SectionImageProps {
-  src: string;
-  alt: string;
+interface AboutSection {
+  tag: string;
+  body: string;
+  image: string;
+  imageAlt: string;
 }
 
-const SectionImage: React.FC<SectionImageProps> = ({ src, alt }) => {
-  return (
-    <div className="relative w-full aspect-square max-w-[280px] lg:max-w-[420px] mx-auto flex items-center justify-center select-none">
-      <img
-        src={src}
-        alt={alt}
-        referrerPolicy="no-referrer"
-        className="w-[95%] h-[95%] object-contain filter drop-shadow-[0_12px_24px_rgba(4,23,39,0.08)]"
-      />
-    </div>
-  );
-};
+const ABOUT_SECTIONS: AboutSection[] = [
+  {
+    tag: "the man",
+    body: "I spend most of my days designing products, but the things that shape me happen outside design files. I’m curious by nature, always exploring something new, taking things apart, and figuring out how they work.",
+    image: "https://raw.githubusercontent.com/gbunmi/images/main/Compass.png",
+    imageAlt: "Compass"
+  },
+  {
+    tag: "the designer",
+    body: "I’m a Product Designer with 5+ years of experience designing products across fintech, healthcare, AI, marketplaces, web3, logistics, and consumer technology. I led design at Heyfood (YC W21) for 4 years, working across the customer, rider, vendor, and operations experiences as the company grew.",
+    image: "https://raw.githubusercontent.com/gbunmi/images/main/Cube%20(1).png",
+    imageAlt: "Rubik's Cube"
+  },
+  {
+    tag: "the builder",
+    body: "Design is where most of my projects begin, but rarely where they end. With AI tools and a growing collection of coding skills, I’ve become increasingly comfortable taking an idea from Figma to something people can actually use.",
+    image: "https://raw.githubusercontent.com/gbunmi/images/main/Monitor.png",
+    imageAlt: "Retro Computer Monitor"
+  },
+  {
+    tag: "the artist",
+    body: "Outside of product design, I spend time making digital paintings and producing music. Sometimes I’m experimenting with colors and compositions, other times I’m layering sounds and tweaking tracks that were supposed to be finished hours ago.",
+    image: "https://raw.githubusercontent.com/gbunmi/images/main/Flower%20(1).png",
+    imageAlt: "Origami Sunflower"
+  }
+];
 
 interface AboutViewProps {
   onNavigate?: (view: 'home' | 'employment' | 'featured' | 'about') => void;
 }
 
-const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
-  const manImage = "https://raw.githubusercontent.com/gbunmi/images/main/Compass.png";
-  const designerImage = "https://raw.githubusercontent.com/gbunmi/images/main/Cube%20(1).png";
-  const builderImage = "https://raw.githubusercontent.com/gbunmi/images/main/Monitor.png";
-  const artistImage = "https://raw.githubusercontent.com/gbunmi/images/main/Flower%20(1).png";
-
-  const scrollRef = useSmoothScroll<HTMLDivElement>();
-
-  const handleNav = (targetView: 'home' | 'employment' | 'featured' | 'about', e: React.MouseEvent) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate(targetView);
-    } else {
-      let path = '/home';
-      if (targetView === 'featured') path = '/featuredwork';
-      if (targetView === 'employment') path = '/employment-history';
-      if (targetView === 'about') path = '/about';
-      try {
-        window.history.pushState({}, '', path);
-        window.dispatchEvent(new PopStateEvent('popstate'));
-      } catch (err) {
-        window.location.href = path;
-      }
-    }
-  };
-
+const AboutView: React.FC<AboutViewProps> = () => {
   return (
-    <div className="relative h-full w-full">
-      <div ref={scrollRef} className="h-full w-full bg-[#F8F5F0] overflow-y-auto">
-        <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
-          
-          {/* Left spacer column matching existing grid geometry */}
-          <div className="hidden lg:block bg-[#F8F5F0]" />
+    <div className="relative h-full w-full bg-[#F8F5F0] overflow-hidden select-none">
+      
+      {/* Desktop Layout: Fits viewport exactly (100% height, 0 scroll) with 1:1 square icon cells */}
+      <div className="hidden lg:flex h-full w-full bg-[#F8F5F0]">
+        
+        {/* Column 1: Left empty spacer with right vertical border */}
+        <div className="flex-1 min-w-[40px] bg-[#F8F5F0] border-r border-[#DEDBD6] h-full" />
 
-          {/* Center column of the grid: hosts all content */}
-          <div className="bg-[#F8F5F0] min-h-full px-4 lg:px-10 pt-12 pb-36 flex flex-col items-center">
-          
-          <div className="w-full flex flex-col gap-12 lg:gap-14">
-          
-          {/* Section 1: the man */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-10 lg:pb-12">
-            <div className="flex flex-col items-start gap-2 order-2 lg:order-1">
-              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em]">
-                the man
-              </span>
-              <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  I spend most of my days designing products, but the things that shape me happen outside design files. I'm curious about almost everything, the kind of person who can disappear down a rabbit hole about ancient civilizations, startup growth loops, or why some songs feel nostalgic on the first listen.
-                </p>
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  When I'm not working, you'll usually find me exploring digital painting, making music, building side projects I'll swear are "just experiments," or convincing myself that this latest idea definitely won't turn into another full product. It usually does.
-                </p>
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  At the core, I enjoy making things useful, beautiful, and a little more human than they were yesterday.
+        {/* Column 2: Text content column - 4 equal compact rows with tight spacing */}
+        <div className="flex-[3] max-w-[680px] bg-[#F8F5F0] grid grid-rows-4 h-full">
+          {ABOUT_SECTIONS.map((sec, idx) => (
+            <div 
+              key={idx} 
+              className="px-8 xl:px-12 py-1.5 flex flex-col justify-center min-h-0"
+            >
+              <div className="flex flex-col items-start gap-1 max-w-[560px]">
+                <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-xs font-bold tracking-[-0.04em] select-none shrink-0">
+                  {sec.tag}
+                </span>
+                <p className="text-[12px] xl:text-[13px] 2xl:text-[14px] leading-[18px] xl:leading-[20px] 2xl:leading-[22px] text-[#041727] font-medium tracking-[-0.04em]">
+                  {sec.body}
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-center order-1 lg:order-2">
-              <SectionImage src={manImage} alt="The Man" />
-            </div>
-          </div>
-
-          {/* Section 2: the designer */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-10 lg:pb-12">
-            <div className="flex items-center justify-center order-1 lg:order-1">
-              <SectionImage src={designerImage} alt="The Designer" />
-            </div>
-            <div className="flex flex-col items-start gap-2 order-2 lg:order-2">
-              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em]">
-                the designer
-              </span>
-              <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  I've spent years designing products across fintech, healthcare, AI, marketplaces, web3, logistics, and a few categories that didn't have a name when we started building them. What excites me isn't moving buttons around a screen. It's understanding how people think, where they get stuck, and how thoughtful design can quietly solve problems without demanding attention.
-                </p>
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  I like clean interfaces, clear systems, and products that feel obvious in hindsight. The best compliment for a design isn't "wow." It's "that was easy."
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Section 3: the builder */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-10 lg:pb-12">
-            <div className="flex flex-col items-start gap-2 order-2 lg:order-1">
-              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em]">
-                the builder
-              </span>
-              <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  Design is where most of my projects begin, but rarely where they end. Thanks to AI tools and a growing collection of coding skills, I've become the kind of person who designs something in the morning and has a working version by the evening.
-                </p>
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  I enjoy building web apps, websites, internal tools, and experimental products, often turning rough concepts into functioning experiences without waiting for a full development team. It's one of the most exciting shifts in technology today: the gap between having an idea and bringing it to life has never been smaller.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center justify-center order-1 lg:order-2">
-              <SectionImage src={builderImage} alt="The Builder" />
-            </div>
-          </div>
-
-          {/* Section 4: the artist */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-4">
-            <div className="flex items-center justify-center order-1 lg:order-1">
-              <SectionImage src={artistImage} alt="The Artist" />
-            </div>
-            <div className="flex flex-col items-start gap-2 order-2 lg:order-2">
-              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-sm font-bold tracking-[-0.04em]">
-                the artist
-              </span>
-              <div className="text-sm lg:text-base text-[#041727] font-medium leading-relaxed w-full text-justify tracking-[-0.04em] flex flex-col gap-4">
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  Outside of product design, I spend time creating digital paintings and producing music. Sometimes it's experimenting with colors and compositions, other times it's layering sounds and endlessly tweaking tracks that were supposedly finished hours ago.
-                </p>
-                <p className="text-[16px] lg:text-[14px] leading-[24px] lg:leading-[20px]">
-                  I enjoy both because they give me space to create without constraints. No user stories, no conversion metrics, no roadmap. Just curiosity, experimentation, and the satisfaction of making something from nothing.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          </div>
-
+          ))}
         </div>
 
-        {/* Right spacer column matching existing grid geometry */}
-        <div className="hidden lg:block bg-[#F8F5F0]" />
+        {/* Column 3: Stacked 1:1 square icon cells with vertical and horizontal borders */}
+        <div className="h-full aspect-[1/4] shrink-0 bg-[#F8F5F0] border-l border-r border-[#DEDBD6] grid grid-rows-4">
+          {ABOUT_SECTIONS.map((sec, idx) => (
+            <div 
+              key={idx}
+              className={`flex items-center justify-center p-2 min-h-0 h-full w-full aspect-square overflow-hidden ${
+                idx !== ABOUT_SECTIONS.length - 1 ? 'border-b border-[#DEDBD6]' : ''
+              }`}
+            >
+              <div className="w-full h-full flex items-center justify-center select-none">
+                <img
+                  src={sec.image}
+                  alt={sec.imageAlt}
+                  referrerPolicy="no-referrer"
+                  className="max-h-[75%] max-w-[75%] object-contain filter drop-shadow-[0_6px_12px_rgba(4,23,39,0.06)] pointer-events-none"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Column 4: Right empty spacer */}
+        <div className="flex-1 min-w-[40px] bg-[#F8F5F0] h-full" />
 
       </div>
 
-    </div>
+      {/* Mobile / Tablet Layout (Scrollable on small vertical screens) */}
+      <div className="lg:hidden h-full overflow-y-auto flex flex-col bg-[#F8F5F0] divide-y divide-[#DEDBD6]">
+        {ABOUT_SECTIONS.map((sec, idx) => (
+          <div key={idx} className="p-5 flex flex-col gap-4">
+            <div className="flex flex-col items-start gap-1.5">
+              <span className="inline-block bg-[#041727] text-white px-1 py-0.5 text-xs sm:text-sm font-bold tracking-[-0.04em] select-none">
+                {sec.tag}
+              </span>
+              <p className="text-[13px] sm:text-[14px] leading-[20px] text-[#041727] font-medium tracking-[-0.04em]">
+                {sec.body}
+              </p>
+            </div>
 
-      {/* Floating Bottom Navigation Bar (Fixed at the bottom of the viewport, styled in web's UI color) */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#F8F5F0] border border-[#DEDBD6] rounded-[12px] p-3 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-1.5 select-none whitespace-nowrap">
-        <a 
-          href="/featuredwork" 
-          onClick={(e) => handleNav('featured', e)}
-          className="flex items-center gap-1 hover:opacity-75 transition-opacity text-[#041727] font-mono font-medium text-[11px] sm:text-[11px] md:text-xs tracking-tight"
-        >
-          <img 
-            src="https://i.ibb.co/whCkWQLR/34da72d8-4bcd-41b5-b1fa-4cc8a3a682a5-1.png" 
-            alt="Work" 
-            className="w-4 h-4 object-contain select-none pointer-events-none" 
-            referrerPolicy="no-referrer"
-          />
-          <span>work</span>
-        </a>
-        <span className="w-px h-2.5 bg-[#041727]/20 select-none self-center" />
-        <a 
-          href="/employment-history" 
-          onClick={(e) => handleNav('employment', e)}
-          className="flex items-center gap-1 hover:opacity-75 transition-opacity text-[#041727] font-mono font-medium text-[11px] sm:text-[11px] md:text-xs tracking-tight"
-        >
-          <img 
-            src="https://i.ibb.co/5XmF30xW/Chat-GPT-Image-Jun-14-2025-09-39-45-PM-2.png" 
-            alt="Job History" 
-            className="w-4 h-4 object-contain select-none pointer-events-none" 
-            referrerPolicy="no-referrer"
-          />
-          <span>job history</span>
-        </a>
-        <span className="w-px h-2.5 bg-[#041727]/20 select-none self-center" />
-        <a 
-          href="https://docs.google.com/document/d/184oLOD6dQO0yy9_3L5E6Ohgm5yzAmvTjfak6sxNiMok/edit?usp=sharing" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1 hover:opacity-75 transition-opacity text-[#041727] font-mono font-medium text-[11px] sm:text-[11px] md:text-xs tracking-tight"
-        >
-          <img 
-            src="https://i.ibb.co/Z1XXJsD0/0673400d-8c0f-4cb8-8eb7-78cdb94d73b5-1.png" 
-            alt="Resume" 
-            className="w-4 h-4 object-contain select-none pointer-events-none" 
-            referrerPolicy="no-referrer"
-          />
-          <span>resume</span>
-        </a>
-        <span className="w-px h-2.5 bg-[#041727]/20 select-none self-center" />
-        <a 
-          href="mailto:g.bunmi1@gmail.com" 
-          className="flex items-center gap-1 hover:opacity-75 transition-opacity text-[#041727] font-mono font-medium text-[11px] sm:text-[11px] md:text-xs tracking-tight"
-        >
-          <img 
-            src="https://i.ibb.co/Wp7Q3Bn7/Chat-GPT-Image-Jun-14-2025-09-43-52-PM-2.png" 
-            alt="Contact" 
-            className="w-4 h-4 object-contain select-none pointer-events-none" 
-            referrerPolicy="no-referrer"
-          />
-          <span>contact</span>
-        </a>
+            <div className="border border-[#DEDBD6] bg-[#F8F5F0] rounded-none p-3 flex items-center justify-center aspect-square max-w-[160px] mx-auto w-full">
+              <img
+                src={sec.image}
+                alt={sec.imageAlt}
+                referrerPolicy="no-referrer"
+                className="w-16 h-16 object-contain pointer-events-none"
+              />
+            </div>
+          </div>
+        ))}
       </div>
 
     </div>
@@ -220,3 +123,4 @@ const AboutView: React.FC<AboutViewProps> = ({ onNavigate }) => {
 };
 
 export default AboutView;
+

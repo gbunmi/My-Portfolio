@@ -9,13 +9,13 @@ export const PROJECTS = [
   "Probe",
   "Medik",
   "Penuel Samuel",
-  "Chinwe Ekeke",
   "Aurial",
-  "Chorezen"
-  // Temporarily hidden:
-  // "Annie",
-  // "Anystyle AI"
+  "Chorezen",
+  "Explorations"
 ];
+
+export const DESIGN_PROJECTS = PROJECTS;
+export const CODE_PROJECTS = PROJECTS;
 
 export interface ProjectSection {
   title: string;
@@ -32,24 +32,28 @@ export interface ProjectContent {
   links?: { label: string; url: string }[];
   overview?: string; // Keep for simple text
   sections?: ProjectSection[]; // New structured content
+  siteUrl?: string;
+  githubUrl?: string;
 }
 
 export const PROJECT_DATA: Record<string, ProjectContent> = {
   "Annie": {
-    description: "An experimental music playground that explores a different way to make music in the browser. Rather than recreating a traditional DAW, I designed a more playful and visual experience that makes experimenting with sound feel immediate and approachable.",
+    description: "Designed an experimental browser-based music playground for playful and visual music creation.",
     categories: ["Web App", "Music Playground"],
     tags: ["Music", "DAW", "Web app"],
-    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/annie%20cover.jpg",
+    siteUrl: "https://annie.blendingbytes.com",
+    githubUrl: "https://github.com/gbunmi/annie",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Annie%20(2).png",
     images: [
-      "https://raw.githubusercontent.com/gbunmi/images/main/annie%20cover.jpg"
+      "https://raw.githubusercontent.com/gbunmi/images/main/Annie%20(2).png"
     ],
     links: []
   },
   "Aurial": {
-    description: "A collection of modern audio production tools exploring how complex sound engineering can feel intuitive. I focused on interface design, visual feedback, and modular interactions to make powerful audio workflows easier to understand and use.",
+    description: "Designed a collection of audio production tools with modular interfaces and visual feedback.",
     categories: ["Audio Tools", "Mobile App"],
     tags: ["VST", "Music", "Presentation"],
-    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Aurial.png",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%20-%20Preview.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%201.jpg",
       "https://raw.githubusercontent.com/gbunmi/images/main/Aurial%202.jpg",
@@ -66,7 +70,7 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     links: []
   },
   "Anystyle AI": {
-    description: "A photo restyling experience built around one simple idea: choose a style and transform your image instantly. I focused on making AI image generation feel effortless, removing the complexity of prompts and putting visual exploration at the center of the experience.",
+    description: "Designed an AI-powered photo restyling app for transforming images through style selection.",
     categories: ["Mobile App"],
     tags: ["Photo Editing", "AI", "Mobile app"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20New.jpg",
@@ -99,10 +103,10 @@ export const PROJECT_DATA: Record<string, ProjectContent> = {
     overview: "Detailed overview coming soon."
   },
   "Probe": {
-    description: "An AI-powered research assistant built for clinical researchers working with complex medical data and clinical trials. I focused on simplifying protocol analysis and participant matching, turning dense research workflows into a clearer, more manageable experience.",
+    description: "Designed an AI-powered clinical research assistant for medical data analysis, protocol analysis, and participant matching.",
     categories: ["Web App"],
     tags: ["Saas", "Health", "AI", "Web app"],
-    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.png",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Probe%20-%20Preview.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/AI%20Assistant%20(1).png"
     ],
@@ -179,10 +183,10 @@ AI-generated content is never auto-applied. Users must review, select, and confi
     ]
   },
   "Porta": {
-    description: "AI-powered scene generation made simple. I shaped the experience around instant scene creation, intuitive templates, remixing, and sharing, turning a complex image-generation workflow into something visual and approachable.",
+    description: "Designed an AI-powered scene generation app for creating custom environments, with templates, remixing, and sharing.",
     categories: ["Mobile App"],
     tags: ["Social", "AI", "Mobile app"],
-    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Porta.jpg",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20-%20Preview.png",
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Porta%20Cover.png"
     ],
@@ -252,10 +256,10 @@ Interactive prototypes covered the creation workflow, template browsing, and soc
   },
 
   "Melodeo": {
-    description: "An AI-powered music creation platform built to make songwriting more intuitive. I shaped the experience across context-driven generation, synced lyrics, and an integrated player, bringing the creative process into one focused workspace.",
+    description: "Designed an AI-powered music creation platform with context-driven generation, synced lyrics, and an integrated player.",
     categories: ["Mobile App"],
     tags: ["Music", "AI", "Mobile app"],
-    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%202%20(1).png",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20-%20Preview.png",
     images: [
        "https://raw.githubusercontent.com/gbunmi/images/main/Melodeo%20Cover.png"
     ],
@@ -327,10 +331,10 @@ Interactive prototypes tested module selection, abstract prompt input, music gen
   },
 
   "Medik": {
-    description: "A healthtech platform designed to make healthcare more accessible in Nigeria. I shaped the experience across doctor consultations, medication orders, and lab bookings, bringing essential healthcare services together in one place.",
+    description: "Designed a healthtech platform for doctor consultations, medication orders, and lab bookings in Nigeria.",
     categories: ["Mobile App"],
     tags: ["Healthtech", "Mobile app", "Product design"],
-    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik.jpg",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20-%20Preview.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Medik%20Cover.png",
     ],
@@ -394,10 +398,10 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   },
   
   "Penuel Samuel": {
-    description: "A personal portfolio designed to showcase Penuel Samuel's front-end development work. I focused on creating a clean, structured experience that lets his projects and technical capabilities take center stage.",
+    description: "Designed a personal portfolio website for front-end developer Penuel Samuel.",
     categories: ["Portfolio"],
     tags: ["Portfolio", "Website"],
-    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20New.jpg",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20Samuel%20-%20Preview.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Hero%20(4).png",
       "https://raw.githubusercontent.com/gbunmi/images/main/Penuel%20-%20About.png",
@@ -411,7 +415,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
   },
 
   "Chinwe Ekeke": {
-    description: "A polished virtual assistant portfolio built to communicate expertise, professionalism, and trust. I designed the experience around Chinwe's services, skills, and client testimonials, with a clear structure that makes her capabilities easy to understand.",
+    description: "Designed a virtual assistant portfolio showcasing services, skills, and client testimonials.",
     categories: ["Portfolio"],
     tags: ["Portfolio", "Website"],
     carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chinwe%20Ekeke.jpg",
@@ -461,10 +465,12 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
     overview: "Detailed overview coming soon."
   },
   "Chorezen": {
-    description: "An on-demand cleaning service connecting customers with professional home and office cleaning teams. My work covered the product's landing page and social media marketing, creating a visual system that communicates the service clearly while making it feel approachable and trustworthy.",
+    description: "Designed the landing page and social media marketing designs for an on-demand cleaning service.",
     categories: ["Brand"],
     tags: ["Website", "Marketing"],
-    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chorezen.png",
+    siteUrl: "https://chorezen.com.ng/",
+    githubUrl: "https://github.com/gbunmi/chorezen",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Chorezen%20-%20Preview.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/2026.jpg",
       "https://raw.githubusercontent.com/gbunmi/images/main/Children's%20day.jpg",
@@ -493,6 +499,27 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
       "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200002.jpg",
       "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200003.jpg",
       "https://raw.githubusercontent.com/gbunmi/images/main/Tuyaupay%20SM%200004.jpg"
+    ],
+    links: [],
+    overview: "Detailed overview coming soon."
+  },
+  "Explorations": {
+    description: "A curated collection of visual experiments, interface concepts, and design prototypes exploring interaction models, typography, and motion.",
+    categories: ["Experiments", "Visual Design"],
+    tags: ["Experiments", "Visual design", "Interaction", "Prototyping"],
+    images: [],
+    links: [],
+    overview: "Detailed overview coming soon."
+  },
+  "Cardvice": {
+    description: "A smart credit card recommendation and rewards optimization engine built with TypeScript, featuring category spending analysis, dynamic APR calculations, and yield simulators.",
+    categories: ["Code", "Fintech"],
+    tags: [],
+    siteUrl: "https://cardvice.app",
+    githubUrl: "https://github.com/gbunmi/cardvice",
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Cardvice.png",
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Cardvice.png"
     ],
     links: [],
     overview: "Detailed overview coming soon."
@@ -684,21 +711,23 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
 
     const recalculateBounds = () => {
       const children = container.children;
-      if (children.length < PROJECTS.length * 3) return;
+      const targetProjects = PROJECTS;
+      if (children.length < targetProjects.length * 3) return;
 
       const item0 = children[0] as HTMLElement;
-      const itemN = children[PROJECTS.length] as HTMLElement;
+      const itemN = children[targetProjects.length] as HTMLElement;
       
       const oneFullSetHeight = itemN.offsetTop - item0.offsetTop;
       oneFullSetHeightRef.current = oneFullSetHeight;
       item0OffsetTopRef.current = item0.offsetTop;
-      itemSlotHeightRef.current = oneFullSetHeight / PROJECTS.length;
+      itemSlotHeightRef.current = oneFullSetHeight / targetProjects.length;
     };
 
     const updateActiveProject = () => {
       const oneFullSet = oneFullSetHeightRef.current;
       const slotHeight = itemSlotHeightRef.current;
       const item0Offset = item0OffsetTopRef.current;
+      const targetProjects = PROJECTS;
 
       if (oneFullSet <= 0 || slotHeight <= 0) return;
 
@@ -710,8 +739,8 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
       const approxIndex = Math.floor(relativeScroll / slotHeight);
 
       if (approxIndex >= 0) {
-        const projectIndex = approxIndex % PROJECTS.length;
-        const closestProject = PROJECTS[projectIndex];
+        const projectIndex = approxIndex % targetProjects.length;
+        const closestProject = targetProjects[projectIndex];
         
         if (closestProject && closestProject !== selectedProjectRef.current) {
           setSelectedProject(closestProject);
@@ -765,8 +794,9 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
     // Initial positioning: scroll to the middle copy of the selected project
     const initTimer = setTimeout(() => {
       recalculateBounds();
-      const N = PROJECTS.length;
-      const targetIndex = N + PROJECTS.indexOf(selectedProjectRef.current);
+      const targetProjects = PROJECTS;
+      const N = targetProjects.length;
+      const targetIndex = N + Math.max(0, targetProjects.indexOf(selectedProjectRef.current));
       const el = container.querySelector(`[data-index="${targetIndex}"]`) as HTMLElement;
       
       if (el) {
@@ -795,11 +825,12 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
     const container = containerRef.current;
     if (!container) return;
 
-    const projIdx = PROJECTS.indexOf(project);
+    const targetProjects = PROJECTS;
+    const projIdx = targetProjects.indexOf(project);
     if (projIdx === -1) return;
 
     // Pick candidate copies across Set 0, Set 1, and Set 2 to find the shortest, most natural scroll path
-    const candidateIndices = [projIdx, PROJECTS.length + projIdx, PROJECTS.length * 2 + projIdx];
+    const candidateIndices = [projIdx, targetProjects.length + projIdx, targetProjects.length * 2 + projIdx];
     let minDiff = Infinity;
     let targetScrollTop = container.scrollTop;
 
@@ -1056,14 +1087,13 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
         </div>
 
         {/* Projects list */}
-        <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-6 flex flex-col gap-[2px] select-none">
-          {PROJECTS.map((project, idx) => {
+        <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pt-1.5 pb-8 flex flex-col gap-[2px] select-none">
+          {PROJECTS.map((project) => {
             const isSelected = selectedProject === project;
-            const targetIndex = PROJECTS.length + idx;
             return (
               <button
                 key={project}
-                onClick={() => handleProjectClick(project, targetIndex)}
+                onClick={() => handleProjectClick(project)}
                 className={`
                   group w-full text-left px-8 py-0
                   text-sm tracking-[-0.04em] tracking-tight transition-all duration-200
@@ -1113,7 +1143,7 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
           )}
         </AnimatePresence>
 
-        {/* If Case Study is Opened, render full wide detailed layout */}
+        {/* Conditional Content Area: Viewing Case Study vs Preview Split Mode */}
         {viewingCaseStudy ? (
           <div ref={caseStudyScrollRef} className="flex-1 w-full overflow-y-auto bg-[#F8F5F0]">
             <div className="min-h-full lg:grid lg:grid-cols-[240px_1fr_240px] bg-[#DEDBD6] gap-px">
@@ -1132,13 +1162,13 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
             </div>
           </div>
         ) : (
-          /* WORK PREVIEW MODE (Split layout: scrolling images, non-scrolling description) */
+          /* PREVIEW MODE (Split layout with vertical carousel) */
           <div className="flex-1 flex flex-col lg:flex-row lg:gap-0 overflow-hidden h-full">
 
             {/* A. LEFT SPLIT VIEW: Vertical Gallery list (scrolls) */}
             <div 
               ref={containerRef}
-              className="w-full lg:w-[320px] xl:w-[360px] lg:border-r border-[#DEDBD6] shrink-0 lg:h-full lg:overflow-y-auto lg:snap-y lg:snap-mandatory py-12 lg:py-16 [&::-webkit-scrollbar]:hidden flex flex-col gap-[8px] items-center justify-start select-none bg-[#F8F5F0] overflow-x-hidden"
+              className="w-full lg:border-r border-[#DEDBD6] shrink-0 lg:h-full lg:overflow-y-auto lg:snap-y lg:snap-mandatory py-12 lg:py-16 [&::-webkit-scrollbar]:hidden flex flex-col items-center justify-start select-none bg-[#F8F5F0] overflow-x-hidden lg:w-[560px] xl:w-[640px] 2xl:w-[720px] gap-[24px]"
             >
               {(() => {
                 const TRIPLED_PROJECTS: { name: string; tripleIndex: number }[] = [];
@@ -1153,21 +1183,21 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
                   const coverImg = PROJECT_DATA[project]?.carouselImage;
 
                   return (
-                     <div 
-                       key={`${project}-${tripleIndex}`} 
-                       data-project={project}
-                       data-index={tripleIndex}
-                       onClick={() => handleProjectClick(project, tripleIndex)}
-                       className={`w-[180px] md:w-[220px] lg:w-[260px] xl:w-[280px] aspect-square relative border cursor-pointer group overflow-hidden shrink-0 select-none outline-none focus:outline-none active:outline-none lg:snap-center
-                        ${isSelected 
-                          ? 'border-[#DEDBD6] bg-[#ecece8] opacity-100 z-10 scale-100 shadow-sm' 
-                          : 'border-[#DEDBD6] bg-[#ecece8] opacity-45 hover:opacity-90 hover:border-[#465460] z-0 scale-95'}`}
+                    <div 
+                      key={`${project}-${tripleIndex}`} 
+                      data-project={project}
+                      data-index={tripleIndex}
+                      onClick={() => handleProjectClick(project, tripleIndex)}
+                      className={`w-[340px] sm:w-[440px] md:w-[480px] lg:w-[500px] xl:w-[570px] 2xl:w-[640px] aspect-[400/275] relative border cursor-pointer group overflow-hidden shrink-0 select-none outline-none focus:outline-none active:outline-none lg:snap-center transition-all duration-300
+                      ${isSelected 
+                        ? 'border-[#DEDBD6] bg-[#ecece8] opacity-100 z-10 scale-100 shadow-sm' 
+                        : 'border-[#DEDBD6] bg-[#ecece8] opacity-45 hover:opacity-75 hover:border-[#B8B4AC] z-0 scale-95'}`}
                     >
                       {coverImg ? (
                         <img 
                           src={coverImg} 
                           alt={project}
-                          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${isSelected ? 'grayscale-0' : 'grayscale group-hover:grayscale-0'}`}
+                          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-[1.015] ${isSelected ? 'grayscale-0' : 'grayscale group-hover:grayscale-0'}`}
                           referrerPolicy="no-referrer"
                         />
                       ) : (
@@ -1181,18 +1211,17 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
                         </div>
                       )}
                       
-                      {/* Subtle hover overlay zoom transition overlay without any text buttons */}
-                      <div className="absolute inset-0 bg-[#041727] bg-opacity-[0.01] group-hover:bg-opacity-[0.03] transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-[#041727] bg-opacity-0 group-hover:bg-opacity-[0.015] transition-opacity duration-300 pointer-events-none" />
                     </div>
                   );
                 });
               })()}
             </div>
 
-            {/* B. RIGHT SPLIT VIEW: Title & Description block (static/non-scrolling, changes respectively on update) */}
+            {/* B. RIGHT SPLIT VIEW: Title & Description block */}
             <div className="w-full lg:flex-1 p-8 lg:p-16 xl:p-20 h-auto lg:h-full overflow-hidden flex flex-col justify-center bg-[#F8F5F0]">
               <div className="max-w-md w-full flex flex-col justify-start">
-                {/* Title Box matching custom design label exactly */}
+                {/* Title Box */}
                 <div className="mb-4">
                   <span className="inline-block bg-[#041727] text-[#F8F5F0] px-1.5 py-0.5 text-sm font-bold tracking-[-0.04em] select-none">
                     {selectedProject}
