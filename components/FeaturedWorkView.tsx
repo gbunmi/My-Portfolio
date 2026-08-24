@@ -504,10 +504,20 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
     overview: "Detailed overview coming soon."
   },
   "Explorations": {
-    description: "A curated collection of visual experiments, interface concepts, and design prototypes exploring interaction models, typography, and motion.",
+    description: "A curated collection of my visual experiments and interface concepts.",
     categories: ["Experiments", "Visual Design"],
-    tags: ["Experiments", "Visual design", "Interaction", "Prototyping"],
-    images: [],
+    tags: [],
+    images: [
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%201.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%202.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%203.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%204.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%205.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%206.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%207.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%208.png",
+      "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%209.png"
+    ],
     links: [],
     overview: "Detailed overview coming soon."
   },
@@ -1064,18 +1074,6 @@ const FeaturedWorkView: React.FC<FeaturedWorkViewProps> = ({
             </div>
           </div>
         ))}
-
-        {/* Fallback Overview */}
-        {!isBrandProject && !content.sections && content.overview && (
-          <div className="mb-12 w-full">
-            <span className="inline-block bg-[#041727] text-white px-2 py-0.5 text-xs font-bold mb-4 tracking-[-0.04em]">
-              Overview
-            </span>
-            <p className="text-sm lg:text-[14px] text-[#041727] font-medium leading-relaxed w-full text-left tracking-[-0.04em]">
-              {content.overview}
-            </p>
-          </div>
-        )}
       </div>
     );
   };
