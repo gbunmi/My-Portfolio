@@ -507,6 +507,7 @@ I created high-fidelity prototypes, ran usability sessions, noted friction point
     description: "A curated collection of my visual experiments and interface concepts.",
     categories: ["Experiments", "Visual Design"],
     tags: [],
+    carouselImage: "https://raw.githubusercontent.com/gbunmi/images/main/Explorations%20-%20Preview.png",
     images: [
       "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%201.png",
       "https://raw.githubusercontent.com/gbunmi/images/main/Exploration%202.png",
